@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,6 +46,8 @@
     <Compile Include="CategoryCache.cs" />
     <Compile Include="ComputerUtil.cs" />
     <Compile Include="EnumData.cs" />
+    <Compile Include="MD5Helper.cs" />
+    <Compile Include="RegistrationHelper.cs" />
     <Compile Include="StringExtension.cs" />
     <Compile Include="CommonHelper.cs" />
     <Compile Include="ConstConfig.cs" />
