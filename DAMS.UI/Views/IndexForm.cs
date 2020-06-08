@@ -1,4 +1,6 @@
 ﻿using DAMS.Common;
+using DAMS.UI.Views.Index;
+using DAMS.UI.Views.Resource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +22,17 @@ namespace DAMS.UI.Views
         {
             InitializeComponent();
         }
+
+        private void IndexForm_Load(object sender, EventArgs e)
+        {
+            this.labTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:ss");
+        }
+
+        private void systemTimer_Tick(object sender, EventArgs e)
+        {
+            this.labTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:ss");
+        }
+
         protected override void WndProc(ref Message m)
         {
             try
@@ -61,5 +74,29 @@ namespace DAMS.UI.Views
             }
             base.WndProc(ref m);
         }
+
+
+        private void btnMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnResource_Click(object sender, EventArgs e)
+        {
+            this.mPanel.Controls.Clear();
+            MainControl mControl = new MainControl();
+            mControl.Dock = DockStyle.Fill;
+            this.mPanel.Controls.Add(mControl);
+        }
+
+        private void btnSystem_Click(object sender, EventArgs e)
+        {
+            this.mPanel.Controls.Clear();
+            ResourceControl resControl = new ResourceControl();
+            resControl.Dock = DockStyle.Fill;
+            this.mPanel.Controls.Add(resControl);
+        }
+
+
     }
 }

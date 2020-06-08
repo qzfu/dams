@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.WinControls, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.GridView, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RadDock, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="TelerikCommon, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
@@ -60,11 +61,23 @@
     <Compile Include="Views\IndexForm.Designer.cs">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Index\MainControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Index\MainControl.Designer.cs">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Resource\ResourceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Resource\ResourceControl.Designer.cs">
+      <DependentUpon>ResourceControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <Compile Include="Program.cs" />
@@ -82,8 +95,14 @@
     <EmbeddedResource Include="Views\IndexForm.resx">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Index\MainControl.resx">
+      <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Resource\ResourceControl.resx">
+      <DependentUpon>ResourceControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -117,7 +136,9 @@
       <Name>DAMS.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\System\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\1061476.png" />
     <Content Include="Resources\addaccount.png" />
@@ -526,6 +547,7 @@
     <Content Include="Resources\Mail_64_16px.png" />
     <Content Include="Resources\Mail_64_24px.png" />
     <Content Include="Resources\Mail_64_32px.png" />
+    <None Include="Resources\main-btn.png" />
     <Content Include="Resources\maintenance.png" />
     <Content Include="Resources\mat_32_cheng.png" />
     <Content Include="Resources\mat_32_hei.png" />
@@ -643,6 +665,7 @@
     <Content Include="Resources\Red_64_24px.png" />
     <Content Include="Resources\Red_64_32px.png" />
     <Content Include="Resources\refresh.png" />
+    <None Include="Resources\res1.png" />
     <Content Include="Resources\Right_64_24px.png" />
     <Content Include="Resources\rili_32_cheng.png" />
     <Content Include="Resources\rili_32_hei.png" />
@@ -714,6 +737,8 @@
     <Content Include="Resources\System_Run_64_24px.png" />
     <Content Include="Resources\System_Search_64_24px.png" />
     <Content Include="Resources\tag.png" />
+    <None Include="Resources\tit-bg2.png" />
+    <None Include="Resources\tit-bg1.png" />
     <Content Include="Resources\todo_32_cheng.png" />
     <Content Include="Resources\todo_32_hei.png" />
     <Content Include="Resources\todo_32_hong.png" />
