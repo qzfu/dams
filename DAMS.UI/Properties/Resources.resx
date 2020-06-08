@@ -133,6 +133,9 @@
   <data name="flat_search_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flat_search_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="forb_16_lan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forb_16_lan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="flat_refresh2_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flat_refresh2_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,9 +151,6 @@
   <data name="flat_home_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flat_home_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UserManage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UserManage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="flat_refresh1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flat_refresh11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,6 +163,9 @@
   <data name="tit-bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tit-bg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="main-btn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\main-btn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tit-bg2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tit-bg2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,16 +175,16 @@
   <data name="res1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\res1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="UserManage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UserManage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="System_64_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\System_64_32px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="main-btn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\main-btn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="flat_pin_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flat_pin_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="forb_16_lan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forb_16_lan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flat_home2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flat_home2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

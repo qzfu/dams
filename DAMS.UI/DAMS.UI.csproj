@@ -367,6 +367,7 @@
     <None Include="Resources\flat_download1.png" />
     <Content Include="Resources\flat_download_2525.png" />
     <Content Include="Resources\flat_home.png" />
+    <None Include="Resources\flat_home2.png" />
     <Content Include="Resources\flat_home_2525.png" />
     <Content Include="Resources\flat_inform.png" />
     <Content Include="Resources\flat_inform_2525.png" />

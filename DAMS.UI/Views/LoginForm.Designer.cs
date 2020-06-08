@@ -35,20 +35,20 @@
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.btnExit = new Telerik.WinControls.UI.RadButton();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
-            this.picSetting = new System.Windows.Forms.PictureBox();
             this.ckbSavePwd = new Telerik.WinControls.UI.RadCheckBox();
             this.pnlLoginState = new System.Windows.Forms.Panel();
             this.lblLoginPocc = new System.Windows.Forms.Label();
-            this.picPocc = new System.Windows.Forms.PictureBox();
+            this.picSetting = new System.Windows.Forms.PictureBox();
+            this.picPocc = new Telerik.WinControls.UI.RadPanel();
             ((System.ComponentModel.ISupportInitialize)(this.cmbLoginID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckbSavePwd)).BeginInit();
             this.pnlLoginState.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPocc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -58,10 +58,9 @@
             this.cmbLoginID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbLoginID.DisplayMember = "LoginID";
             this.cmbLoginID.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.cmbLoginID.Location = new System.Drawing.Point(764, 393);
-            this.cmbLoginID.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbLoginID.Location = new System.Drawing.Point(509, 262);
             this.cmbLoginID.Name = "cmbLoginID";
-            this.cmbLoginID.Size = new System.Drawing.Size(183, 29);
+            this.cmbLoginID.Size = new System.Drawing.Size(122, 21);
             this.cmbLoginID.TabIndex = 9;
             this.cmbLoginID.ValueMember = "LoginID";
             this.cmbLoginID.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.cmbLoginID_SelectedIndexChanged);
@@ -70,12 +69,11 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.txtPassword.Location = new System.Drawing.Point(764, 448);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPassword.Location = new System.Drawing.Point(509, 299);
             this.txtPassword.MaxLength = 18;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(183, 29);
+            this.txtPassword.Size = new System.Drawing.Size(122, 21);
             this.txtPassword.TabIndex = 10;
             this.txtPassword.ThemeName = "Office2013Light";
             // 
@@ -85,10 +83,9 @@
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogin.Location = new System.Drawing.Point(963, 393);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogin.Location = new System.Drawing.Point(642, 262);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(96, 31);
+            this.btnLogin.Size = new System.Drawing.Size(64, 21);
             this.btnLogin.TabIndex = 12;
             this.btnLogin.Text = "登录";
             this.btnLogin.ThemeName = "ControlDefault";
@@ -98,10 +95,9 @@
             // 
             this.radLabel2.BackColor = System.Drawing.Color.Transparent;
             this.radLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radLabel2.Location = new System.Drawing.Point(660, 396);
-            this.radLabel2.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel2.Location = new System.Drawing.Point(440, 264);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(94, 28);
+            this.radLabel2.Size = new System.Drawing.Size(63, 19);
             this.radLabel2.TabIndex = 14;
             this.radLabel2.Text = "用 户 名：";
             this.radLabel2.ThemeName = "Office2013Light";
@@ -112,10 +108,9 @@
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.btnExit.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnExit.Location = new System.Drawing.Point(963, 448);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Location = new System.Drawing.Point(642, 299);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(96, 32);
+            this.btnExit.Size = new System.Drawing.Size(64, 21);
             this.btnExit.TabIndex = 13;
             this.btnExit.Text = "退出";
             this.btnExit.ThemeName = "Office2013Light";
@@ -125,38 +120,21 @@
             // 
             this.radLabel1.BackColor = System.Drawing.Color.Transparent;
             this.radLabel1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radLabel1.Location = new System.Drawing.Point(659, 448);
-            this.radLabel1.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel1.Location = new System.Drawing.Point(439, 299);
             this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(97, 28);
+            this.radLabel1.Size = new System.Drawing.Size(66, 19);
             this.radLabel1.TabIndex = 15;
             this.radLabel1.Text = "密      码：";
             this.radLabel1.ThemeName = "Office2013Light";
-            // 
-            // picSetting
-            // 
-            this.picSetting.BackColor = System.Drawing.Color.Transparent;
-            this.picSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picSetting.Enabled = false;
-            this.picSetting.Image = global::DAMS.UI.Properties.Resources.System_64_24px;
-            this.picSetting.Location = new System.Drawing.Point(910, 483);
-            this.picSetting.Margin = new System.Windows.Forms.Padding(0);
-            this.picSetting.Name = "picSetting";
-            this.picSetting.Size = new System.Drawing.Size(24, 24);
-            this.picSetting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picSetting.TabIndex = 18;
-            this.picSetting.TabStop = false;
-            this.picSetting.Visible = false;
             // 
             // ckbSavePwd
             // 
             this.ckbSavePwd.BackColor = System.Drawing.Color.Transparent;
             this.ckbSavePwd.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ckbSavePwd.ForeColor = System.Drawing.Color.Black;
-            this.ckbSavePwd.Location = new System.Drawing.Point(764, 486);
-            this.ckbSavePwd.Margin = new System.Windows.Forms.Padding(4);
+            this.ckbSavePwd.Location = new System.Drawing.Point(509, 324);
             this.ckbSavePwd.Name = "ckbSavePwd";
-            this.ckbSavePwd.Size = new System.Drawing.Size(97, 28);
+            this.ckbSavePwd.Size = new System.Drawing.Size(70, 19);
             this.ckbSavePwd.TabIndex = 17;
             this.ckbSavePwd.Text = "记住密码";
             // 
@@ -165,51 +143,55 @@
             this.pnlLoginState.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pnlLoginState.BackColor = System.Drawing.Color.Transparent;
             this.pnlLoginState.Controls.Add(this.lblLoginPocc);
-            this.pnlLoginState.Controls.Add(this.picPocc);
-            this.pnlLoginState.Location = new System.Drawing.Point(18, 545);
-            this.pnlLoginState.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlLoginState.Controls.Add(this.picSetting);
+            this.pnlLoginState.Location = new System.Drawing.Point(12, 363);
             this.pnlLoginState.Name = "pnlLoginState";
-            this.pnlLoginState.Size = new System.Drawing.Size(1106, 39);
+            this.pnlLoginState.Size = new System.Drawing.Size(737, 26);
             this.pnlLoginState.TabIndex = 19;
             this.pnlLoginState.Visible = false;
             // 
             // lblLoginPocc
             // 
-            this.lblLoginPocc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblLoginPocc.ForeColor = System.Drawing.Color.Orange;
-            this.lblLoginPocc.Location = new System.Drawing.Point(30, 0);
-            this.lblLoginPocc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLoginPocc.Location = new System.Drawing.Point(26, 0);
             this.lblLoginPocc.Name = "lblLoginPocc";
-            this.lblLoginPocc.Size = new System.Drawing.Size(1076, 39);
+            this.lblLoginPocc.Size = new System.Drawing.Size(722, 26);
             this.lblLoginPocc.TabIndex = 0;
             this.lblLoginPocc.Text = "正在登录中......";
             this.lblLoginPocc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // picSetting
+            // 
+            this.picSetting.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picSetting.Image = global::DAMS.UI.Properties.Resources.Login_Loading;
+            this.picSetting.Location = new System.Drawing.Point(0, 0);
+            this.picSetting.Margin = new System.Windows.Forms.Padding(2);
+            this.picSetting.Name = "picSetting";
+            this.picSetting.Size = new System.Drawing.Size(24, 26);
+            this.picSetting.TabIndex = 20;
+            this.picSetting.TabStop = false;
+            // 
             // picPocc
             // 
-            this.picPocc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.picPocc.Dock = System.Windows.Forms.DockStyle.Left;
-            this.picPocc.Image = global::DAMS.UI.Properties.Resources.Login_Loading;
-            this.picPocc.Location = new System.Drawing.Point(0, 0);
-            this.picPocc.Margin = new System.Windows.Forms.Padding(4);
+            this.picPocc.BackColor = System.Drawing.Color.Transparent;
+            this.picPocc.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.picPocc.Location = new System.Drawing.Point(0, 364);
+            this.picPocc.Margin = new System.Windows.Forms.Padding(0);
             this.picPocc.Name = "picPocc";
-            this.picPocc.Size = new System.Drawing.Size(30, 39);
-            this.picPocc.TabIndex = 0;
-            this.picPocc.TabStop = false;
-            this.picPocc.WaitOnLoad = true;
+            this.picPocc.Size = new System.Drawing.Size(761, 26);
+            this.picPocc.TabIndex = 20;
             // 
             // LoginForm
             // 
             this.AcceptButton = this.btnLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(1142, 585);
+            this.ClientSize = new System.Drawing.Size(761, 390);
             this.Controls.Add(this.pnlLoginState);
-            this.Controls.Add(this.picSetting);
             this.Controls.Add(this.ckbSavePwd);
             this.Controls.Add(this.cmbLoginID);
             this.Controls.Add(this.txtPassword);
@@ -217,8 +199,8 @@
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.radLabel1);
+            this.Controls.Add(this.picPocc);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LoginForm";
             // 
             // 
@@ -233,9 +215,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckbSavePwd)).EndInit();
             this.pnlLoginState.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPocc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -251,10 +233,10 @@
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadButton btnExit;
         private Telerik.WinControls.UI.RadLabel radLabel1;
-        private System.Windows.Forms.PictureBox picSetting;
         private Telerik.WinControls.UI.RadCheckBox ckbSavePwd;
         private System.Windows.Forms.Panel pnlLoginState;
         private System.Windows.Forms.Label lblLoginPocc;
-        private System.Windows.Forms.PictureBox picPocc;
+        private System.Windows.Forms.PictureBox picSetting;
+        private Telerik.WinControls.UI.RadPanel picPocc;
     }
 }
