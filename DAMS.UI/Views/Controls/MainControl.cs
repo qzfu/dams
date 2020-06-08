@@ -15,6 +15,19 @@ namespace DAMS.UI.Views.Controls
         public MainControl()
         {
             InitializeComponent();
+            this.mianList.Clear(); 
+            bindListView();
+        }
+        private void bindListView() 
+        {
+            var maxListCount = 16;
+            var imageLists = this.resImageList.Images;
+            for (int i = 0; i < maxListCount; i++)
+            {
+                mianList.Items.Add((i+1).ToString(), i);
+                mianList.Items[i].ImageIndex = 0;
+                mianList.Items[i].Name = imageLists[0].ToString();
+            }
         }
     }
 }

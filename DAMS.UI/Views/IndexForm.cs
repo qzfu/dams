@@ -33,11 +33,11 @@ namespace DAMS.UI.Views
             var user = LoginUser.CurrentUser;
             if (user != null)
             {
-                this.labUserInfo.Text = user.UserName;
+                this.labUserInfo.Text = user.UserName + "，您好！";
             }
             else
             {
-                this.labUserInfo.Text = "Admin";
+                this.labUserInfo.Text = "Admin，您好！";
             }
         }
 

@@ -28,30 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("resList", System.Windows.Forms.HorizontalAlignment.Left);
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            "",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"}, -1);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainControl));
             this.mianList = new System.Windows.Forms.ListView();
-            this.EquipmentId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.resImageList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // mianList
             // 
-            this.mianList.BackgroundImage = global::DAMS.UI.Properties.Resources.flat_home2;
-            this.mianList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.EquipmentId});
-            listViewGroup1.Header = "resList";
-            listViewGroup1.Name = "resList";
-            this.mianList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
+            this.mianList.BackgroundImageTiled = true;
+            this.mianList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mianList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.mianList.LargeImageList = this.resImageList;
             this.mianList.Location = new System.Drawing.Point(0, 0);
-            this.mianList.Margin = new System.Windows.Forms.Padding(20);
+            this.mianList.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             this.mianList.Name = "mianList";
             this.mianList.Size = new System.Drawing.Size(996, 543);
             this.mianList.TabIndex = 0;
             this.mianList.UseCompatibleStateImageBehavior = false;
             // 
+            // resImageList
+            // 
+            this.resImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("resImageList.ImageStream")));
+            this.resImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.resImageList.Images.SetKeyName(0, "flat_home2.png");
+            // 
             // MainControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.mianList);
@@ -65,6 +77,6 @@
         #endregion
 
         private System.Windows.Forms.ListView mianList;
-        private System.Windows.Forms.ColumnHeader EquipmentId;
+        private System.Windows.Forms.ImageList resImageList;
     }
 }
