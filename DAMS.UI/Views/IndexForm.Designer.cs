@@ -51,7 +51,9 @@
             // mPanel
             // 
             this.mPanel.Location = new System.Drawing.Point(0, 84);
+            this.mPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mPanel.Name = "mPanel";
+            this.mPanel.Padding = new System.Windows.Forms.Padding(15);
             this.mPanel.Size = new System.Drawing.Size(996, 543);
             this.mPanel.TabIndex = 1;
             // 
@@ -186,13 +188,14 @@
             // 
             this.btmDock.BackgroundImage = global::DAMS.UI.Properties.Resources.tit_bg1;
             this.btmDock.Controls.Add(this.documentContainer1);
+            this.btmDock.IsCleanUpTarget = true;
             this.btmDock.Location = new System.Drawing.Point(0, 626);
             this.btmDock.MainDocumentContainer = this.documentContainer1;
             this.btmDock.Name = "btmDock";
             // 
             // 
             // 
-            this.btmDock.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.btmDock.RootElement.MinSize = new System.Drawing.Size(0, 0);
             this.btmDock.Size = new System.Drawing.Size(996, 31);
             this.btmDock.TabIndex = 3;
             this.btmDock.TabStop = false;
@@ -204,7 +207,7 @@
             // 
             // 
             // 
-            this.documentContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
+            this.documentContainer1.RootElement.MinSize = new System.Drawing.Size(0, 0);
             this.documentContainer1.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Fill;
             // 
             // IndexForm
@@ -226,6 +229,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IndexForm";
             this.Load += new System.EventHandler(this.IndexForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mPanel)).EndInit();

@@ -1,7 +1,4 @@
-﻿using DAMS.Common;
-using DAMS.UI.Views.Index;
-using DAMS.UI.Views.Resource;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +7,9 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
+using DAMS.Common;
+using DAMS.UI.Common;
+using DAMS.UI.Views.Controls;
 
 namespace DAMS.UI.Views
 {
@@ -26,6 +26,19 @@ namespace DAMS.UI.Views
         private void IndexForm_Load(object sender, EventArgs e)
         {
             this.labTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:ss");
+            this.mPanel.Controls.Clear();
+            MainControl mControl = new MainControl();
+            mControl.Dock = DockStyle.Fill;
+            this.mPanel.Controls.Add(mControl);
+            var user = LoginUser.CurrentUser;
+            if (user != null)
+            {
+                this.labUserInfo.Text = user.UserName;
+            }
+            else
+            {
+                this.labUserInfo.Text = "Admin";
+            }
         }
 
         private void systemTimer_Tick(object sender, EventArgs e)
@@ -84,17 +97,17 @@ namespace DAMS.UI.Views
         private void btnResource_Click(object sender, EventArgs e)
         {
             this.mPanel.Controls.Clear();
-            MainControl mControl = new MainControl();
-            mControl.Dock = DockStyle.Fill;
-            this.mPanel.Controls.Add(mControl);
+            ResourceControl resControl = new ResourceControl();
+            resControl.Dock = DockStyle.Fill;
+            this.mPanel.Controls.Add(resControl);
         }
 
         private void btnSystem_Click(object sender, EventArgs e)
         {
             this.mPanel.Controls.Clear();
-            ResourceControl resControl = new ResourceControl();
-            resControl.Dock = DockStyle.Fill;
-            this.mPanel.Controls.Add(resControl);
+            SettingControl settings = new SettingControl();
+            settings.Dock = DockStyle.Fill;
+            this.mPanel.Controls.Add(settings);
         }
 
 

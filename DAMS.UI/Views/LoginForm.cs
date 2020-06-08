@@ -146,8 +146,11 @@ namespace DAMS.UI.Views
         /// <param name="success">是否登录成功</param>
         private void SavePassword(string loginId, string password, bool success = true)
         {
-            var user = _userTable.FirstOrDefault(x => x.UserId == loginId);
-            user.Password = password;
+            if (_userTable!=null)
+            {
+                var user = _userTable.FirstOrDefault(x => x.UserId == loginId);
+                user.Password = password;
+            }
         }
         #endregion
 
@@ -174,37 +177,38 @@ namespace DAMS.UI.Views
 
             ShowMessage("正在登录......");
             Thread.CurrentThread.Join(500);
-            
-            try
-            {
-                var loginId = cmbLoginID.Text;
-                var password = this.txtPassword.Text;
-                var user = userService.GetUserByUserId(loginId, Encrypt(password));
-                if (user == null)
-                {
-                    ShowMessage("用户名或密码不正确！");
-                    return;
-                }
-                LoginUser.loginID = this.cmbLoginID.Text;
-                if (!String.IsNullOrWhiteSpace(password))
-                {
-                    password = ckbSavePwd.IsChecked ?this.txtPassword.Text : String.Empty;//密码加密
-                }
+            DialogResult = DialogResult.OK;
+            //try
+            //{
+            //    var loginId = cmbLoginID.Text;
+            //    var password = this.txtPassword.Text;
+            //    var user = userService.GetUserByUserId(loginId, MD5Helper.GenerateMD5(password));
+            //    if (user == null)
+            //    {
+            //        ShowMessage("用户名或密码不正确！");
+            //        return;
+            //    }
+            //    LoginUser.loginID = this.cmbLoginID.Text;
+            //    LoginUser.CurrentUser = user;
+            //    if (!String.IsNullOrWhiteSpace(password))
+            //    {
+            //        password = ckbSavePwd.IsChecked ?this.txtPassword.Text : String.Empty;//密码加密
+            //    }
 
-                SavePassword(this.cmbLoginID.Text, password);//保存登录账号和密码
+            //    SavePassword(this.cmbLoginID.Text, password);//保存登录账号和密码
 
-                LoginID = cmbLoginID.Text;
-                PasswordText = txtPassword.Text;
+            //    LoginID = cmbLoginID.Text;
+            //    PasswordText = txtPassword.Text;
 
-                ShowMessage("已经完成登录认证......");
+            //    ShowMessage("已经完成登录认证......");
 
-                DialogResult = DialogResult.OK;
+            //    DialogResult = DialogResult.OK;
 
-            }
-            catch (Exception ex)
-            {
-                SavePassword(this.cmbLoginID.Text, String.Empty, false);//保存登录账号和密码
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    SavePassword(this.cmbLoginID.Text, String.Empty, false);//保存登录账号和密码
+            //}
 
             btnLogin.Enabled = true;
         }
@@ -213,7 +217,8 @@ namespace DAMS.UI.Views
         #region 退出登录界面
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            //DialogResult = DialogResult.OK;
+            Environment.Exit(0);
         }
         #endregion
 

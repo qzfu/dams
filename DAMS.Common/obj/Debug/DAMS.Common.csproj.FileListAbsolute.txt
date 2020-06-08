@@ -1,0 +1,4 @@
+F:\MyProject\dams\dams\DAMS.Common\bin\Debug\DAMS.Common.dll
+F:\MyProject\dams\dams\DAMS.Common\bin\Debug\DAMS.Common.pdb
+F:\MyProject\dams\dams\DAMS.Common\obj\Debug\DAMS.Common.dll
+F:\MyProject\dams\dams\DAMS.Common\obj\Debug\DAMS.Common.pdb

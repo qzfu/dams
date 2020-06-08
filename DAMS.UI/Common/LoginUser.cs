@@ -17,6 +17,6 @@ namespace DAMS.UI.Common
         /// <summary>
         /// 当前用户
         /// </summary>
-        public static Users CurrentUser = new Users();
+        public static Users CurrentUser { get; set; }
     }
 }
