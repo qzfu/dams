@@ -675,6 +675,7 @@
     <Content Include="Resources\refresh.png" />
     <None Include="Resources\res1.png" />
     <Content Include="Resources\Right_64_24px.png" />
+    <Content Include="Resources\Right_Close_24.png" />
     <Content Include="Resources\rili_32_cheng.png" />
     <Content Include="Resources\rili_32_hei.png" />
     <Content Include="Resources\rili_32_huang.png" />

@@ -66,6 +66,7 @@
             this.titPanel.Controls.Add(this.btnSystem);
             this.titPanel.Controls.Add(this.btnResource);
             this.titPanel.Controls.Add(this.titLab);
+            this.titPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.titPanel.Location = new System.Drawing.Point(0, 0);
             this.titPanel.Name = "titPanel";
             this.titPanel.Size = new System.Drawing.Size(996, 83);
@@ -203,6 +204,7 @@
             // 
             // documentContainer1
             // 
+            this.documentContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.documentContainer1.Name = "documentContainer1";
             // 
             // 

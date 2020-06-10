@@ -28,20 +28,108 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("执法仪设置");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("采集站设置");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("部门管理");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("用户管理");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("日志查询");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingControl));
+            this.setPanelMenu = new System.Windows.Forms.Panel();
+            this.setPanelContent = new System.Windows.Forms.Panel();
+            this.menuTree = new System.Windows.Forms.TreeView();
+            this.treeImageList = new System.Windows.Forms.ImageList(this.components);
+            this.setPanelMenu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // setPanelMenu
+            // 
+            this.setPanelMenu.Controls.Add(this.menuTree);
+            this.setPanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.setPanelMenu.Location = new System.Drawing.Point(0, 0);
+            this.setPanelMenu.Name = "setPanelMenu";
+            this.setPanelMenu.Size = new System.Drawing.Size(200, 543);
+            this.setPanelMenu.TabIndex = 0;
+            // 
+            // setPanelContent
+            // 
+            this.setPanelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.setPanelContent.Location = new System.Drawing.Point(200, 0);
+            this.setPanelContent.Name = "setPanelContent";
+            this.setPanelContent.Size = new System.Drawing.Size(796, 543);
+            this.setPanelContent.TabIndex = 1;
+            // 
+            // menuTree
+            // 
+            this.menuTree.BackColor = System.Drawing.SystemColors.Menu;
+            this.menuTree.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.menuTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuTree.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.menuTree.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.menuTree.ImageIndex = 0;
+            this.menuTree.ImageList = this.treeImageList;
+            this.menuTree.ItemHeight = 25;
+            this.menuTree.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.menuTree.Location = new System.Drawing.Point(0, 0);
+            this.menuTree.Name = "menuTree";
+            treeNode1.ImageKey = "Down_Open_24.png";
+            treeNode1.Name = "node1";
+            treeNode1.SelectedImageKey = "Right_Close_24.png";
+            treeNode1.Text = "执法仪设置";
+            treeNode2.ImageKey = "Down_Open_24.png";
+            treeNode2.Name = "Node2";
+            treeNode2.SelectedImageKey = "Right_Close_24.png";
+            treeNode2.Text = "采集站设置";
+            treeNode3.ImageKey = "Down_Open_24.png";
+            treeNode3.Name = "node3";
+            treeNode3.SelectedImageKey = "Right_Close_24.png";
+            treeNode3.Text = "部门管理";
+            treeNode4.ImageKey = "Down_Open_24.png";
+            treeNode4.Name = "node4";
+            treeNode4.SelectedImageKey = "Right_Close_24.png";
+            treeNode4.Text = "用户管理";
+            treeNode5.ImageKey = "Down_Open_24.png";
+            treeNode5.Name = "node5";
+            treeNode5.SelectedImageKey = "Right_Close_24.png";
+            treeNode5.Text = "日志查询";
+            this.menuTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5});
+            this.menuTree.SelectedImageIndex = 0;
+            this.menuTree.Size = new System.Drawing.Size(200, 543);
+            this.menuTree.StateImageList = this.treeImageList;
+            this.menuTree.TabIndex = 0;
+            // 
+            // treeImageList
+            // 
+            this.treeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("treeImageList.ImageStream")));
+            this.treeImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.treeImageList.Images.SetKeyName(0, "Down_Open_24.png");
+            this.treeImageList.Images.SetKeyName(1, "Right_Close_24.png");
             // 
             // SettingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.setPanelContent);
+            this.Controls.Add(this.setPanelMenu);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "SettingControl";
             this.Size = new System.Drawing.Size(996, 543);
+            this.setPanelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel setPanelMenu;
+        private System.Windows.Forms.TreeView menuTree;
+        private System.Windows.Forms.Panel setPanelContent;
+        private System.Windows.Forms.ImageList treeImageList;
     }
 }
