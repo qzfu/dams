@@ -31,7 +31,7 @@ namespace DAMS.UI.Views.Controls
         const int myVID = 0x1111;  //供应商ID
         
         public static UsbDevice MyUsbDevice;//USB设备
-        private IDeviceNotifier DeviceNotifier;//设备变化通知函数
+        private IDeviceNotifier deviceNotifier;//设备变化通知函数
         public static UsbEndpointWriter writer = null;
         public static UsbEndpointReader reader = null;
 
@@ -45,8 +45,8 @@ namespace DAMS.UI.Views.Controls
         public MainControl()
         {
             InitializeComponent();
-            this.mianList.Clear(); 
-            bindListView();
+            //this.mianList.Clear(); 
+            //bindListView();
         }
         private void bindListView() 
         {
@@ -62,17 +62,17 @@ namespace DAMS.UI.Views.Controls
         
         private void MainControl_Load(object sender, EventArgs e)
         {
-            DeviceNotifier = DeviceNotifier.OpenDeviceNotifier();
-            DeviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
+            deviceNotifier = DeviceNotifier.OpenDeviceNotifier();
+            deviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
 
-            writer = MyUsbDevice.OpenEndpointWriter(WriteEndpointID.Ep03);
-            reader = MyUsbDevice.OpenEndpointReader(ReadEndpointID.Ep02);
+            //writer = MyUsbDevice.OpenEndpointWriter(WriteEndpointID.Ep03);
+            //reader = MyUsbDevice.OpenEndpointReader(ReadEndpointID.Ep02);
 
-            if (EnbaleCollect)
-            {
-                reader.DataReceived += (OnRxEndPointData);
-                    reader.DataReceivedEnabled = true;
-            }
+            //if (EnbaleCollect)
+            //{
+            //    reader.DataReceived += (OnRxEndPointData);
+            //        reader.DataReceivedEnabled = true;
+            //}
         }
 
         private void OnDeviceNotifyEvent(object sender, DeviceNotifyEventArgs e)
@@ -112,27 +112,70 @@ namespace DAMS.UI.Views.Controls
         /// <param name="PID"></param>
         /// <param name="VID"></param>
         /// <returns></returns>
-        private bool FindAndOpenUSB(int PID, int VID)
+        private void FindAndOpenUSB(int PID, int VID)
         {
+            //UsbDeviceFinder MyUsbFinder = new UsbDeviceFinder(PID, VID);
+            //UsbRegistry myUsbRegistry = UsbGlobals.AllDevices.Find(MyUsbFinder);
+
+            //if (ReferenceEquals(myUsbRegistry, null))
+            //{
+            //    return false;
+            //}
+            //// Open this usb device.
+            //if (!myUsbRegistry.Open(out MyUsbDevice))
+            //{
+            //    return false;
+            //}
+
+            //MyUsbDevice.SetConfiguration(1);
+
+            //((LibUsbDevice)MyUsbDevice).ClaimInterface(0);
+
+            ////ShowMsg(string.Format("Find Device:{0}", myUsbRegistry[SPDRP.DeviceDesc]));
+            //return true;
+            ErrorCode ec = ErrorCode.None;
+
             UsbDeviceFinder MyUsbFinder = new UsbDeviceFinder(PID, VID);
-            UsbRegistry myUsbRegistry = UsbGlobals.AllDevices.Find(MyUsbFinder);
+            MyUsbDevice = UsbDevice.OpenUsbDevice(MyUsbFinder);
 
-            if (ReferenceEquals(myUsbRegistry, null))
+            // If the device is open and ready
+            if (MyUsbDevice == null) throw new Exception("Device Not Found.");
+
+            // If this is a "whole" usb device (libusb-win32, linux libusb-1.0)
+            // it exposes an IUsbDevice interface. If not (WinUSB) the 
+            // 'wholeUsbDevice' variable will be null indicating this is 
+            // an interface of a device; it does not require or support 
+            // configuration and interface selection.
+            IUsbDevice wholeUsbDevice = MyUsbDevice as IUsbDevice;
+            if (!ReferenceEquals(wholeUsbDevice, null))
             {
-                return false;
+                // This is a "whole" USB device. Before it can be used, 
+                // the desired configuration and interface must be selected.
+
+                // Select config #1
+                wholeUsbDevice.SetConfiguration(1);
+
+                // Claim interface #0.
+                wholeUsbDevice.ClaimInterface(0);
             }
-            // Open this usb device.
-            if (!myUsbRegistry.Open(out MyUsbDevice))
+
+            // open read endpoint 1.
+            UsbEndpointReader reader = MyUsbDevice.OpenEndpointReader(ReadEndpointID.Ep01);
+            byte[] readBuffer = new byte[1024];
+            while (ec == ErrorCode.None)
             {
-                return false;
+                int bytesRead;
+
+                // If the device hasn't sent data in the last 5 seconds,
+                // a timeout error (ec = IoTimedOut) will occur. 
+                ec = reader.Read(readBuffer, 5000, out bytesRead);
+
+                if (bytesRead == 0) throw new Exception(string.Format("{0}:No more bytes!", ec));
+                txtRead.Text = string.Format("{0} bytes read", bytesRead);
+
+                // Write that output to the console.
+                txtRead.Text = Encoding.Default.GetString(readBuffer, 0, bytesRead);
             }
-
-            MyUsbDevice.SetConfiguration(1);
-
-            ((LibUsbDevice)MyUsbDevice).ClaimInterface(0);
-
-            //ShowMsg(string.Format("Find Device:{0}", myUsbRegistry[SPDRP.DeviceDesc]));
-            return true;
         }
         //关闭USB设备
         public void CloseUSB()
@@ -144,11 +187,11 @@ namespace DAMS.UI.Views.Controls
             if (!ReferenceEquals(MyUsbDevice, null))
                 MyUsbDevice.Close();
         }
-        //获得上次错误信息
-        public string GetLastError()
-        {
-            return UsbGlobals.LastErrorString;
-        }
+        ////获得上次错误信息
+        //public string GetLastError()
+        //{
+        //    return UsbGlobals.LastErrorString;
+        //}
 
         //USB中断接收函数
         private void OnRxEndPointData(object sender, EndpointDataEventArgs e)
@@ -186,14 +229,14 @@ namespace DAMS.UI.Views.Controls
             // InvokeRequired required compares the thread ID of the
             // calling thread to the thread ID of the creating thread.
             // If these threads are different, it returns true.
-            if (this.txtReadInt.InvokeRequired)
+            if (this.txtRead.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(SetText);
                 this.Invoke(d, new object[] { text });
             }
             else
             {
-                this.txtReadInt.Text = text;
+                this.txtRead.Text = text;
             }
         }
 
