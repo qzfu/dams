@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "1",
             "2",
@@ -45,14 +45,13 @@
             // mianList
             // 
             this.mianList.BackgroundImageTiled = true;
-            this.mianList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mianList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.mianList.LargeImageList = this.resImageList;
             this.mianList.Location = new System.Drawing.Point(0, 0);
             this.mianList.Margin = new System.Windows.Forms.Padding(20);
             this.mianList.Name = "mianList";
-            this.mianList.Size = new System.Drawing.Size(996, 543);
+            this.mianList.Size = new System.Drawing.Size(652, 482);
             this.mianList.TabIndex = 0;
             this.mianList.UseCompatibleStateImageBehavior = false;
             // 
@@ -64,7 +63,8 @@
             // 
             // txtRead
             // 
-            this.txtRead.Location = new System.Drawing.Point(90, 165);
+            this.txtRead.Dock = System.Windows.Forms.DockStyle.Right;
+            this.txtRead.Location = new System.Drawing.Point(657, 0);
             this.txtRead.Name = "txtRead";
             this.txtRead.Size = new System.Drawing.Size(339, 21);
             this.txtRead.TabIndex = 1;

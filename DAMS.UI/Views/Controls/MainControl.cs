@@ -36,8 +36,8 @@ namespace DAMS.UI.Views.Controls
         public static UsbEndpointReader reader = null;
 
         delegate void SetTextCallback(string text);//安全线程访问txtReadInt的值
-        public static Boolean EnbaleCollect = Convert.ToBoolean(CommonHelper.GetAppSettings("EnbaleCollect"));//是否使用中断接收
-
+        public static Boolean EnbaleCollect = true;//Convert.ToBoolean(CommonHelper.GetAppSettings("EnbaleCollect"));//是否使用中断接收
+        delegate void AppendNotifyDelegate(string s);
         bool isCopy = false;
         bool isCopyEnd = false;
         string targetdir = null; 
@@ -79,19 +79,20 @@ namespace DAMS.UI.Views.Controls
         {
             if (e.EventType == EventType.DeviceArrival)
             {
-                //检查当前设备是否需要续传文件
-                var myPID = e.Device.IdProduct;
-                var myVID = e.Device.IdVendor;
-                var deviceRecord = deviceService.GetDeviceRecords(myPID, myVID);
-                if (deviceRecord == null)
-                {
-                    //发现目标设备并打开该设备
-                    FindAndOpenUSB(myPID, myVID);
-                }
-                else
-                {
 
-                }
+                //检查当前设备是否需要续传文件
+                var myPID = e.Device.IdProduct.ToString();
+                var myVID = e.Device.IdVendor.ToString();
+                //var deviceRecord = deviceService.GetDeviceRecords((int)myPID, (int)myVID);
+                //if (deviceRecord == null)
+                //{
+                //    //发现目标设备并打开该设备
+                //    FindAndOpenUSB((int)myPID, (int)myVID);
+                //}
+                //else
+                //{
+
+                //}
             }
             else if (e.EventType == EventType.DeviceRemoveComplete)
             {
