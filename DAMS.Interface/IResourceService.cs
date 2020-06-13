@@ -10,5 +10,10 @@ namespace DAMS.Interface
     public interface IResourceService
     {
         List<Resources> GetResources();
+        /// <summary>
+        /// 获取U盘信息
+        /// </summary>
+        /// <returns></returns>
+        DeviceRecords GetDeviceRecords(int myPID, int myVID);
     }
 }

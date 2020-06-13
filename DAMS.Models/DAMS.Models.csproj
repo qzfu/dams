@@ -57,12 +57,13 @@
   <ItemGroup>
     <Compile Include="Catagorys.cs" />
     <Compile Include="Departments.cs" />
+    <Compile Include="DeviceRecords.cs" />
     <Compile Include="EFDbContext.cs" />
     <Compile Include="Equipments.cs" />
     <Compile Include="Initialize\DatabaseInitializer.cs" />
-    <Compile Include="Migrations\202006011720275_ModelInit.cs" />
-    <Compile Include="Migrations\202006011720275_ModelInit.Designer.cs">
-      <DependentUpon>202006011720275_ModelInit.cs</DependentUpon>
+    <Compile Include="Migrations\202006130234540_ModelInit.cs" />
+    <Compile Include="Migrations\202006130234540_ModelInit.Designer.cs">
+      <DependentUpon>202006130234540_ModelInit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,15 +74,15 @@
     <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006011720275_ModelInit.resx">
-      <DependentUpon>202006011720275_ModelInit.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006130234540_ModelInit.resx">
+      <DependentUpon>202006130234540_ModelInit.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

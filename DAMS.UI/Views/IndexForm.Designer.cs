@@ -204,7 +204,6 @@
             // 
             // documentContainer1
             // 
-            this.documentContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.documentContainer1.Name = "documentContainer1";
             // 
             // 

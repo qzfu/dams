@@ -20,7 +20,7 @@ namespace DAMS.Models.Migrations
             var users = new List<Users>
             {
                 new Users{Id=1,UserId="admin", DeptId=0, Enabled=true, Gender = 0, 
-                    UserName="admin",Password="21218CCA77804D2BA1922C33E0151105",
+                    UserName="admin",Password="c4ca4238a0b923820dcc509a6f75849b",
                     RoleId=1,CreatedTime=DateTime.Now}
             };
             DbSet<Users> userSet = context.Set<Users>();

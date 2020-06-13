@@ -23,7 +23,8 @@ namespace DAMS.Models
         public DbSet<RecorderSettings> RecorderSettings { get; set; }
         public DbSet<Resources> Resources { get; set; }
         public DbSet<Roles> Roles { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public DbSet<DeviceRecords> DeviceRecords { get; set; }
+        public DbSet<Users> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

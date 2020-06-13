@@ -17,5 +17,17 @@ namespace DAMS.Core
                 return db.Resources.ToList();
             }
         }
+        /// <summary>
+        /// 获取中断U盘信息
+        /// IsCopyEnd：1已完成，0中断
+        /// </summary>
+        /// <returns></returns>
+        public DeviceRecords GetDeviceRecords(int myPID, int myVID)
+        {
+            using (var db = new EFDbContext())
+            {
+                return db.DeviceRecords.FirstOrDefault(x => x.IsCopyEnd == 0 && x.PID == myPID && x.VID == myVID);
+            }
+        }
     }
 }
