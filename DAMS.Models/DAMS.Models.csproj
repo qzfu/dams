@@ -58,13 +58,12 @@
     <Compile Include="Catagorys.cs" />
     <Compile Include="Departments.cs" />
     <Compile Include="DeviceRecords.cs" />
+    <Compile Include="DTO\ResourceQueryDTO.cs" />
+    <Compile Include="DTO\ResourcesDTO.cs" />
     <Compile Include="EFDbContext.cs" />
     <Compile Include="Equipments.cs" />
     <Compile Include="Initialize\DatabaseInitializer.cs" />
-    <Compile Include="Migrations\202006140504163_ModelInit.cs" />
-    <Compile Include="Migrations\202006140504163_ModelInit.Designer.cs">
-      <DependentUpon>202006140504163_ModelInit.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\202006011720275_ModelInit.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecorderSettings.cs" />
@@ -79,11 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006140504163_ModelInit.resx">
-      <DependentUpon>202006140504163_ModelInit.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

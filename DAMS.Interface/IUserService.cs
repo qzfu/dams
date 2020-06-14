@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAMS.Models;
+using DAMS.Models.DTO;
 
 namespace DAMS.Interface
 {
@@ -12,5 +13,6 @@ namespace DAMS.Interface
         List<Users> GetUsers();
 
         Users GetUserByUserId(string userId,string password);
+
     }
 }

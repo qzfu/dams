@@ -46,6 +46,7 @@
     <Compile Include="CategoryCache.cs" />
     <Compile Include="ComputerUtil.cs" />
     <Compile Include="EnumData.cs" />
+    <Compile Include="EnumHelper.cs" />
     <Compile Include="MD5Helper.cs" />
     <Compile Include="RegistrationHelper.cs" />
     <Compile Include="StringExtension.cs" />
