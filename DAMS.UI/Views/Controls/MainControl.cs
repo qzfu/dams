@@ -81,9 +81,9 @@ namespace DAMS.UI.Views.Controls
             {
 
                 //检查当前设备是否需要续传文件
-                var myPID = e.Device.IdProduct.ToString();
-                var myVID = e.Device.IdVendor.ToString();
-                //var deviceRecord = deviceService.GetDeviceRecords((int)myPID, (int)myVID);
+                var myPID = e.Device.IdProduct.ToString("x");
+                var myVID = e.Device.IdVendor.ToString("x");
+                var deviceRecord = deviceService.GetDeviceRecords(myPID, myVID);
                 //if (deviceRecord == null)
                 //{
                 //    //发现目标设备并打开该设备

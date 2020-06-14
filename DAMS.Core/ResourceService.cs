@@ -22,7 +22,7 @@ namespace DAMS.Core
         /// IsCopyEnd：1已完成，0中断
         /// </summary>
         /// <returns></returns>
-        public DeviceRecords GetDeviceRecords(int myPID, int myVID)
+        public DeviceRecords GetDeviceRecords(string myPID, string myVID)
         {
             using (var db = new EFDbContext())
             {

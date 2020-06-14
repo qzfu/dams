@@ -14,6 +14,6 @@ namespace DAMS.Interface
         /// 获取U盘信息
         /// </summary>
         /// <returns></returns>
-        DeviceRecords GetDeviceRecords(int myPID, int myVID);
+        DeviceRecords GetDeviceRecords(string myPID, string myVID);
     }
 }
