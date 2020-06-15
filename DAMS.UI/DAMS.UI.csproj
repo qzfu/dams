@@ -57,6 +57,7 @@
     <Reference Include="TelerikData, Version=2015.2.728.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DeviceControl.cs" />
     <Compile Include="Common\LoginUser.cs" />
     <Compile Include="Common\MessageUtil.cs" />
     <Compile Include="Views\Controls\MainControl.cs">

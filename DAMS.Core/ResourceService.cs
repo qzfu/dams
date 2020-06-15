@@ -19,16 +19,17 @@ namespace DAMS.Core
                 return db.Resources.ToList();
             }
         }
+
         /// <summary>
         /// 获取中断U盘信息
         /// IsCopyEnd：1已完成，0中断
         /// </summary>
         /// <returns></returns>
-        public DeviceRecords GetDeviceRecords(string myPID, string myVID)
+        public DeviceRecords GetDeviceRecords(int myPID, int myVID)
         {
             using (var db = new EFDbContext())
             {
-                return db.DeviceRecords.FirstOrDefault(x => x.IsCopyEnd == 0 && x.PID == myPID && x.VID == myVID);
+                return db.DeviceRecords.FirstOrDefault(x => x.PID == myPID && x.VID == myVID);
             }
         }
 
@@ -112,6 +113,32 @@ namespace DAMS.Core
                     });
                 }
                 return result;
+            }
+        }
+
+        public List<Resources> GetCurrentDiskResourceList(int vid, int pid, string serialNumber)
+        {
+            using (var db = new EFDbContext())
+            {
+                var deviceInfo = vid.ToString() + "." + pid.ToString() + "." + serialNumber;
+                return db.Resources.Where(x => x.DeviceInfo == deviceInfo).ToList();
+            }
+        }
+
+        public void AddResource(List<Resources> resources, string deviceInfo)
+        {
+            using (var db = new EFDbContext())
+            {
+                foreach (var resource in resources)
+                {
+                    resource.UserId = "Admin";
+                    resource.UserName = "管理员";
+                    resource.CreatedTime = DateTime.Now;
+                    resource.IsCopyEnd = 0;
+                    resource.DeviceInfo = deviceInfo;
+                }
+                db.SaveChanges();
+                return;
             }
         }
     }

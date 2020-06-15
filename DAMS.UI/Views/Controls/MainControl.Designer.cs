@@ -49,9 +49,9 @@
             listViewItem1});
             this.mianList.LargeImageList = this.resImageList;
             this.mianList.Location = new System.Drawing.Point(0, 0);
-            this.mianList.Margin = new System.Windows.Forms.Padding(27, 25, 27, 25);
+            this.mianList.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             this.mianList.Name = "mianList";
-            this.mianList.Size = new System.Drawing.Size(868, 602);
+            this.mianList.Size = new System.Drawing.Size(976, 721);
             this.mianList.TabIndex = 0;
             this.mianList.UseCompatibleStateImageBehavior = false;
             // 
@@ -64,22 +64,22 @@
             // txtRead
             // 
             this.txtRead.Dock = System.Windows.Forms.DockStyle.Right;
-            this.txtRead.Location = new System.Drawing.Point(877, 0);
-            this.txtRead.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRead.Location = new System.Drawing.Point(988, 0);
+            this.txtRead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRead.Name = "txtRead";
-            this.txtRead.Size = new System.Drawing.Size(451, 25);
+            this.txtRead.Size = new System.Drawing.Size(506, 28);
             this.txtRead.TabIndex = 1;
             // 
             // MainControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.txtRead);
             this.Controls.Add(this.mianList);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "MainControl";
-            this.Size = new System.Drawing.Size(1328, 679);
+            this.Size = new System.Drawing.Size(1494, 814);
             this.Load += new System.EventHandler(this.MainControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

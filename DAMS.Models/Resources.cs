@@ -23,13 +23,22 @@ namespace DAMS.Models
         public string UserName { get; set; }
         public int DepartId { get; set; }
         public DateTime? UploadTime { get; set; }
-        [MaxLength(200)]
+        [MaxLength(500)]
         public string FilePath { get; set; }
-        [MaxLength(200)]
+        [MaxLength(600)]
         public string FileName { get; set; }
         [MaxLength(300)]
         public string Alias { get; set; }
         [MaxLength(20)]
         public string Extension { get; set; }
+        public DateTime? CreatedTime { get; set; }
+        /// <summary>
+        /// 是否中断续传，0：中断，1：复制完成
+        /// </summary>
+        public int IsCopyEnd { get; set; }
+        /// <summary>
+        /// VID.PID.SerialNumber
+        /// </summary>
+        public string DeviceInfo { get; set; }
     }
 }

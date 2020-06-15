@@ -13,13 +13,10 @@ namespace DAMS.Models
     {
         [Key]
         public int Id { get; set; }
-        [MaxLength(50)]
-        public string PID { get; set; }
-        [MaxLength(50)]
-        public string VID { get; set; }
+        public int PID { get; set; }
+        public int VID { get; set; }
         [MaxLength(50)]
         public string SerialNumber { get; set; }
-        public string readBuffer { get; set; }
         public int IsCopyEnd { get; set; }
     }
 }
