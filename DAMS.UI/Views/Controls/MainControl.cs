@@ -10,13 +10,15 @@ using System.Windows.Forms;
 
 using LibUsbDotNet;  
 using LibUsbDotNet.Main;  
-using LibUsbDotNet.Info;  
+using LibUsbDotNet.Info; 
 using LibUsbDotNet.DeviceNotify;
+using LibUsbDotNet.Descriptors;
 using System.Collections.ObjectModel;
 using DAMS.Common;
 using DAMS.Interface;
 using DAMS.Core.ClassFactory;
 using DAMS.UI.Common;
+using System.IO;
 
 namespace DAMS.UI.Views.Controls
 {
@@ -54,7 +56,6 @@ namespace DAMS.UI.Views.Controls
         {
             if (e.EventType == EventType.DeviceArrival)
             {
-
                 //检查当前设备是否需要续传文件
                 var myVID = e.Device.IdVendor;
                 var myPID = e.Device.IdProduct;
@@ -63,7 +64,9 @@ namespace DAMS.UI.Views.Controls
                 //新的设备接入
                 if (deviceRecord == null)
                 {
-                    DeviceControl deviceControl = new DeviceControl();
+                    //ManagementClass mc = new ManagementClass("Win32_DiskDrive"); ManagementObjectCollection moc = mc.GetInstances(); foreach (ManagementObject mo in moc) { propertyInfo = mo.Properties[PropertyName].Value.ToString(); }
+                    //DeviceControl deviceControl = new DeviceControl();
+                    var deviceName = e.Device.Name;
                     //deviceControl.CopyFilesTo(e.Device.Name, myVID, myPID, serialNumber);
                 }
                 else
@@ -85,47 +88,41 @@ namespace DAMS.UI.Views.Controls
             //}
         }
 
-        //protected override void WndProc(ref Message m)
-        //{
-        //    try
-        //    {
-        //        if (m.Msg == ConstConfig.WM_DEVICECHANGE)
-        //        {
-        //            switch (m.WParam.ToInt32())
-        //            {
-        //                case ConstConfig.WM_DEVICECHANGE:
-        //                    break;
-        //                //监听U盘移动硬盘插入
-        //                case ConstConfig.DBT_DEVICEARRIVAL:
-        //                    DriveInfo[] s = DriveInfo.GetDrives();
-        //                    foreach (DriveInfo drive in s)
-        //                    {
-        //                        if (drive.DriveType == DriveType.Removable)
-        //                        {
-        //                            if (!isCopyEnd)
-        //                            {
-        //                                isCopy = true;
-        //                                CommonHelper.CopyFiles(drive.RootDirectory);
-        //                            }
-        //                            break;
-        //                        }
-        //                    }
-        //                    break;
-        //                case ConstConfig.DBT_DEVICEREMOVECOMPLETE:   //U盘卸载  
-        //                    isCopy = false;
-        //                    isCopyEnd = false;
-        //                    break;
-        //                default:
-        //                    break;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    base.WndProc(ref m);
-        //}
+        protected override void WndProc(ref Message m)
+        {
+            try
+            {
+                if (m.Msg == ConstConfig.WM_DEVICECHANGE)
+                {
+                    switch (m.WParam.ToInt32())
+                    {
+                        case ConstConfig.WM_DEVICECHANGE:
+                            break;
+                        //监听U盘移动硬盘插入
+                        case ConstConfig.DBT_DEVICEARRIVAL:
+                            DriveInfo[] s = DriveInfo.GetDrives();
+                            foreach (DriveInfo drive in s)
+                            {
+                                if (drive.DriveType == DriveType.Removable)
+                                {
+                                    //CommonHelper.CopyFiles(drive.RootDirectory);
+                                    break;
+                                }
+                            }
+                            break;
+                        case ConstConfig.DBT_DEVICEREMOVECOMPLETE:   //U盘卸载  
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            base.WndProc(ref m);
+        }
 
 
         //public void ReadUSB()
