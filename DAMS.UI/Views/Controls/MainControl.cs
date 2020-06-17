@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -12,13 +13,15 @@ using LibUsbDotNet;
 using LibUsbDotNet.Main;  
 using LibUsbDotNet.Info; 
 using LibUsbDotNet.DeviceNotify;
+using LibUsbDotNet.LibUsb;
+using LibUsbDotNet.WinUsb;
 using LibUsbDotNet.Descriptors;
 using System.Collections.ObjectModel;
 using DAMS.Common;
 using DAMS.Interface;
 using DAMS.Core.ClassFactory;
 using DAMS.UI.Common;
-using System.IO;
+using System.Management;
 
 namespace DAMS.UI.Views.Controls
 {
@@ -27,6 +30,7 @@ namespace DAMS.UI.Views.Controls
         private IResourceService deviceService = Assembler<IResourceService>.Create();
         public static UsbDevice MyUsbDevice;//USB设备
         private IDeviceNotifier deviceNotifier;//设备变化通知函数
+        public static readonly byte TRANFER_ENDPOINT = UsbConstants.ENDPOINT_DIR_MASK;
         public MainControl()
         {
             InitializeComponent();
@@ -64,9 +68,81 @@ namespace DAMS.UI.Views.Controls
                 //新的设备接入
                 if (deviceRecord == null)
                 {
-                    //ManagementClass mc = new ManagementClass("Win32_DiskDrive"); ManagementObjectCollection moc = mc.GetInstances(); foreach (ManagementObject mo in moc) { propertyInfo = mo.Properties[PropertyName].Value.ToString(); }
+                    UsbDevice.ForceLibUsbWinBack = true;
+                    UsbDeviceFinder MyUsbFinder = new UsbDeviceFinder(myVID, myPID);
+
+                    //ManagementClass mc = new ManagementClass("Win32_DiskDrive"); 
+                    //ManagementObjectCollection moc = mc.GetInstances();
+                    //foreach (ManagementObject mo in moc)
+                    //{
+                    //    mo.ToString();
+                    //    //propertyInfo = mo.Properties[PropertyName].Value.ToString();
+                    //}
+                    //MyUsbDevice = UsbDevice.OpenUsbDevice(MyUsbFinder);
+
+
+                    UsbRegDeviceList regList = UsbDevice.AllDevices.FindAll(MyUsbFinder);
+                    if (regList.Count == 0) throw new Exception("Device Not Found.");
+
+                    UsbInterfaceInfo usbInterfaceInfo = null;
+                    UsbEndpointInfo usbEndpointInfo = null;
+
+                    //// Look through all conected devices with this vid and pid until
+                    //// one is found that has and and endpoint that matches TRANFER_ENDPOINT.
+                    ////
+                    foreach (UsbRegistry regDevice in regList)
+                    {
+                        if (regDevice.Open(out MyUsbDevice))
+                        {
+                            if (MyUsbDevice.Configs.Count > 0)
+                            {
+                                // if TRANFER_ENDPOINT is 0x80 or 0x00, LookupEndpointInfo will return the 
+                                // first read or write (respectively).
+                                if (UsbEndpointBase.LookupEndpointInfo(MyUsbDevice.Configs[0], TRANFER_ENDPOINT,
+                                    out usbInterfaceInfo, out usbEndpointInfo))
+                                    break;
+
+                                MyUsbDevice.Close();
+                                MyUsbDevice = null;
+                            }
+                        }
+                    }
+
+                    //// If the device is open and ready
+                    //if (MyUsbDevice == null) throw new Exception("Device Not Found.");
+
+                    //// If this is a "whole" usb device (libusb-win32, linux libusb-1.0)
+                    //// it exposes an IUsbDevice interface. If not (WinUSB) the 
+                    //// 'wholeUsbDevice' variable will be null indicating this is 
+                    //// an interface of a device; it does not require or support 
+                    //// configuration and interface selection.
+                    //IUsbDevice wholeUsbDevice = MyUsbDevice as IUsbDevice;
+                    //if (!ReferenceEquals(wholeUsbDevice, null))
+                    //{
+                    //    // This is a "whole" USB device. Before it can be used, 
+                    //    // the desired configuration and interface must be selected.
+
+                    //    // Select config #1
+                    //    wholeUsbDevice.SetConfiguration(1);
+
+                    //    // Claim interface #0.
+                    //    wholeUsbDevice.ClaimInterface(usbInterfaceInfo.Descriptor.InterfaceID);
+                    //}
+
+                    //// open read endpoint.
+                    //UsbEndpointReader reader = MyUsbDevice.OpenEndpointReader(
+                    //    (ReadEndpointID)usbEndpointInfo.Descriptor.EndpointID,
+                    //    0,
+                    //    (EndpointType)(usbEndpointInfo.Descriptor.Attributes & 0x3));
+
+                    //if (ReferenceEquals(reader, null))
+                    //{
+                    //    throw new Exception("Failed locating read endpoint.");
+                    //}
+
+                    //reader.Reset();
+                    
                     //DeviceControl deviceControl = new DeviceControl();
-                    var deviceName = e.Device.Name;
                     //deviceControl.CopyFilesTo(e.Device.Name, myVID, myPID, serialNumber);
                 }
                 else
