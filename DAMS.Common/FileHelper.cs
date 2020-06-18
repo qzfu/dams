@@ -251,9 +251,9 @@ namespace DAMS.Common
             //已追加的方式写入文件流
             FileStream toFile;
             //读取中原文件终点位置长度
-            if (System.IO.File.Exists(toPath))
+            if (File.Exists(toPath))
             {
-                toFile = System.IO.File.OpenWrite(toPath);
+                toFile = File.OpenWrite(toPath);
                 startPosition = toFile.Length;
             }
             else

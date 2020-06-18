@@ -12,6 +12,8 @@ using DAMS.Common;
 using DAMS.Models;
 using DAMS.Interface;
 using DAMS.Core.ClassFactory;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace DAMS.UI.Common
 {
@@ -26,6 +28,51 @@ namespace DAMS.UI.Common
         {
             desRoot = CommonHelper.GetAppSettings("desdirectory");
             flushReadLength =  Convert.ToInt32(CommonHelper.GetAppSettings("FlushReadLength"));
+        }
+        /// <summary>
+        /// 校验盘符信息
+        /// </summary>
+        /// <param name="root">U盘根目录</param>
+        /// <param name="vid">Vid</param>
+        /// <param name="pid">Pid</param>
+        /// <param name="serialNumber">serialNumber</param>
+        /// <returns>0新增盘符，1中断续传，-1不同磁盘</returns>
+        public int CheckDeviceToken(string root, int vid, int pid, string serialNumber)
+        {
+            string xmlPath = root + "deviceToken.xml";
+            if (!File.Exists(xmlPath))
+            {
+                XmlDocument doc = new XmlDocument();
+                //获取根节点对象
+                XDocument document = new XDocument();
+                XElement node = new XElement("token");
+                node.SetElementValue("vid", vid);
+                node.SetElementValue("pid", pid);
+                node.SetElementValue("serialNumber", serialNumber);
+                node.Save(xmlPath);
+                return 0;
+            }
+            else
+            {
+                try
+                {
+                    XDocument doc = XDocument.Load(xmlPath);
+                    XElement nodeRoot = doc.Root;
+                    IEnumerable<XElement> nodes = nodeRoot.Elements();
+                    var nodeVid = nodes.FirstOrDefault(x => x.Name == "vid").Value;
+                    var nodePid = nodes.FirstOrDefault(x => x.Name == "pid").Value;
+                    var nodeSerialNumber = nodes.FirstOrDefault(x => x.Name == "serialNumber").Value;
+                    if (nodeVid == vid.ToString() && nodePid == pid.ToString() && nodeSerialNumber == serialNumber)
+                    {
+                        return 1;
+                    }
+                    return -1;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
         }
 
         public void CopyFilesTo(DirectoryInfo sourceDirectory, int vid, int pid, string serialNumber)
@@ -50,6 +97,10 @@ namespace DAMS.UI.Common
             FileInfo[] fileArray = sourceDirectory.GetFiles();
             foreach (FileInfo file in fileArray)
             {
+                if (file.Name == "deviceToken.xml")
+                {
+                    continue;
+                }
                 var itemFileFullName = filePath + "/" + file.Name;
                 var resModel = currResources.FirstOrDefault(x => String.Compare(x.FileName, itemFileFullName) == 0);
                 //文件已经存在且已经Copy完毕跳过本层循环
@@ -81,9 +132,13 @@ namespace DAMS.UI.Common
             foreach (DirectoryInfo dir in dirArray)
             {
                 var dirPath = dir.Name;
+                if (dirPath.ToLower() == "system volume information")
+                {
+                    continue;
+                }
                 var itemFilePath = filePath + "/" + dirPath;
                 var itemDirPath = destinationPath + "/" + dirPath;
-                CopyTo(sourceDirectory, itemFilePath, itemDirPath, currResources, ref resList);
+                CopyTo(dir, itemFilePath, itemDirPath, currResources, ref resList);
             }
         }
         public void FlushCopyFileCallBack()

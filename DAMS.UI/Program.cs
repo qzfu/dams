@@ -16,7 +16,7 @@ namespace DAMS.UI
         [STAThread]
         static void Main()
         {
-            DatabaseInitializer.Initialize();
+            //DatabaseInitializer.Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LoginForm());
