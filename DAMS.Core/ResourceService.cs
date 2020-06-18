@@ -124,8 +124,21 @@ namespace DAMS.Core
                 return db.Resources.Where(x => x.DeviceInfo == deviceInfo).ToList();
             }
         }
-
-        public void AddResource(List<Resources> resources, string deviceInfo)
+        public void AddResource(Resources resource, string deviceInfo)
+        {
+            using (var db = new EFDbContext())
+            {
+                resource.UserId = "Admin";
+                resource.UserName = "管理员";
+                resource.CreatedTime = DateTime.Now;
+                resource.IsCopyEnd = 0;
+                resource.DeviceInfo = deviceInfo;
+                db.Resources.Add(resource);
+                db.SaveChanges();
+                return;
+            }
+        }
+        public void AddResources(List<Resources> resources, string deviceInfo)
         {
             using (var db = new EFDbContext())
             {
@@ -137,6 +150,7 @@ namespace DAMS.Core
                     resource.IsCopyEnd = 0;
                     resource.DeviceInfo = deviceInfo;
                 }
+                db.Resources.AddRange(resources);
                 db.SaveChanges();
                 return;
             }

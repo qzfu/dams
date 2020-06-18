@@ -36,6 +36,12 @@ namespace DAMS.Interface
         /// </summary>
         /// <param name="resources"></param>
         /// <param name="deviceInfo"></param>
-        void AddResource(List<Resources> resources, string deviceInfo);
+        void AddResources(List<Resources> resources, string deviceInfo);
+        /// <summary>
+        /// 新增单个资源
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <param name="deviceInfo"></param>
+        void AddResource(Resources resource, string deviceInfo);
     }
 }

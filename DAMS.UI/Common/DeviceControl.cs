@@ -87,11 +87,10 @@ namespace DAMS.UI.Common
             //获取目标文件夹中已存在的文件列表
             List<Resources> currResources = deviceService.GetCurrentDiskResourceList(vid, pid, serialNumber);
             List<Resources> resList = new List<Resources>();
-            CopyTo(sourceDirectory, filePath, destinationPath, currResources, ref resList);
-            deviceService.AddResource(resList, deviceInfo);
+            CopyTo(sourceDirectory, filePath, destinationPath, currResources, deviceInfo);
         }
 
-        private void CopyTo(DirectoryInfo sourceDirectory, string filePath, string destinationPath, List<Resources> currResources, ref List<Resources> resList)
+        private void CopyTo(DirectoryInfo sourceDirectory, string filePath, string destinationPath, List<Resources> currResources, string deviceInfo)
         {
             //复制文件夹下面的文件
             FileInfo[] fileArray = sourceDirectory.GetFiles();
@@ -110,14 +109,16 @@ namespace DAMS.UI.Common
                 }
                 if (resModel == null)
                 {
-                    resList.Add(new Resources()
+                    var resource = new Resources()
                     {
                         Extension = file.Extension,
-                        Alias=file.Name,
+                        Alias = file.Name,
                         FilePath = filePath,
                         FileName = itemFileFullName,
-                        IsCopyEnd=0
-                    });
+                        IsCopyEnd = 0
+                    };
+
+                    deviceService.AddResource(resource, deviceInfo);
                 }
                 //源文件文件地址名称
                 var fromFile = file.FullName;
@@ -138,7 +139,7 @@ namespace DAMS.UI.Common
                 }
                 var itemFilePath = filePath + "/" + dirPath;
                 var itemDirPath = destinationPath + "/" + dirPath;
-                CopyTo(dir, itemFilePath, itemDirPath, currResources, ref resList);
+                CopyTo(dir, itemFilePath, itemDirPath, currResources, deviceInfo);
             }
         }
         public void FlushCopyFileCallBack()
