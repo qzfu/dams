@@ -16,5 +16,20 @@ namespace DAMS.UI.Views.Controls
         {
             InitializeComponent();
         }
+
+        public void menuTree_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Action == TreeViewAction.ByMouse)  
+            {
+                if(e.Node.Index==0)
+                {  
+                    this.setPanelContent.Controls.Clear();
+                    EnforceLawControl resControl = new EnforceLawControl();
+                    resControl.Dock = DockStyle.Fill;
+                    this.setPanelContent.Controls.Add(resControl);
+                }  
+                
+            }
+        }
     }
 }

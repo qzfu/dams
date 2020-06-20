@@ -97,12 +97,6 @@
     <Compile Include="Views\MediaPlayerForm.Designer.cs">
       <DependentUpon>MediaPlayerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MessageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\MessageForm.Designer.cs">
-      <DependentUpon>MessageForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,9 +127,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MediaPlayerForm.resx">
       <DependentUpon>MediaPlayerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\MessageForm.resx">
-      <DependentUpon>MessageForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
