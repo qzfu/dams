@@ -22,35 +22,52 @@ using System.Management;
 
 namespace DAMS.UI.Views.Controls
 {
+    //设置Com对外可访问
+    [System.Runtime.InteropServices.ComVisible(true)]
     public partial class MainControl : UserControl
     {
         private IResourceService deviceService = Assembler<IResourceService>.Create();
         public static UsbDevice MyUsbDevice;//USB设备
         private IDeviceNotifier deviceNotifier;//设备变化通知函数
-        public static readonly byte TRANFER_ENDPOINT = UsbConstants.ENDPOINT_DIR_MASK;
+
+        //当前程序根目录
+        string dirRoot = System.Environment.CurrentDirectory;
         public MainControl()
         {
             InitializeComponent();
-            //this.mianList.Clear(); 
-            //bindListView();
+            //初始化浏览器
+            this.initChartBrowser();
+            this.chartBrowser.Navigate(dirRoot + @"\Views\Browser\main.html");
+
+            deviceNotifier = DeviceNotifier.OpenDeviceNotifier();
+            deviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
+
         }
-        private void bindListView() 
+        /// <summary>
+        /// 初始化浏览器
+        /// </summary>
+        private void initChartBrowser()
         {
-            var maxListCount = 16;
-            var imageLists = this.resImageList.Images;
-            for (int i = 0; i < maxListCount; i++)
-            {
-                mianList.Items.Add((i+1).ToString(), i);
-                mianList.Items[i].ImageIndex = 0;
-                mianList.Items[i].Name = imageLists[0].ToString();
-            }
+            //防止 WebBrowser 控件打开拖放到其上的文件。
+            chartBrowser.AllowWebBrowserDrop = false;
+
+            //防止 WebBrowser 控件在用户右击它时显示其快捷菜单.
+            chartBrowser.IsWebBrowserContextMenuEnabled = false;
+
+            //以防止 WebBrowser 控件响应快捷键。
+            chartBrowser.WebBrowserShortcutsEnabled = false;
+
+            //以防止 WebBrowser 控件显示脚本代码问题的错误信息。    
+            chartBrowser.ScriptErrorsSuppressed = true;
+
+            //（这个属性比较重要，可以通过这个属性，把WINFROM中的变量，传递到JS中，供内嵌的网页使用；但设置到的类型必须是COM可见的，所以要设置     [System.Runtime.InteropServices.ComVisibleAttribute(true)]，因为我的值设置为this,所以这个特性要加载窗体类上）
+            chartBrowser.ObjectForScripting = this;
         }
         
         private void MainControl_Load(object sender, EventArgs e)
         {
-            deviceNotifier = DeviceNotifier.OpenDeviceNotifier();
-            deviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
-
+            
+            
         }
 
         private void OnDeviceNotifyEvent(object sender, DeviceNotifyEventArgs e)

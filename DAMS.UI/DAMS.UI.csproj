@@ -226,6 +226,7 @@
     <Content Include="Resources\audit_32_shenglan.png" />
     <Content Include="Resources\audit_32_zi.png" />
     <Content Include="Resources\Behavior_64_48px.png" />
+    <Content Include="Resources\bg.jpg" />
     <Content Include="Resources\bg.png" />
     <Content Include="Resources\BondType.png" />
     <Content Include="Resources\bond_32_cheng.png" />
@@ -393,6 +394,9 @@
     <Content Include="Resources\flat_documents.png" />
     <Content Include="Resources\flat_documents_2525.png" />
     <Content Include="Resources\flat_download.png" />
+    <Content Include="Views\Browser\js\echarts.js" />
+    <Content Include="Views\Browser\js\echarts.min.js" />
+    <Content Include="Views\Browser\main.html" />
     <None Include="Resources\flat_warning_25251.png" />
     <None Include="Resources\flat_setting_25251.png" />
     <None Include="Resources\flat_search_11.png" />
@@ -775,6 +779,7 @@
     <Content Include="Resources\stock_lan.png" />
     <Content Include="Resources\stock__32_qing.png" />
     <Content Include="Resources\Stop_64_24px.png" />
+    <Content Include="Resources\sys1.png" />
     <Content Include="Resources\system.png" />
     <Content Include="Resources\system2.png" />
     <Content Include="Resources\System_32px.png" />

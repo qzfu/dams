@@ -184,7 +184,15 @@ namespace DAMS.Core
                 var entity = db.Resources.FirstOrDefault(x => x.ResourceId == res.ResourceId);
                 entity.IsCopyEnd = 1;
                 db.Entry(entity).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
             }
         }
     }
