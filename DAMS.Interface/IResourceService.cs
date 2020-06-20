@@ -50,5 +50,12 @@ namespace DAMS.Interface
         /// <param name="ids"></param>
         /// <returns></returns>
         bool DeleteReoucrceByIds(List<int> ids);
+
+        /// <summary>
+        /// 修改文件复制状态
+        /// </summary>
+        /// <param name="res"></param>
+        /// <returns></returns>
+        bool UpdateCopyStateResource(Resources res);
     }
 }

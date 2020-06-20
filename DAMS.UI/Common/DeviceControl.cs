@@ -14,6 +14,7 @@ using DAMS.Interface;
 using DAMS.Core.ClassFactory;
 using System.Xml;
 using System.Xml.Linq;
+using System.Runtime.Remoting.Messaging;
 
 namespace DAMS.UI.Common
 {
@@ -24,6 +25,9 @@ namespace DAMS.UI.Common
         delegate void SetCopySpeedCallback();//安全线程访问
         private int flushReadLength;// { get; set; }
         private string desRoot; //{ get; set; }
+
+        //private delegate int FlushFileDelegate();
+
         public DeviceControl()
         {
             desRoot = CommonHelper.GetAppSettings("desdirectory");
@@ -109,24 +113,29 @@ namespace DAMS.UI.Common
                 }
                 if (resModel == null)
                 {
-                    var resource = new Resources()
+                    resModel = new Resources()
                     {
                         Extension = file.Extension,
                         Alias = file.Name,
                         FilePath = filePath,
                         FileName = itemFileFullName,
+                        DeviceInfo = deviceInfo,
+                        CreatedTime = DateTime.Now,
+                        UserId="Admin",
+                        UserName="管理员",
                         IsCopyEnd = 0
                     };
 
-                    deviceService.AddResource(resource, deviceInfo);
+                    deviceService.AddResource(resModel, deviceInfo);
                 }
                 //源文件文件地址名称
                 var fromFile = file.FullName;
                 //定义目标文件地址名称
                 var tofile = destinationPath + "/" + file.Name;
                 //异步执行Copy文件中断续传从
-                Action<string, string, int> fileAction = FileHelper.CopyFile;
-                fileAction.BeginInvoke(fromFile, tofile, flushReadLength, null, null);
+                Action<string, string,int> fileAction = FileHelper.CopyFile;
+                AsyncCallback callBack = new AsyncCallback(FlushCopyFileCallBack);
+                fileAction.BeginInvoke(fromFile, tofile, flushReadLength, callBack, resModel);
             }
             //复制文件夹下面的子文件夹
             DirectoryInfo[] dirArray = sourceDirectory.GetDirectories();
@@ -142,9 +151,14 @@ namespace DAMS.UI.Common
                 CopyTo(dir, itemFilePath, itemDirPath, currResources, deviceInfo);
             }
         }
-        public void FlushCopyFileCallBack()
-        { 
-            
+        public void FlushCopyFileCallBack(IAsyncResult ar)
+        {
+            AsyncResult async = (AsyncResult)ar;
+            var action = (Action<string, string,int>)async.AsyncDelegate;
+            action.EndInvoke(ar);
+            var resModel = ar.AsyncState as Resources;
+            //更新当前资源采集状态为已完成
+            deviceService.UpdateCopyStateResource(resModel);
         }
     }
 }

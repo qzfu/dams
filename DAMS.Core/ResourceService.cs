@@ -7,6 +7,7 @@ using DAMS.Common;
 using DAMS.Interface;
 using DAMS.Models;
 using DAMS.Models.DTO;
+using System.Data.Entity;
 
 namespace DAMS.Core
 {
@@ -171,5 +172,20 @@ namespace DAMS.Core
             return true;
         }
 
+        /// <summary>
+        /// 修改文件复制状态
+        /// </summary>
+        /// <param name="res"></param>
+        /// <returns></returns>
+        public bool UpdateCopyStateResource(Resources res)
+        {
+            using (var db =new EFDbContext())
+            {
+                var entity = db.Resources.FirstOrDefault(x => x.ResourceId == res.ResourceId);
+                entity.IsCopyEnd = 1;
+                db.Entry(entity).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
     }
 }
