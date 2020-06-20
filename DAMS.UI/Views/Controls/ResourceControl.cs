@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAMS.Core.ClassFactory;
@@ -23,13 +25,24 @@ namespace DAMS.UI.Views.Controls
         {
             InitializeComponent();
             ResetQueryElement();
+          
         }
 
+        /// <summary>
+        /// 重置按钮click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetButton_Click(object sender, EventArgs e)
         {
             this.ResetQueryElement();
         }
 
+        /// <summary>
+        /// 重置查询条件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetQueryElement()
         {
             this.QResourceType.Text = "";
@@ -41,6 +54,11 @@ namespace DAMS.UI.Views.Controls
             this.QEquipmentNo.Text = "";
         }
 
+        /// <summary>
+        /// 查询按钮click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void QueryButton_Click(object sender, EventArgs e)
         {
             var queryItem = new ResourceQueryDTO
@@ -59,6 +77,11 @@ namespace DAMS.UI.Views.Controls
             this.ManageGridPage.DataSource = this._dataSource;
         }
 
+        /// <summary>
+        /// 全选/反选按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckButton_Click(object sender, EventArgs e)
         {
             //this.ManageGridPage.EndEdit();
@@ -67,7 +90,7 @@ namespace DAMS.UI.Views.Controls
 
             for (int i = 0; i < this.ManageGridPage.Rows.Count; i++)
             {
-                if (this.ManageGridPage.Rows[i].Cells[0].Value == "0" || this.ManageGridPage.Rows[i].Cells[0].Value == null || (bool)this.ManageGridPage.Rows[i].Cells[0].Value == false)
+                if (this.ManageGridPage.Rows[i].Cells[0].Value == "0")
                 {
                     allChecked = false;
                     break;
@@ -85,6 +108,11 @@ namespace DAMS.UI.Views.Controls
 
         }
 
+        /// <summary>
+        /// 博凡按钮触发
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ManageGridPage_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (this.ManageGridPage.Columns[e.ColumnIndex].Name != "Player") return;
@@ -94,9 +122,18 @@ namespace DAMS.UI.Views.Controls
                     x => x.ResourceId == (int) this.ManageGridPage.Rows[e.RowIndex].Cells[10].Value);
 
 
-            if (string.IsNullOrEmpty(data.Extension) || !_resourceTypes.Any(x => x.Contains(data.Extension))) return;
+            if (string.IsNullOrEmpty(data.Extension) || !_resourceTypes.Any(x => x.Contains(data.Extension)))
+            {
+                MessageBox.Show("无法播放此文件！");
+                return;
+            }
+            
             if (data.ResourceType != (int) DAMS.Common.EnumData.ResourceType.Video &&
-                data.ResourceType != (int) DAMS.Common.EnumData.ResourceType.VoiceFrequency) return;
+                data.ResourceType != (int)DAMS.Common.EnumData.ResourceType.VoiceFrequency)
+            {
+                MessageBox.Show("无法播放此文件！");
+                return;
+            }
 
             if (mediaPlayer != null)
             {
@@ -120,7 +157,7 @@ namespace DAMS.UI.Views.Controls
             this.ManageGridPage.EndEdit();
             for (var i = 0; i < this.ManageGridPage.Rows.Count; i++)
             {
-                this.ManageGridPage.Rows[i].Cells[0].Value = true;//设置为选中状态
+                this.ManageGridPage.Rows[i].Cells[0].Value = "1";//设置为选中状态
             }
         }
         /// <summary>
@@ -132,8 +169,29 @@ namespace DAMS.UI.Views.Controls
             this.ManageGridPage.EndEdit();
             for (var i = 0; i < this.ManageGridPage.Rows.Count; i++)
             {
-                this.ManageGridPage.Rows[i].Cells[0].Value = false;//设置为取消选中状态
+                this.ManageGridPage.Rows[i].Cells[0].Value = "0";//设置为取消选中状态
             }
+        }
+
+        /// <summary>
+        /// 获取选中行数据
+        /// </summary>
+        private List<ResourcesDTO> GetSelectData()
+        {
+            var result = new List<ResourcesDTO>();
+            for (var i = 0; i < this.ManageGridPage.Rows.Count; i++)
+            {
+                if (this.ManageGridPage.Rows[i].Cells[0].Value == "1")
+                {
+                    int resourceId = (int)this.ManageGridPage.Rows[i].Cells[10].Value;
+                    var tempData = this._dataSource.FirstOrDefault(x => x.ResourceId == resourceId);
+                    if (tempData != null)
+                    {
+                        result.Add(tempData);
+                    }
+                }
+            }
+            return result;
         }
 
         private List<string> _resourceTypes =
@@ -141,6 +199,39 @@ namespace DAMS.UI.Views.Controls
             .aif、.aifc、.aiff、.au、.snd、.wav、.cda、.ivf、.mov、.m4a、.mp4、.m4v、.mp4v、.3g2、.3gp2、.3gp、.3gpp、
             .aac、.adt、.adts、.m2ts"
                 .Split('、').ToList();
+
+
+        /// <summary>
+        /// 删除按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            var datas = GetSelectData().ToList();
+            var result = Assembler<IResourceService>.Create().DeleteReoucrceByIds(datas.Select(x => x.ResourceId).ToList());
+
+            foreach (var data in datas)
+            {
+                if (File.Exists(data.FilePath))
+                {
+                    File.Delete(data.FilePath);
+                }
+            }
+
+            //重新查询
+            this.QueryButton_Click(sender, e);
+
+            if (result)
+            {
+                MessageBox.Show("删除成功！");
+            }
+            else
+            {
+                MessageBox.Show("删除成功！");
+            }
+        }
+
     }
 }
 ;

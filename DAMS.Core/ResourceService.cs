@@ -155,5 +155,21 @@ namespace DAMS.Core
                 return;
             }
         }
+        /// <summary>
+        /// 根据资源id删除数据
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public bool DeleteReoucrceByIds(List<int> ids)
+        {
+            using (var db = new EFDbContext())
+            {
+                var rescources = db.Resources.Where(x => ids.Contains(x.ResourceId)).ToList();
+                db.Resources.RemoveRange(rescources);
+                db.SaveChanges();
+            }
+            return true;
+        }
+
     }
 }

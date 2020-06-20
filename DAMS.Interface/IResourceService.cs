@@ -43,5 +43,12 @@ namespace DAMS.Interface
         /// <param name="resource"></param>
         /// <param name="deviceInfo"></param>
         void AddResource(Resources resource, string deviceInfo);
+
+        /// <summary>
+        /// 根据资源id删除数据
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        bool DeleteReoucrceByIds(List<int> ids);
     }
 }
