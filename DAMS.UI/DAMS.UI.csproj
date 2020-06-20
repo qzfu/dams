@@ -61,6 +61,18 @@
     <Compile Include="Common\DeviceControl.cs" />
     <Compile Include="Common\LoginUser.cs" />
     <Compile Include="Common\MessageUtil.cs" />
+    <Compile Include="Views\Controls\Setting\CollectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\Setting\CollectControl.Designer.cs">
+      <DependentUpon>CollectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Setting\EnforceLawControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\Setting\EnforceLawControl.Designer.cs">
+      <DependentUpon>EnforceLawControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\MainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -78,6 +90,12 @@
     </Compile>
     <Compile Include="Views\Controls\SettingControl.Designer.cs">
       <DependentUpon>SettingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Setting\LawControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\Setting\LawControl.Designer.cs">
+      <DependentUpon>LawControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IndexForm.cs">
       <SubType>Form</SubType>
@@ -110,6 +128,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Controls\Setting\CollectControl.resx">
+      <DependentUpon>CollectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\Setting\EnforceLawControl.resx">
+      <DependentUpon>EnforceLawControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\MainControl.resx">
       <DependentUpon>MainControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\Setting\LawControl.resx">
+      <DependentUpon>LawControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\IndexForm.resx">
       <DependentUpon>IndexForm.cs</DependentUpon>
