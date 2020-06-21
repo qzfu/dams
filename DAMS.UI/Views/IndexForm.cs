@@ -59,6 +59,13 @@ namespace DAMS.UI.Views
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void homeBtn_Click(object sender, EventArgs e)
+        {
+            this.mPanel.Controls.Clear();
+            MainControl mainControl = new MainControl();
+            mainControl.Dock = DockStyle.Fill;
+            this.mPanel.Controls.Add(mainControl);
+        }
         private void btnResource_Click(object sender, EventArgs e)
         {
             this.mPanel.Controls.Clear();
@@ -73,6 +80,13 @@ namespace DAMS.UI.Views
             SettingControl settings = new SettingControl();
             settings.Dock = DockStyle.Fill;
             this.mPanel.Controls.Add(settings);
+        }
+
+        private void loginOutBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
         }
 
 

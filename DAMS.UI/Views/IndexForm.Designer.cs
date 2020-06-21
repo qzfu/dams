@@ -29,28 +29,74 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.systemTimer = new System.Windows.Forms.Timer(this.components);
+            this.mPanel = new Telerik.WinControls.UI.RadPanel();
+            this.btmDock = new Telerik.WinControls.UI.Docking.RadDock();
+            this.documentContainer1 = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.titPanel = new System.Windows.Forms.Panel();
+            this.homeBtn = new System.Windows.Forms.Button();
+            this.loginOutBtn = new System.Windows.Forms.Button();
             this.labTime = new System.Windows.Forms.Label();
             this.btnMin = new System.Windows.Forms.Button();
             this.labUserInfo = new System.Windows.Forms.Label();
             this.btnSystem = new System.Windows.Forms.Button();
             this.btnResource = new System.Windows.Forms.Button();
             this.titLab = new System.Windows.Forms.Label();
-            this.systemTimer = new System.Windows.Forms.Timer(this.components);
-            this.btmDock = new Telerik.WinControls.UI.Docking.RadDock();
-            this.documentContainer1 = new Telerik.WinControls.UI.Docking.DocumentContainer();
-            this.mPanel = new Telerik.WinControls.UI.RadPanel();
-            this.titPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btmDock)).BeginInit();
             this.btmDock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentContainer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mPanel)).BeginInit();
+            this.titPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
+            // 
+            // systemTimer
+            // 
+            this.systemTimer.Enabled = true;
+            this.systemTimer.Interval = 1000;
+            this.systemTimer.Tick += new System.EventHandler(this.systemTimer_Tick);
+            // 
+            // mPanel
+            // 
+            this.mPanel.BackColor = System.Drawing.Color.Transparent;
+            this.mPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.mPanel.Location = new System.Drawing.Point(0, 84);
+            this.mPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.mPanel.Name = "mPanel";
+            this.mPanel.Size = new System.Drawing.Size(996, 543);
+            this.mPanel.TabIndex = 1;
+            // 
+            // btmDock
+            // 
+            this.btmDock.BackgroundImage = global::DAMS.UI.Properties.Resources.tit_bg1;
+            this.btmDock.Controls.Add(this.documentContainer1);
+            this.btmDock.IsCleanUpTarget = true;
+            this.btmDock.Location = new System.Drawing.Point(0, 626);
+            this.btmDock.MainDocumentContainer = this.documentContainer1;
+            this.btmDock.Name = "btmDock";
+            // 
+            // 
+            // 
+            this.btmDock.RootElement.MinSize = new System.Drawing.Size(0, 0);
+            this.btmDock.Size = new System.Drawing.Size(996, 31);
+            this.btmDock.TabIndex = 3;
+            this.btmDock.TabStop = false;
+            this.btmDock.Text = "radDock1";
+            // 
+            // documentContainer1
+            // 
+            this.documentContainer1.Name = "documentContainer1";
+            // 
+            // 
+            // 
+            this.documentContainer1.RootElement.MinSize = new System.Drawing.Size(0, 0);
+            this.documentContainer1.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Fill;
             // 
             // titPanel
             // 
             this.titPanel.BackgroundImage = global::DAMS.UI.Properties.Resources.tit_bg2;
+            this.titPanel.Controls.Add(this.homeBtn);
+            this.titPanel.Controls.Add(this.loginOutBtn);
             this.titPanel.Controls.Add(this.labTime);
             this.titPanel.Controls.Add(this.btnMin);
             this.titPanel.Controls.Add(this.labUserInfo);
@@ -62,6 +108,38 @@
             this.titPanel.Name = "titPanel";
             this.titPanel.Size = new System.Drawing.Size(996, 83);
             this.titPanel.TabIndex = 2;
+            // 
+            // homeBtn
+            // 
+            this.homeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.flat_home_2525;
+            this.homeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.homeBtn.FlatAppearance.BorderSize = 0;
+            this.homeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeBtn.Location = new System.Drawing.Point(38, 26);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(25, 25);
+            this.homeBtn.TabIndex = 11;
+            this.homeBtn.UseVisualStyleBackColor = false;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
+            // 
+            // loginOutBtn
+            // 
+            this.loginOutBtn.BackColor = System.Drawing.Color.Transparent;
+            this.loginOutBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.warn_16_lan;
+            this.loginOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.loginOutBtn.FlatAppearance.BorderSize = 0;
+            this.loginOutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.loginOutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.loginOutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loginOutBtn.Location = new System.Drawing.Point(954, 10);
+            this.loginOutBtn.Name = "loginOutBtn";
+            this.loginOutBtn.Size = new System.Drawing.Size(16, 16);
+            this.loginOutBtn.TabIndex = 10;
+            this.loginOutBtn.UseVisualStyleBackColor = false;
+            this.loginOutBtn.Click += new System.EventHandler(this.loginOutBtn_Click);
             // 
             // labTime
             // 
@@ -84,11 +162,10 @@
             this.btnMin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnMin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMin.Location = new System.Drawing.Point(950, 10);
+            this.btnMin.Location = new System.Drawing.Point(917, 10);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(16, 16);
             this.btnMin.TabIndex = 6;
-            this.btnMin.Text = "button1";
             this.btnMin.UseVisualStyleBackColor = false;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
@@ -162,54 +239,13 @@
             this.titLab.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.titLab.ForeColor = System.Drawing.Color.Transparent;
             this.titLab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.titLab.Location = new System.Drawing.Point(59, 24);
+            this.titLab.Location = new System.Drawing.Point(93, 24);
             this.titLab.Margin = new System.Windows.Forms.Padding(0);
             this.titLab.Name = "titLab";
-            this.titLab.Size = new System.Drawing.Size(254, 31);
+            this.titLab.Size = new System.Drawing.Size(302, 31);
             this.titLab.TabIndex = 1;
-            this.titLab.Text = "智能数据采集管理系统";
+            this.titLab.Text = "天马智能数据采集管理系统";
             this.titLab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // systemTimer
-            // 
-            this.systemTimer.Enabled = true;
-            this.systemTimer.Interval = 1000;
-            this.systemTimer.Tick += new System.EventHandler(this.systemTimer_Tick);
-            // 
-            // btmDock
-            // 
-            this.btmDock.BackgroundImage = global::DAMS.UI.Properties.Resources.tit_bg1;
-            this.btmDock.Controls.Add(this.documentContainer1);
-            this.btmDock.IsCleanUpTarget = true;
-            this.btmDock.Location = new System.Drawing.Point(0, 626);
-            this.btmDock.MainDocumentContainer = this.documentContainer1;
-            this.btmDock.Name = "btmDock";
-            // 
-            // 
-            // 
-            this.btmDock.RootElement.MinSize = new System.Drawing.Size(0, 0);
-            this.btmDock.Size = new System.Drawing.Size(996, 31);
-            this.btmDock.TabIndex = 3;
-            this.btmDock.TabStop = false;
-            this.btmDock.Text = "radDock1";
-            // 
-            // documentContainer1
-            // 
-            this.documentContainer1.Name = "documentContainer1";
-            // 
-            // 
-            // 
-            this.documentContainer1.RootElement.MinSize = new System.Drawing.Size(0, 0);
-            this.documentContainer1.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Fill;
-            // 
-            // mPanel
-            // 
-            this.mPanel.Location = new System.Drawing.Point(0, 84);
-            this.mPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.mPanel.Name = "mPanel";
-            this.mPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.mPanel.Size = new System.Drawing.Size(996, 543);
-            this.mPanel.TabIndex = 1;
             // 
             // IndexForm
             // 
@@ -234,12 +270,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IndexForm";
             this.Load += new System.EventHandler(this.IndexForm_Load);
-            this.titPanel.ResumeLayout(false);
-            this.titPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btmDock)).EndInit();
             this.btmDock.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.documentContainer1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mPanel)).EndInit();
+            this.titPanel.ResumeLayout(false);
+            this.titPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -258,6 +294,8 @@
         private Telerik.WinControls.UI.Docking.RadDock btmDock;
         private Telerik.WinControls.UI.Docking.DocumentContainer documentContainer1;
         private Telerik.WinControls.UI.RadPanel mPanel;
+        private System.Windows.Forms.Button loginOutBtn;
+        private System.Windows.Forms.Button homeBtn;
 
     }
 }

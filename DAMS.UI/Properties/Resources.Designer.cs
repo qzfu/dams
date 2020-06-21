@@ -63,6 +63,16 @@ namespace DAMS.UI.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _123 {
+            get {
+                object obj = ResourceManager.GetObject("123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap flat_download {
             get {
                 object obj = ResourceManager.GetObject("flat_download", resourceCulture);
@@ -213,6 +223,16 @@ namespace DAMS.UI.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Home_64_32px {
+            get {
+                object obj = ResourceManager.GetObject("Home_64_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Login_Loading {
             get {
                 object obj = ResourceManager.GetObject("Login_Loading", resourceCulture);
@@ -286,6 +306,16 @@ namespace DAMS.UI.Properties {
         internal static System.Drawing.Bitmap UserManage {
             get {
                 object obj = ResourceManager.GetObject("UserManage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap warn_16_lan {
+            get {
+                object obj = ResourceManager.GetObject("warn_16_lan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
