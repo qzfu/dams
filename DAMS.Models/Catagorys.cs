@@ -13,6 +13,7 @@ namespace DAMS.Models
     public class Catagorys
     {
         [Key]
+        public int Id { get; set; }
         public int Type { get; set; }
         [MaxLength(20)]
         public string ItemValue { get; set; }

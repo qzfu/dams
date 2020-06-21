@@ -30,6 +30,9 @@ namespace DAMS.UI.Views.Controls
         public static UsbDevice MyUsbDevice;//USB设备
         private IDeviceNotifier deviceNotifier;//设备变化通知函数
 
+        //public delegate void RefeshProgress(string deviceInfo,int percent);//声明一个更新主线程的委托
+        //public UpdateUI UpdateUIDelegate;
+
         //当前程序根目录
         string dirRoot = System.Environment.CurrentDirectory;
         public MainControl()
@@ -89,6 +92,7 @@ namespace DAMS.UI.Views.Controls
                         var deviceRoot = d.RootDirectory;
                         var checkToken = device.CheckDeviceToken(deviceName, myVID, myPID, serialNumber);
                         if (checkToken < 0) continue;
+                        device.SetProgressDelegate += HandleRefreshProgess;
                         device.CopyFilesTo(deviceRoot, myVID, myPID, serialNumber);
                     }
                 }
@@ -98,6 +102,12 @@ namespace DAMS.UI.Views.Controls
             {
                 //移除USB设备,渲染界面资源加载状态
             }
+        }
+        //winform访问web的JS函数
+        private void HandleRefreshProgess(string deviceInfo, int percent)
+        {
+            HtmlDocument doc = chartBrowser.Document;
+            doc.InvokeScript("refreshProgess", new object[] { deviceInfo, percent });
         }
     }
 }

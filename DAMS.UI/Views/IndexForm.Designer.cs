@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.mPanel = new Telerik.WinControls.UI.RadPanel();
             this.titPanel = new System.Windows.Forms.Panel();
             this.labTime = new System.Windows.Forms.Label();
             this.btnMin = new System.Windows.Forms.Button();
@@ -40,22 +39,14 @@
             this.systemTimer = new System.Windows.Forms.Timer(this.components);
             this.btmDock = new Telerik.WinControls.UI.Docking.RadDock();
             this.documentContainer1 = new Telerik.WinControls.UI.Docking.DocumentContainer();
-            ((System.ComponentModel.ISupportInitialize)(this.mPanel)).BeginInit();
+            this.mPanel = new Telerik.WinControls.UI.RadPanel();
             this.titPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btmDock)).BeginInit();
             this.btmDock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentContainer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
-            // 
-            // mPanel
-            // 
-            this.mPanel.Location = new System.Drawing.Point(0, 84);
-            this.mPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.mPanel.Name = "mPanel";
-            this.mPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.mPanel.Size = new System.Drawing.Size(996, 543);
-            this.mPanel.TabIndex = 1;
             // 
             // titPanel
             // 
@@ -211,10 +202,20 @@
             this.documentContainer1.RootElement.MinSize = new System.Drawing.Size(0, 0);
             this.documentContainer1.SizeInfo.SizeMode = Telerik.WinControls.UI.Docking.SplitPanelSizeMode.Fill;
             // 
+            // mPanel
+            // 
+            this.mPanel.Location = new System.Drawing.Point(0, 84);
+            this.mPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.mPanel.Name = "mPanel";
+            this.mPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.mPanel.Size = new System.Drawing.Size(996, 543);
+            this.mPanel.TabIndex = 1;
+            // 
             // IndexForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(996, 658);
             this.ControlBox = false;
@@ -233,12 +234,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IndexForm";
             this.Load += new System.EventHandler(this.IndexForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.mPanel)).EndInit();
             this.titPanel.ResumeLayout(false);
             this.titPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btmDock)).EndInit();
             this.btmDock.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.documentContainer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -246,7 +247,6 @@
 
         #endregion
 
-        private Telerik.WinControls.UI.RadPanel mPanel;
         private System.Windows.Forms.Panel titPanel;
         private System.Windows.Forms.Label titLab;
         private System.Windows.Forms.Button btnResource;
@@ -257,6 +257,7 @@
         private System.Windows.Forms.Label labTime;
         private Telerik.WinControls.UI.Docking.RadDock btmDock;
         private Telerik.WinControls.UI.Docking.DocumentContainer documentContainer1;
+        private Telerik.WinControls.UI.RadPanel mPanel;
 
     }
 }

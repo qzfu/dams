@@ -28,37 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainControl));
-            this.resImageList = new System.Windows.Forms.ImageList(this.components);
             this.chartBrowser = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
-            // 
-            // resImageList
-            // 
-            this.resImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("resImageList.ImageStream")));
-            this.resImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.resImageList.Images.SetKeyName(0, "flat_home2.png");
             // 
             // chartBrowser
             // 
             this.chartBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartBrowser.Location = new System.Drawing.Point(0, 0);
-            this.chartBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.chartBrowser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartBrowser.MinimumSize = new System.Drawing.Size(30, 30);
             this.chartBrowser.Name = "chartBrowser";
-            this.chartBrowser.Size = new System.Drawing.Size(996, 543);
+            this.chartBrowser.Size = new System.Drawing.Size(1494, 814);
             this.chartBrowser.TabIndex = 0;
             this.chartBrowser.Url = new System.Uri("", System.UriKind.Relative);
             // 
             // MainControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.chartBrowser);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "MainControl";
-            this.Size = new System.Drawing.Size(996, 543);
+            this.Size = new System.Drawing.Size(1494, 814);
             this.Load += new System.EventHandler(this.MainControl_Load);
             this.ResumeLayout(false);
 
@@ -66,7 +58,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ImageList resImageList;
         private System.Windows.Forms.WebBrowser chartBrowser;
     }
 }

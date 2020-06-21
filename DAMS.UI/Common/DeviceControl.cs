@@ -15,6 +15,7 @@ using DAMS.Core.ClassFactory;
 using System.Xml;
 using System.Xml.Linq;
 using System.Runtime.Remoting.Messaging;
+using DAMS.Models.DTO;
 
 namespace DAMS.UI.Common
 {
@@ -22,16 +23,22 @@ namespace DAMS.UI.Common
     {
         private IResourceService deviceService = Assembler<IResourceService>.Create();
         delegate void DeviceNotifyDelegate();
-        delegate void SetCopySpeedCallback();//安全线程访问
-        private int flushReadLength;// { get; set; }
-        private string desRoot; //{ get; set; }
 
-        //private delegate int FlushFileDelegate();
+        private int flushReadLength;
+        private string desRoot; 
+        //总文件数量
+        private int totalCount;
+        private int endCount;
+        private string deviceInfo;
+        public delegate void UpdateProgress(string deviceInfo,int precent);
+        public UpdateProgress SetProgressDelegate;
 
         public DeviceControl()
         {
             desRoot = CommonHelper.GetAppSettings("desdirectory");
             flushReadLength =  Convert.ToInt32(CommonHelper.GetAppSettings("FlushReadLength"));
+            totalCount = 0;
+            endCount = 0;
         }
         /// <summary>
         /// 校验盘符信息
@@ -84,17 +91,32 @@ namespace DAMS.UI.Common
             //创建目标根目录
             CommonHelper.CreateDirectoryIfNotExist(desRoot);
             //以U盘vid.Pid.serialNumber创建目标文件家
-            var deviceInfo = vid.ToString() + "." + pid.ToString() + "." + serialNumber;
+            deviceInfo = vid.ToString() + "." + pid.ToString() + "." + serialNumber;
             var filePath = @"/" + deviceInfo;
             var destinationPath = desRoot + filePath;
             CommonHelper.CreateDirectoryIfNotExist(destinationPath);
             //获取目标文件夹中已存在的文件列表
             List<Resources> currResources = deviceService.GetCurrentDiskResourceList(vid, pid, serialNumber);
-            List<Resources> resList = new List<Resources>();
-            CopyTo(sourceDirectory, filePath, destinationPath, currResources, deviceInfo);
+            var dicPath = new List<FileTransactionDTO>();
+            var resources = new List<Resources>();
+            CopyTo(sourceDirectory, filePath, destinationPath, currResources, ref dicPath, ref resources);
+            deviceService.AddResources(resources, deviceInfo);
+            totalCount = dicPath.Count();
+            SetProgressDelegate(deviceInfo, 0);
+            foreach (var item in dicPath)
+            {
+                var fromFile = item.FromPath;
+                var toFile = item.ToPath;
+                var resModel = item.Resource;
+
+                //异步执行Copy文件中断续传从
+                Action<string, string, int> fileAction = FileHelper.CopyFile;
+                AsyncCallback callBack = new AsyncCallback(FlushCopyFileCallBack);
+                fileAction.BeginInvoke(fromFile, toFile, flushReadLength, callBack, resModel);
+            }
         }
 
-        private void CopyTo(DirectoryInfo sourceDirectory, string filePath, string destinationPath, List<Resources> currResources, string deviceInfo)
+        private void CopyTo(DirectoryInfo sourceDirectory, string filePath, string destinationPath, List<Resources> currResources, ref List<FileTransactionDTO> dicPath, ref List<Resources> resources)
         {
             //复制文件夹下面的文件
             FileInfo[] fileArray = sourceDirectory.GetFiles();
@@ -113,29 +135,24 @@ namespace DAMS.UI.Common
                 }
                 if (resModel == null)
                 {
-                    resModel = new Resources()
+                    resources.Add(new Resources()
                     {
                         Extension = file.Extension,
                         Alias = file.Name,
                         FilePath = filePath,
                         FileName = itemFileFullName,
-                        DeviceInfo = deviceInfo,
-                        CreatedTime = DateTime.Now,
-                        UserId="Admin",
-                        UserName="管理员",
                         IsCopyEnd = 0
-                    };
-
-                    deviceService.AddResource(resModel, deviceInfo);
+                    });
                 }
                 //源文件文件地址名称
                 var fromFile = file.FullName;
                 //定义目标文件地址名称
                 var tofile = destinationPath + "/" + file.Name;
-                //异步执行Copy文件中断续传从
-                Action<string, string,int> fileAction = FileHelper.CopyFile;
-                AsyncCallback callBack = new AsyncCallback(FlushCopyFileCallBack);
-                fileAction.BeginInvoke(fromFile, tofile, flushReadLength, callBack, resModel);
+                dicPath.Add(new FileTransactionDTO() {
+                    FromPath = fromFile,
+                    ToPath = tofile,
+                    Resource = resModel
+                });
             }
             //复制文件夹下面的子文件夹
             DirectoryInfo[] dirArray = sourceDirectory.GetDirectories();
@@ -148,7 +165,7 @@ namespace DAMS.UI.Common
                 }
                 var itemFilePath = filePath + "/" + dirPath;
                 var itemDirPath = destinationPath + "/" + dirPath;
-                CopyTo(dir, itemFilePath, itemDirPath, currResources, deviceInfo);
+                CopyTo(dir, itemFilePath, itemDirPath, currResources, ref dicPath, ref resources);
             }
         }
         public void FlushCopyFileCallBack(IAsyncResult ar)
@@ -159,6 +176,9 @@ namespace DAMS.UI.Common
             var resModel = ar.AsyncState as Resources;
             //更新当前资源采集状态为已完成
             deviceService.UpdateCopyStateResource(resModel);
+            endCount++;
+            SetProgressDelegate(deviceInfo, endCount);
         }
+
     }
 }

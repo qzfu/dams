@@ -394,9 +394,27 @@
     <Content Include="Resources\flat_documents.png" />
     <Content Include="Resources\flat_documents_2525.png" />
     <Content Include="Resources\flat_download.png" />
-    <Content Include="Views\Browser\js\echarts.js" />
-    <Content Include="Views\Browser\js\echarts.min.js" />
-    <Content Include="Views\Browser\main.html" />
+    <Content Include="Views\Browser\js\bootstrap.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Browser\js\bootstrap.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Browser\js\echarts.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Browser\js\echarts.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Browser\js\jquery-1.10.2.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Browser\js\jquery-1.10.2.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Browser\main.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\flat_warning_25251.png" />
     <None Include="Resources\flat_setting_25251.png" />
     <None Include="Resources\flat_search_11.png" />
