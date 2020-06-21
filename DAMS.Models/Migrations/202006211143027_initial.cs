@@ -11,13 +11,14 @@ namespace DAMS.Models.Migrations
                 "dbo.Catagorys",
                 c => new
                     {
-                        Type = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
+                        Type = c.Int(nullable: false),
                         ItemValue = c.String(maxLength: 20, storeType: "nvarchar"),
                         ItemText = c.String(maxLength: 200, storeType: "nvarchar"),
                         Remark = c.String(maxLength: 2000, storeType: "nvarchar"),
                         CreatedTime = c.DateTime(nullable: false, precision: 0),
                     })
-                .PrimaryKey(t => t.Type);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Departments",
