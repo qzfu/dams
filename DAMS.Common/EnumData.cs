@@ -35,5 +35,16 @@ namespace DAMS.Common
             [Description("文档")]
             World = 3
         }
+
+        /// <summary>
+        /// 配置类型
+        /// </summary>
+        public enum CatagoryType
+        {
+            [Description("项目尺寸")]
+            Size = 1,
+            [Description("加载优盘个数")]
+            IndexCount = 2
+        }
     }
 }

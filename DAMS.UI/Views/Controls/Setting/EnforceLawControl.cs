@@ -29,5 +29,17 @@ namespace DAMS.UI.Views.Controls
             resControl.Dock = DockStyle.Fill;
             this.panel1.Controls.Add(resControl);
         }
+
+        private void CollectButton_Click(object sender, EventArgs e)
+        {
+            this.LawButton.Enabled = true;
+            this.CollectButton.Enabled = false;
+
+            this.panel1.Controls.Clear();
+
+            CollectControl resControl = new CollectControl();
+            resControl.Dock = DockStyle.Fill;
+            this.panel1.Controls.Add(resControl);
+        }
     }
 }

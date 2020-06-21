@@ -4,8 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DAMS.Core.ClassFactory;
+using DAMS.Interface;
 using Telerik.WinControls;
 using DAMS.Common;
 using DAMS.UI.Common;
@@ -15,6 +18,7 @@ namespace DAMS.UI.Views
 {
     public partial class IndexForm : Telerik.WinControls.UI.RadForm
     {
+        private IResourceService setService = Assembler<IResourceService>.Create();
         public IndexForm()
         {
             InitializeComponent();
@@ -35,6 +39,13 @@ namespace DAMS.UI.Views
             else
             {
                 this.labUserInfo.Text = "Admin，您好！";
+            }
+
+            var data = setService.GetWinSize();
+            if (data != null)
+            {
+                var sizes = data.ItemValue.Split(',').Select(x=> Convert.ToInt32(x)).ToList();
+                this.ClientSize = new System.Drawing.Size(sizes[0], sizes[1]);
             }
         }
 

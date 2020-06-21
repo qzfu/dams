@@ -57,5 +57,35 @@ namespace DAMS.Interface
         /// <param name="res"></param>
         /// <returns></returns>
         bool UpdateCopyStateResource(Resources res);
+
+        /// <summary>
+        /// 获取项目尺寸
+        /// </summary>
+        /// <returns></returns>
+        Catagorys GetWinSize();
+
+        /// <summary>
+        /// 设置项目尺寸
+        /// </summary>
+        /// <returns></returns>
+        bool SetWinSize(string itemValue, string itemText);
+
+        /// <summary>
+        /// 获取加载优盘个数
+        /// </summary>
+        /// <returns></returns>
+        Catagorys GetIndexCount();
+        /// <summary>
+        /// 设置首页展示个数
+        /// </summary>
+        /// <returns></returns>
+        bool SetIndexCount(string itemValue, string itemText);
+
+        /// <summary>
+        /// 测试mysql连接
+        /// </summary>
+        /// <param name="con"></param>
+        /// <returns></returns>
+        bool TestMySqlConnect(string con);
     }
 }

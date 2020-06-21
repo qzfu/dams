@@ -52,12 +52,13 @@
             this.CollectButton.Size = new System.Drawing.Size(102, 30);
             this.CollectButton.TabIndex = 1;
             this.CollectButton.Text = "采集站设置";
+            this.CollectButton.Click += new System.EventHandler(this.CollectButton_Click);
             // 
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(4, 56);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(643, 485);
+            this.panel1.Size = new System.Drawing.Size(891, 631);
             this.panel1.TabIndex = 2;
             // 
             // EnforceLawControl
@@ -68,7 +69,7 @@
             this.Controls.Add(this.CollectButton);
             this.Controls.Add(this.LawButton);
             this.Name = "EnforceLawControl";
-            this.Size = new System.Drawing.Size(650, 544);
+            this.Size = new System.Drawing.Size(898, 690);
             ((System.ComponentModel.ISupportInitialize)(this.LawButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CollectButton)).EndInit();
             this.ResumeLayout(false);

@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\LibUsbDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.10.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
@@ -66,6 +70,12 @@
     </Compile>
     <Compile Include="Views\Controls\Setting\CollectControl.Designer.cs">
       <DependentUpon>CollectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Setting\ConnectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\Setting\ConnectControl.Designer.cs">
+      <DependentUpon>ConnectControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\Setting\EnforceLawControl.cs">
       <SubType>UserControl</SubType>
@@ -130,6 +140,9 @@
     </Compile>
     <EmbeddedResource Include="Views\Controls\Setting\CollectControl.resx">
       <DependentUpon>CollectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Controls\Setting\ConnectControl.resx">
+      <DependentUpon>ConnectControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Controls\Setting\EnforceLawControl.resx">
       <DependentUpon>EnforceLawControl.cs</DependentUpon>

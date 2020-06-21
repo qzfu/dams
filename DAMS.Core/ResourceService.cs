@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using DAMS.Interface;
 using DAMS.Models;
 using DAMS.Models.DTO;
 using System.Data.Entity;
+using MySql.Data.MySqlClient;
 
 namespace DAMS.Core
 {
@@ -193,6 +195,98 @@ namespace DAMS.Core
                 {
                     return false;
                 }
+            }
+        }
+
+        /// <summary>
+        /// 获取项目尺寸
+        /// </summary>
+        /// <returns></returns>
+        public Catagorys GetWinSize()
+        {
+            using (var db = new EFDbContext())
+            {
+                return db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Size);
+            }
+        }
+
+        /// <summary>
+        /// 设置项目尺寸
+        /// </summary>
+        /// <returns></returns>
+        public bool SetWinSize(string itemValue, string itemText)
+        {
+            using (var db = new EFDbContext())
+            {
+                db.Catagorys.Add(new Catagorys
+                {
+                    Type = (int)EnumData.CatagoryType.Size,
+                    ItemText = itemText,
+                    ItemValue = itemValue,
+                    Remark = "系统分辨率",
+                    CreatedTime = DateTime.Now
+                });
+                return db.SaveChanges() > 0;
+            }
+        }
+
+        /// <summary>
+        /// 获取加载优盘个数
+        /// </summary>
+        /// <returns></returns>
+        public Catagorys GetIndexCount()
+        {
+            using (var db = new EFDbContext())
+            {
+                return db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.IndexCount);
+            }
+        }
+        /// <summary>
+        /// 设置首页展示个数
+        /// </summary>
+        /// <returns></returns>
+        public bool SetIndexCount(string itemValue, string itemText)
+        {
+            using (var db = new EFDbContext())
+            {
+                db.Catagorys.Add(new Catagorys
+                {
+                    Type = (int)EnumData.CatagoryType.IndexCount,
+                    ItemText = itemText,
+                    ItemValue = itemValue,
+                    Remark = "加载U盘个数",
+                    CreatedTime = DateTime.Now
+                });
+                return db.SaveChanges() > 0;
+            }
+        }
+
+        /// <summary>
+        /// 测试mysql连接
+        /// </summary>
+        /// <param name="con"></param>
+        /// <returns></returns>
+        public bool TestMySqlConnect(string con)
+        {
+            try
+            {
+                MySqlConnection myCon = new MySqlConnection(con);
+
+                myCon.Open();
+
+                if (myCon.State == ConnectionState.Open)
+                {
+                    myCon.Close();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

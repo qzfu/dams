@@ -36,9 +36,9 @@
             System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("日志查询");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingControl));
             this.setPanelMenu = new System.Windows.Forms.Panel();
-            this.setPanelContent = new System.Windows.Forms.Panel();
             this.menuTree = new System.Windows.Forms.TreeView();
             this.treeImageList = new System.Windows.Forms.ImageList(this.components);
+            this.setPanelContent = new System.Windows.Forms.Panel();
             this.setPanelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,17 +47,10 @@
             this.setPanelMenu.Controls.Add(this.menuTree);
             this.setPanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.setPanelMenu.Location = new System.Drawing.Point(0, 0);
+            this.setPanelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.setPanelMenu.Name = "setPanelMenu";
-            this.setPanelMenu.Size = new System.Drawing.Size(200, 543);
+            this.setPanelMenu.Size = new System.Drawing.Size(267, 679);
             this.setPanelMenu.TabIndex = 0;
-            // 
-            // setPanelContent
-            // 
-            this.setPanelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.setPanelContent.Location = new System.Drawing.Point(200, 0);
-            this.setPanelContent.Name = "setPanelContent";
-            this.setPanelContent.Size = new System.Drawing.Size(796, 543);
-            this.setPanelContent.TabIndex = 1;
             // 
             // menuTree
             // 
@@ -71,6 +64,7 @@
             this.menuTree.ItemHeight = 25;
             this.menuTree.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.menuTree.Location = new System.Drawing.Point(0, 0);
+            this.menuTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.menuTree.Name = "menuTree";
             treeNode1.ImageKey = "Down_Open_24.png";
             treeNode1.Name = "node1";
@@ -99,9 +93,10 @@
             treeNode4,
             treeNode5});
             this.menuTree.SelectedImageIndex = 0;
-            this.menuTree.Size = new System.Drawing.Size(200, 543);
+            this.menuTree.Size = new System.Drawing.Size(267, 679);
             this.menuTree.StateImageList = this.treeImageList;
             this.menuTree.TabIndex = 0;
+            this.menuTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.menuTree_AfterSelect);
             // 
             // treeImageList
             // 
@@ -110,16 +105,25 @@
             this.treeImageList.Images.SetKeyName(0, "Down_Open_24.png");
             this.treeImageList.Images.SetKeyName(1, "Right_Close_24.png");
             // 
+            // setPanelContent
+            // 
+            this.setPanelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.setPanelContent.Location = new System.Drawing.Point(267, 0);
+            this.setPanelContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.setPanelContent.Name = "setPanelContent";
+            this.setPanelContent.Size = new System.Drawing.Size(1061, 679);
+            this.setPanelContent.TabIndex = 1;
+            // 
             // SettingControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.setPanelContent);
             this.Controls.Add(this.setPanelMenu);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "SettingControl";
-            this.Size = new System.Drawing.Size(996, 543);
+            this.Size = new System.Drawing.Size(1328, 679);
             this.setPanelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

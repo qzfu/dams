@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DAMS.UI.Views.Controls.Setting;
 
 namespace DAMS.UI.Views.Controls
 {
@@ -27,8 +28,13 @@ namespace DAMS.UI.Views.Controls
                     EnforceLawControl resControl = new EnforceLawControl();
                     resControl.Dock = DockStyle.Fill;
                     this.setPanelContent.Controls.Add(resControl);
+                } else if (e.Node.Index == 1)
+                {
+                    this.setPanelContent.Controls.Clear();
+                    ConnectControl resControl = new ConnectControl();
+                    resControl.Dock = DockStyle.Fill;
+                    this.setPanelContent.Controls.Add(resControl);
                 }  
-                
             }
         }
     }

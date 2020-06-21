@@ -30,7 +30,16 @@
         {
             Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
-            this.radDropDownList1 = new Telerik.WinControls.UI.RadDropDownList();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem9 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem10 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem11 = new Telerik.WinControls.UI.RadListDataItem();
+            this.SIzeList = new Telerik.WinControls.UI.RadDropDownList();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.radDropDownList2 = new Telerik.WinControls.UI.RadDropDownList();
@@ -41,7 +50,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.radDropDownList5 = new Telerik.WinControls.UI.RadDropDownList();
             this.label6 = new System.Windows.Forms.Label();
-            this.radDropDownList6 = new Telerik.WinControls.UI.RadDropDownList();
             this.label7 = new System.Windows.Forms.Label();
             this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
             this.radTextBox2 = new Telerik.WinControls.UI.RadTextBox();
@@ -54,30 +62,35 @@
             this.label11 = new System.Windows.Forms.Label();
             this.radTextBox6 = new Telerik.WinControls.UI.RadTextBox();
             this.label12 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.radDropDownList1)).BeginInit();
+            this.SaveButton = new Telerik.WinControls.UI.RadButton();
+            this.RestartButton = new Telerik.WinControls.UI.RadButton();
+            this.AmountTextBox = new Telerik.WinControls.UI.RadTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.SIzeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radDropDownList6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RestartButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountTextBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // radDropDownList1
+            // SIzeList
             // 
             radListDataItem1.Text = "1142×585";
-            radListDataItem2.Text = "1024×768";
-            this.radDropDownList1.Items.Add(radListDataItem1);
-            this.radDropDownList1.Items.Add(radListDataItem2);
-            this.radDropDownList1.Location = new System.Drawing.Point(215, 23);
-            this.radDropDownList1.Name = "radDropDownList1";
-            this.radDropDownList1.Size = new System.Drawing.Size(156, 24);
-            this.radDropDownList1.TabIndex = 0;
+            radListDataItem2.Text = "1280×1024";
+            this.SIzeList.Items.Add(radListDataItem1);
+            this.SIzeList.Items.Add(radListDataItem2);
+            this.SIzeList.Location = new System.Drawing.Point(251, 23);
+            this.SIzeList.Name = "SIzeList";
+            this.SIzeList.Size = new System.Drawing.Size(156, 24);
+            this.SIzeList.TabIndex = 0;
             // 
             // label1
             // 
@@ -99,11 +112,16 @@
             // 
             // radDropDownList2
             // 
-            this.radDropDownList2.Location = new System.Drawing.Point(215, 83);
+            radListDataItem3.Text = "单机";
+            radListDataItem4.Text = "网络";
+            radListDataItem5.Text = "单机+后台";
+            this.radDropDownList2.Items.Add(radListDataItem3);
+            this.radDropDownList2.Items.Add(radListDataItem4);
+            this.radDropDownList2.Items.Add(radListDataItem5);
+            this.radDropDownList2.Location = new System.Drawing.Point(251, 83);
             this.radDropDownList2.Name = "radDropDownList2";
             this.radDropDownList2.Size = new System.Drawing.Size(156, 24);
             this.radDropDownList2.TabIndex = 2;
-            this.radDropDownList2.Text = "radDropDownList2";
             // 
             // label3
             // 
@@ -116,11 +134,14 @@
             // 
             // radDropDownList3
             // 
-            this.radDropDownList3.Location = new System.Drawing.Point(215, 143);
+            radListDataItem6.Text = "不上传";
+            radListDataItem7.Text = "上传";
+            this.radDropDownList3.Items.Add(radListDataItem6);
+            this.radDropDownList3.Items.Add(radListDataItem7);
+            this.radDropDownList3.Location = new System.Drawing.Point(251, 143);
             this.radDropDownList3.Name = "radDropDownList3";
             this.radDropDownList3.Size = new System.Drawing.Size(156, 24);
             this.radDropDownList3.TabIndex = 4;
-            this.radDropDownList3.Text = "radDropDownList3";
             // 
             // label4
             // 
@@ -133,11 +154,14 @@
             // 
             // radDropDownList4
             // 
-            this.radDropDownList4.Location = new System.Drawing.Point(215, 207);
+            radListDataItem8.Text = "不删除";
+            radListDataItem9.Text = "删除";
+            this.radDropDownList4.Items.Add(radListDataItem8);
+            this.radDropDownList4.Items.Add(radListDataItem9);
+            this.radDropDownList4.Location = new System.Drawing.Point(251, 207);
             this.radDropDownList4.Name = "radDropDownList4";
             this.radDropDownList4.Size = new System.Drawing.Size(156, 24);
             this.radDropDownList4.TabIndex = 6;
-            this.radDropDownList4.Text = "radDropDownList4";
             // 
             // label5
             // 
@@ -150,11 +174,14 @@
             // 
             // radDropDownList5
             // 
-            this.radDropDownList5.Location = new System.Drawing.Point(215, 267);
+            radListDataItem10.Text = "不设置";
+            radListDataItem11.Text = "设置";
+            this.radDropDownList5.Items.Add(radListDataItem10);
+            this.radDropDownList5.Items.Add(radListDataItem11);
+            this.radDropDownList5.Location = new System.Drawing.Point(251, 267);
             this.radDropDownList5.Name = "radDropDownList5";
             this.radDropDownList5.Size = new System.Drawing.Size(156, 24);
             this.radDropDownList5.TabIndex = 8;
-            this.radDropDownList5.Text = "radDropDownList5";
             // 
             // label6
             // 
@@ -165,18 +192,10 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "设备总数量";
             // 
-            // radDropDownList6
-            // 
-            this.radDropDownList6.Location = new System.Drawing.Point(215, 330);
-            this.radDropDownList6.Name = "radDropDownList6";
-            this.radDropDownList6.Size = new System.Drawing.Size(156, 24);
-            this.radDropDownList6.TabIndex = 10;
-            this.radDropDownList6.Text = "radDropDownList6";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(418, 28);
+            this.label7.Location = new System.Drawing.Point(493, 28);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 15);
             this.label7.TabIndex = 13;
@@ -184,22 +203,24 @@
             // 
             // radTextBox1
             // 
-            this.radTextBox1.Location = new System.Drawing.Point(534, 22);
+            this.radTextBox1.Location = new System.Drawing.Point(609, 22);
             this.radTextBox1.Name = "radTextBox1";
             this.radTextBox1.Size = new System.Drawing.Size(140, 24);
             this.radTextBox1.TabIndex = 14;
+            this.radTextBox1.Text = "http://127.0.0.1/";
             // 
             // radTextBox2
             // 
-            this.radTextBox2.Location = new System.Drawing.Point(534, 85);
+            this.radTextBox2.Location = new System.Drawing.Point(609, 85);
             this.radTextBox2.Name = "radTextBox2";
             this.radTextBox2.Size = new System.Drawing.Size(140, 24);
             this.radTextBox2.TabIndex = 16;
+            this.radTextBox2.Text = "http://127.0.0.1/";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(418, 89);
+            this.label8.Location = new System.Drawing.Point(493, 89);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 15);
             this.label8.TabIndex = 15;
@@ -207,15 +228,16 @@
             // 
             // radTextBox3
             // 
-            this.radTextBox3.Location = new System.Drawing.Point(534, 142);
+            this.radTextBox3.Location = new System.Drawing.Point(609, 142);
             this.radTextBox3.Name = "radTextBox3";
             this.radTextBox3.Size = new System.Drawing.Size(140, 24);
             this.radTextBox3.TabIndex = 18;
+            this.radTextBox3.Text = "127.0.0.1";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(418, 148);
+            this.label9.Location = new System.Drawing.Point(493, 148);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 15);
             this.label9.TabIndex = 17;
@@ -223,15 +245,16 @@
             // 
             // radTextBox4
             // 
-            this.radTextBox4.Location = new System.Drawing.Point(534, 206);
+            this.radTextBox4.Location = new System.Drawing.Point(609, 206);
             this.radTextBox4.Name = "radTextBox4";
             this.radTextBox4.Size = new System.Drawing.Size(140, 24);
             this.radTextBox4.TabIndex = 20;
+            this.radTextBox4.Text = "21";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(418, 212);
+            this.label10.Location = new System.Drawing.Point(493, 212);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 15);
             this.label10.TabIndex = 19;
@@ -239,15 +262,16 @@
             // 
             // radTextBox5
             // 
-            this.radTextBox5.Location = new System.Drawing.Point(534, 266);
+            this.radTextBox5.Location = new System.Drawing.Point(609, 266);
             this.radTextBox5.Name = "radTextBox5";
             this.radTextBox5.Size = new System.Drawing.Size(140, 24);
             this.radTextBox5.TabIndex = 22;
+            this.radTextBox5.Text = "hw";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(448, 270);
+            this.label11.Location = new System.Drawing.Point(523, 270);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(61, 15);
             this.label11.TabIndex = 21;
@@ -255,24 +279,54 @@
             // 
             // radTextBox6
             // 
-            this.radTextBox6.Location = new System.Drawing.Point(534, 329);
+            this.radTextBox6.Location = new System.Drawing.Point(609, 329);
             this.radTextBox6.Name = "radTextBox6";
             this.radTextBox6.Size = new System.Drawing.Size(140, 24);
             this.radTextBox6.TabIndex = 24;
+            this.radTextBox6.Text = "000000";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(448, 333);
+            this.label12.Location = new System.Drawing.Point(523, 333);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(61, 15);
             this.label12.TabIndex = 23;
             this.label12.Text = "ftp密码";
             // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(266, 424);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(67, 30);
+            this.SaveButton.TabIndex = 25;
+            this.SaveButton.Text = "保存";
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // RestartButton
+            // 
+            this.RestartButton.Location = new System.Drawing.Point(448, 424);
+            this.RestartButton.Name = "RestartButton";
+            this.RestartButton.Size = new System.Drawing.Size(85, 30);
+            this.RestartButton.TabIndex = 26;
+            this.RestartButton.Text = "重启生效";
+            this.RestartButton.Click += new System.EventHandler(this.RestartButton_Click);
+            // 
+            // AmountTextBox
+            // 
+            this.AmountTextBox.Location = new System.Drawing.Point(251, 330);
+            this.AmountTextBox.Name = "AmountTextBox";
+            this.AmountTextBox.Size = new System.Drawing.Size(156, 24);
+            this.AmountTextBox.TabIndex = 25;
+            this.AmountTextBox.Text = "12";
+            // 
             // CollectControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.AmountTextBox);
+            this.Controls.Add(this.RestartButton);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.radTextBox6);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.radTextBox5);
@@ -286,7 +340,6 @@
             this.Controls.Add(this.radTextBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.radDropDownList6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.radDropDownList5);
             this.Controls.Add(this.label4);
@@ -296,21 +349,23 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.radDropDownList2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radDropDownList1);
+            this.Controls.Add(this.SIzeList);
             this.Name = "CollectControl";
-            this.Size = new System.Drawing.Size(745, 550);
-            ((System.ComponentModel.ISupportInitialize)(this.radDropDownList1)).EndInit();
+            this.Size = new System.Drawing.Size(872, 599);
+            ((System.ComponentModel.ISupportInitialize)(this.SIzeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radDropDownList6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RestartButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountTextBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,7 +373,7 @@
 
         #endregion
 
-        private Telerik.WinControls.UI.RadDropDownList radDropDownList1;
+        private Telerik.WinControls.UI.RadDropDownList SIzeList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private Telerik.WinControls.UI.RadDropDownList radDropDownList2;
@@ -329,7 +384,6 @@
         private System.Windows.Forms.Label label5;
         private Telerik.WinControls.UI.RadDropDownList radDropDownList5;
         private System.Windows.Forms.Label label6;
-        private Telerik.WinControls.UI.RadDropDownList radDropDownList6;
         private System.Windows.Forms.Label label7;
         private Telerik.WinControls.UI.RadTextBox radTextBox1;
         private Telerik.WinControls.UI.RadTextBox radTextBox2;
@@ -342,5 +396,8 @@
         private System.Windows.Forms.Label label11;
         private Telerik.WinControls.UI.RadTextBox radTextBox6;
         private System.Windows.Forms.Label label12;
+        private Telerik.WinControls.UI.RadButton SaveButton;
+        private Telerik.WinControls.UI.RadButton RestartButton;
+        private Telerik.WinControls.UI.RadTextBox AmountTextBox;
     }
 }
