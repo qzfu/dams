@@ -381,6 +381,11 @@
     <Content Include="Resources\excel.jpg" />
     <Content Include="Resources\excel2013.png" />
     <Content Include="Resources\excel2013_2525.png" />
+    <Content Include="Resources\exit-16-2.png" />
+    <Content Include="Resources\exit-32-2.png" />
+    <Content Include="Resources\exit-32.png" />
+    <Content Include="Resources\exit.png" />
+    <Content Include="Resources\fanc.png" />
     <Content Include="Resources\First_64_16px.png" />
     <Content Include="Resources\flat_add.png" />
     <Content Include="Resources\flat_add_2525.png" />
@@ -407,6 +412,9 @@
     <Content Include="Resources\flat_documents.png" />
     <Content Include="Resources\flat_documents_2525.png" />
     <Content Include="Resources\flat_download.png" />
+    <Content Include="Resources\home-48.png" />
+    <Content Include="Resources\home-64-2.png" />
+    <Content Include="Resources\home-64.png" />
     <Content Include="Views\Browser\js\bootstrap.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

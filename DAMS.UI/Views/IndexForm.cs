@@ -86,7 +86,10 @@ namespace DAMS.UI.Views
         {
             this.Hide();
             LoginForm loginForm = new LoginForm();
-            loginForm.Show();
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
 
 

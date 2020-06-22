@@ -112,15 +112,15 @@
             // homeBtn
             // 
             this.homeBtn.BackColor = System.Drawing.Color.Transparent;
-            this.homeBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.flat_home_2525;
+            this.homeBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.home_48;
             this.homeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeBtn.FlatAppearance.BorderSize = 0;
             this.homeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.homeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.homeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeBtn.Location = new System.Drawing.Point(38, 26);
+            this.homeBtn.Location = new System.Drawing.Point(32, 12);
             this.homeBtn.Name = "homeBtn";
-            this.homeBtn.Size = new System.Drawing.Size(25, 25);
+            this.homeBtn.Size = new System.Drawing.Size(59, 48);
             this.homeBtn.TabIndex = 11;
             this.homeBtn.UseVisualStyleBackColor = false;
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
@@ -128,7 +128,7 @@
             // loginOutBtn
             // 
             this.loginOutBtn.BackColor = System.Drawing.Color.Transparent;
-            this.loginOutBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.warn_16_lan;
+            this.loginOutBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.exit_16_2;
             this.loginOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginOutBtn.FlatAppearance.BorderSize = 0;
             this.loginOutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
