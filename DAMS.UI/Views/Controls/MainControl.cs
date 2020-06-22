@@ -93,7 +93,9 @@ namespace DAMS.UI.Views.Controls
                         var checkToken = device.CheckDeviceToken(deviceName, myVID, myPID, serialNumber);
                         if (checkToken < 0) continue;
                         device.SetProgressDelegate += HandleRefreshProgess;
-                        device.CopyFilesTo(deviceRoot, myVID, myPID, serialNumber);
+                        Action<DirectoryInfo, int, int, string> copyAction = device.CopyFilesTo;
+                        copyAction.BeginInvoke(deviceRoot, myVID, myPID, serialNumber, null, null);
+                        //device.CopyFilesTo(deviceRoot, myVID, myPID, serialNumber);
                     }
                 }
 

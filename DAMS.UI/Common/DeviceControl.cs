@@ -108,10 +108,15 @@ namespace DAMS.UI.Common
                 var toFile = item.ToPath;
                 var resModel = item.Resource;
 
-                //异步执行Copy文件中断续传从
-                Action<string, string, int> fileAction = FileHelper.CopyFile;
-                AsyncCallback callBack = new AsyncCallback(FlushCopyFileCallBack);
-                fileAction.BeginInvoke(fromFile, toFile, flushReadLength, callBack, resModel);
+                //执行Copy文件中断续传
+                FileHelper.CopyFile(fromFile, toFile, flushReadLength);
+                //更新当前资源采集状态为已完成
+                deviceService.UpdateCopyStateResource(resModel);
+                endCount++;
+                SetProgressDelegate(deviceInfo, endCount * 100 / totalCount);
+                //Action<string, string, int> fileAction = FileHelper.CopyFile;
+                //AsyncCallback callBack = new AsyncCallback(FlushCopyFileCallBack);
+                //fileAction.BeginInvoke(fromFile, toFile, flushReadLength, callBack, resModel);
             }
         }
 
@@ -170,17 +175,17 @@ namespace DAMS.UI.Common
                 CopyTo(dir, itemFilePath, itemDirPath, currResources, deviceInfo, ref dicPath);
             }
         }
-        public void FlushCopyFileCallBack(IAsyncResult ar)
-        {
-            AsyncResult async = (AsyncResult)ar;
-            var action = (Action<string, string,int>)async.AsyncDelegate;
-            action.EndInvoke(ar);
-            var resModel = ar.AsyncState as Resources;
-            //更新当前资源采集状态为已完成
-            deviceService.UpdateCopyStateResource(resModel);
-            endCount++;
-            SetProgressDelegate(deviceInfo, endCount * 100 / totalCount);
-        }
+        //public void FlushCopyFileCallBack(IAsyncResult ar)
+        //{
+        //    AsyncResult async = (AsyncResult)ar;
+        //    var action = (Action<string, string,int>)async.AsyncDelegate;
+        //    action.EndInvoke(ar);
+        //    var resModel = ar.AsyncState as Resources;
+        //    //更新当前资源采集状态为已完成
+        //    deviceService.UpdateCopyStateResource(resModel);
+        //    endCount++;
+        //    SetProgressDelegate(deviceInfo, endCount * 100 / totalCount);
+        //}
 
     }
 }
