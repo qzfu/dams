@@ -275,7 +275,7 @@ namespace DAMS.Common
             {
                 byte[] buffer = new byte[eachReadLength];
                 long copied = 0;
-                while (copied <= totalFileLength)
+                while (copied < totalFileLength)
                 {
                     toCopyLength = fromFile.Read(buffer, 0, eachReadLength);
                     fromFile.Flush();
