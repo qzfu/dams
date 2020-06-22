@@ -165,6 +165,8 @@ namespace DAMS.UI.Common
                 }
                 var itemFilePath = filePath + "/" + dirPath;
                 var itemDirPath = destinationPath + "/" + dirPath;
+
+                CommonHelper.CreateDirectoryIfNotExist(itemDirPath);
                 CopyTo(dir, itemFilePath, itemDirPath, currResources, deviceInfo, ref dicPath);
             }
         }
