@@ -27,9 +27,10 @@ namespace DAMS.UI.Common
         private int flushReadLength;
         private string desRoot; 
         //总文件数量
-        private int totalCount;
-        private int endCount;
+        private double totalLength;
+        private double progress;
         private string deviceInfo;
+        private int percent;
         public delegate void UpdateProgress(string deviceInfo,int precent);
         public UpdateProgress SetProgressDelegate;
 
@@ -37,8 +38,9 @@ namespace DAMS.UI.Common
         {
             desRoot = CommonHelper.GetAppSettings("desdirectory");
             flushReadLength =  Convert.ToInt32(CommonHelper.GetAppSettings("FlushReadLength"));
-            totalCount = 0;
-            endCount = 0;
+            totalLength = 0d;
+            progress = 0d;
+            percent = 0;
         }
         /// <summary>
         /// 校验盘符信息
@@ -99,9 +101,9 @@ namespace DAMS.UI.Common
             List<Resources> currResources = deviceService.GetCurrentDiskResourceList(vid, pid, serialNumber);
             var dicPath = new List<FileTransactionDTO>();
             var resources = new List<Resources>();
-            SetProgressDelegate(deviceInfo, 0);
+            //准备加载资源
+            SetProgressDelegate(deviceInfo, percent);
             CopyTo(sourceDirectory, filePath, destinationPath, currResources, deviceInfo, ref dicPath);
-            totalCount = dicPath.Count();
             foreach (var item in dicPath)
             {
                 var fromFile = item.FromPath;
@@ -109,14 +111,9 @@ namespace DAMS.UI.Common
                 var resModel = item.Resource;
 
                 //执行Copy文件中断续传
-                FileHelper.CopyFile(fromFile, toFile, flushReadLength);
+                CopyFile(fromFile, toFile, flushReadLength);
                 //更新当前资源采集状态为已完成
                 deviceService.UpdateCopyStateResource(resModel);
-                endCount++;
-                SetProgressDelegate(deviceInfo, endCount * 100 / totalCount);
-                //Action<string, string, int> fileAction = FileHelper.CopyFile;
-                //AsyncCallback callBack = new AsyncCallback(FlushCopyFileCallBack);
-                //fileAction.BeginInvoke(fromFile, toFile, flushReadLength, callBack, resModel);
             }
         }
 
@@ -149,6 +146,8 @@ namespace DAMS.UI.Common
                     };
                     deviceService.AddResource(resModel, deviceInfo);
                 }
+                //获取文件大小
+                totalLength += (double)file.Length / 1024d / 1024d;
                 //源文件文件地址名称
                 var fromFile = file.FullName;
                 //定义目标文件地址名称
@@ -175,17 +174,93 @@ namespace DAMS.UI.Common
                 CopyTo(dir, itemFilePath, itemDirPath, currResources, deviceInfo, ref dicPath);
             }
         }
-        //public void FlushCopyFileCallBack(IAsyncResult ar)
-        //{
-        //    AsyncResult async = (AsyncResult)ar;
-        //    var action = (Action<string, string,int>)async.AsyncDelegate;
-        //    action.EndInvoke(ar);
-        //    var resModel = ar.AsyncState as Resources;
-        //    //更新当前资源采集状态为已完成
-        //    deviceService.UpdateCopyStateResource(resModel);
-        //    endCount++;
-        //    SetProgressDelegate(deviceInfo, endCount * 100 / totalCount);
-        //}
+
+        /// <summary>
+        /// 中断续传
+        /// </summary>
+        /// <param name="fromPath">源文件的路径</param>
+        /// <param name="toPath">文件保存的路径</param>
+        /// <param name="eachReadLength">每次读取的长度</param>
+        /// <returns>是否复制成功</returns>
+        private void CopyFile(string fromPath, string toPath, int eachReadLength)
+        {
+            //校验是否已经存在的文件
+            long startPosition = 0;
+            //已追加的方式写入文件流
+            FileStream toFile;
+            //读取中原文件终点位置长度
+            if (File.Exists(toPath))
+            {
+                toFile = File.OpenWrite(toPath);
+                startPosition = toFile.Length;
+            }
+            else
+            {
+                //如不存在目标文件则新建
+                toFile = new FileStream(toPath, FileMode.Append, FileAccess.Write);
+            }
+
+            //将源文件读取成文件流
+            FileStream fromFile = new FileStream(fromPath, FileMode.Open, FileAccess.Read);
+
+            //实际读取的文件长度
+            long toCopyLength = 0;
+            //如果每次读取的长度小于 源文件的长度 分段读取
+            long totalFileLength = fromFile.Length - startPosition;
+            //调整源文件读取针位置
+            fromFile.Seek(startPosition, SeekOrigin.Current);
+            if (eachReadLength < totalFileLength)
+            {
+                byte[] buffer = new byte[eachReadLength];
+                long copied = 0;
+                while (copied < totalFileLength)
+                {
+                    toCopyLength = fromFile.Read(buffer, 0, eachReadLength);
+                    fromFile.Flush();
+                    toFile.Write(buffer, 0, eachReadLength);
+                    toFile.Flush();
+                    //流的当前位置
+                    toFile.Position = fromFile.Position;
+                    copied += toCopyLength;
+                    progress += (double)toCopyLength / 1024d / 1024d;
+                    if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
+                    {
+                        SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
+                        percent = Convert.ToInt32(progress * 100 / totalLength);
+                    }
+                }
+                int left = (int)(totalFileLength - copied);
+                toCopyLength = fromFile.Read(buffer, 0, left);
+                fromFile.Flush();
+                toFile.Write(buffer, 0, left);
+                toFile.Flush();
+                progress += (double)toCopyLength / 1024d / 1024d;
+                if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
+                {
+                    SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
+                    percent = Convert.ToInt32(progress * 100 / totalLength);
+                }
+            }
+            else
+            {
+                //如果每次拷贝的文件长度大于源文件的长度 则将实际文件长度直接拷贝
+                byte[] buffer = new byte[fromFile.Length];
+                fromFile.Read(buffer, 0, buffer.Length);
+                fromFile.Flush();
+                toFile.Write(buffer, 0, buffer.Length);
+                toFile.Flush();
+                progress += (double)fromFile.Length / 1024d / 1024d;
+                if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
+                {
+                    SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
+                    percent = Convert.ToInt32(progress * 100 / totalLength);
+                }
+            }
+            fromFile.Close();
+            toFile.Close();
+            return;
+        }
+
 
     }
 }
