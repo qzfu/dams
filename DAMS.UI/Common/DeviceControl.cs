@@ -99,10 +99,9 @@ namespace DAMS.UI.Common
             List<Resources> currResources = deviceService.GetCurrentDiskResourceList(vid, pid, serialNumber);
             var dicPath = new List<FileTransactionDTO>();
             var resources = new List<Resources>();
-            CopyTo(sourceDirectory, filePath, destinationPath, currResources, ref dicPath, ref resources);
-            deviceService.AddResources(resources, deviceInfo);
-            totalCount = dicPath.Count();
             SetProgressDelegate(deviceInfo, 0);
+            CopyTo(sourceDirectory, filePath, destinationPath, currResources, deviceInfo, ref dicPath);
+            totalCount = dicPath.Count();
             foreach (var item in dicPath)
             {
                 var fromFile = item.FromPath;
@@ -116,7 +115,7 @@ namespace DAMS.UI.Common
             }
         }
 
-        private void CopyTo(DirectoryInfo sourceDirectory, string filePath, string destinationPath, List<Resources> currResources, ref List<FileTransactionDTO> dicPath, ref List<Resources> resources)
+        private void CopyTo(DirectoryInfo sourceDirectory, string filePath, string destinationPath, List<Resources> currResources, string deviceInfo, ref List<FileTransactionDTO> dicPath)
         {
             //复制文件夹下面的文件
             FileInfo[] fileArray = sourceDirectory.GetFiles();
@@ -135,14 +134,15 @@ namespace DAMS.UI.Common
                 }
                 if (resModel == null)
                 {
-                    resources.Add(new Resources()
+                    resModel = new Resources()
                     {
                         Extension = file.Extension,
                         Alias = file.Name,
                         FilePath = filePath,
                         FileName = itemFileFullName,
                         IsCopyEnd = 0
-                    });
+                    };
+                    deviceService.AddResource(resModel, deviceInfo);
                 }
                 //源文件文件地址名称
                 var fromFile = file.FullName;
@@ -165,7 +165,7 @@ namespace DAMS.UI.Common
                 }
                 var itemFilePath = filePath + "/" + dirPath;
                 var itemDirPath = destinationPath + "/" + dirPath;
-                CopyTo(dir, itemFilePath, itemDirPath, currResources, ref dicPath, ref resources);
+                CopyTo(dir, itemFilePath, itemDirPath, currResources, deviceInfo, ref dicPath);
             }
         }
         public void FlushCopyFileCallBack(IAsyncResult ar)
@@ -177,7 +177,7 @@ namespace DAMS.UI.Common
             //更新当前资源采集状态为已完成
             deviceService.UpdateCopyStateResource(resModel);
             endCount++;
-            SetProgressDelegate(deviceInfo, endCount);
+            SetProgressDelegate(deviceInfo, endCount * 100 / totalCount);
         }
 
     }

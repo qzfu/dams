@@ -19,6 +19,7 @@ using DAMS.Interface;
 using DAMS.Core.ClassFactory;
 using DAMS.UI.Common;
 using System.Management;
+using System.Threading;
 
 namespace DAMS.UI.Views.Controls
 {
@@ -30,8 +31,7 @@ namespace DAMS.UI.Views.Controls
         public static UsbDevice MyUsbDevice;//USB设备
         private IDeviceNotifier deviceNotifier;//设备变化通知函数
 
-        //public delegate void RefeshProgress(string deviceInfo,int percent);//声明一个更新主线程的委托
-        //public UpdateUI UpdateUIDelegate;
+        public delegate void AsynUpdateProgress(string deviceInfo, int percent);//声明一个更新主线程的委托
 
         //当前程序根目录
         string dirRoot = System.Environment.CurrentDirectory;
@@ -44,7 +44,6 @@ namespace DAMS.UI.Views.Controls
 
             deviceNotifier = DeviceNotifier.OpenDeviceNotifier();
             deviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
-
         }
         /// <summary>
         /// 初始化浏览器
@@ -77,6 +76,7 @@ namespace DAMS.UI.Views.Controls
         {
             if (e.EventType == EventType.DeviceArrival)
             {
+                Thread.Sleep(15000);
                 //检查当前设备是否需要续传文件
                 var myVID = e.Device.IdVendor;
                 var myPID = e.Device.IdProduct;
@@ -106,8 +106,25 @@ namespace DAMS.UI.Views.Controls
         //winform访问web的JS函数
         private void HandleRefreshProgess(string deviceInfo, int percent)
         {
-            HtmlDocument doc = chartBrowser.Document;
-            doc.InvokeScript("refreshProgess", new object[] { deviceInfo, percent });
+            if (InvokeRequired)
+            {
+                this.Invoke(new AsynUpdateProgress(delegate(string info, int per)
+                {
+                    HtmlDocument doc = chartBrowser.Document;
+                    Object[] objArray = new Object[2];
+                    objArray[0] = (Object)info;
+                    objArray[1] = (Object)per;
+                    doc.InvokeScript("refreshProgess", objArray);
+                }), deviceInfo, percent);
+            }
+            else
+            {
+                HtmlDocument doc = chartBrowser.Document;
+                Object[] objArray = new Object[2];
+                objArray[0] = (Object)deviceInfo;
+                objArray[1] = (Object)percent;
+                doc.InvokeScript("refreshProgess", objArray);
+            }
         }
     }
 }

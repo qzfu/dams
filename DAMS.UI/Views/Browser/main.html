@@ -5,7 +5,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <script type="text/javascript" charset="utf-8" src="js/echarts.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/echarts.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery-1.10.2.min.js"></script>
     <title>采集站信息</title>
 </head>
 <body>
@@ -972,26 +973,24 @@
         myChart.setOption(option);
 
         //动态刷新资源采集进度
-        function refreshProgess(o) {
-            var deviceIndex = o && o.deviceInfo || "";
-            var percent = o && o.percent || 0;
-            option.series.forEach(function (item, index) {
-                if (item.info && item.info.index == deviceIndex) {
-                    item.info.value = percent;
-                    item.data[0].value = percent;
-                    item.data[0].label = dataStyle;
-                    return;
+        function refreshProgess(deviceInfo, percent) {
+            $.each(option.series, function (i, v) {
+                if (v.info && v.info.index == deviceInfo) {
+                    v.info.value = percent;
+                    v.data[0].value = percent;
+                    v.data[0].label = dataStyle;
+                    return false;
                 }
-                else if (item.info && item.info.value >= 100) {
-                    item.info.value = percent;
-                    item.info.index = deviceIndex;
-                    item.data[0].value = percent;
-                    item.data[0].label = dataStyle;
+                else if (v.info && (v.info.value == 0 || v.info.value >= 100)) {
+                    v.info.index = deviceInfo;
+                    v.info.value = percent;
+                    v.data[0].value = percent;
+                    v.data[0].label = dataStyle;
+                    return false;
                 }
             });
             myChart.setOption(option);
         }
-
 
     </script>
 
