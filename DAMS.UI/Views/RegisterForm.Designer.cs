@@ -102,7 +102,7 @@
             this.RegTextBox.Location = new System.Drawing.Point(90, 166);
             this.RegTextBox.Name = "RegTextBox";
             this.RegTextBox.Size = new System.Drawing.Size(255, 24);
-            this.RegTextBox.TabIndex = 3;
+            this.RegTextBox.TabIndex = 1;
             // 
             // RegisterButton
             // 
@@ -172,6 +172,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegisterForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegisterForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComTextBox)).EndInit();

@@ -29,21 +29,10 @@ namespace DAMS.UI.Views.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem4 = new Telerik.WinControls.UI.RadCheckedListDataItem();
-            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem5 = new Telerik.WinControls.UI.RadCheckedListDataItem();
-            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem6 = new Telerik.WinControls.UI.RadCheckedListDataItem();
+            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem1 = new Telerik.WinControls.UI.RadCheckedListDataItem();
+            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem2 = new Telerik.WinControls.UI.RadCheckedListDataItem();
+            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem3 = new Telerik.WinControls.UI.RadCheckedListDataItem();
             this.ManageGridPage = new System.Windows.Forms.DataGridView();
-            this.CheckRecord = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EquipmentNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UploadTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UploadTime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Player = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Label1 = new System.Windows.Forms.Label();
             this.object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2 = new Telerik.WinControls.RootRadElement();
             this.QResourceType = new Telerik.WinControls.UI.RadCheckedDropDownList();
@@ -63,6 +52,17 @@ namespace DAMS.UI.Views.Controls
             this.DownLoadButton = new Telerik.WinControls.UI.RadButton();
             this.ResetButton = new Telerik.WinControls.UI.RadButton();
             this.QueryButton = new Telerik.WinControls.UI.RadButton();
+            this.CheckRecord = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EquipmentNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UploadTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UploadTime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Player = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ManageGridPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QResourceType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QBeginDate)).BeginInit();
@@ -82,6 +82,7 @@ namespace DAMS.UI.Views.Controls
             this.ManageGridPage.AllowUserToAddRows = false;
             this.ManageGridPage.AllowUserToDeleteRows = false;
             this.ManageGridPage.AllowUserToResizeRows = false;
+            this.ManageGridPage.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.ManageGridPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ManageGridPage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckRecord,
@@ -95,6 +96,7 @@ namespace DAMS.UI.Views.Controls
             this.FileName,
             this.Player,
             this.ResourceId});
+            this.ManageGridPage.GridColor = System.Drawing.Color.LavenderBlush;
             this.ManageGridPage.Location = new System.Drawing.Point(0, 154);
             this.ManageGridPage.Margin = new System.Windows.Forms.Padding(4);
             this.ManageGridPage.Name = "ManageGridPage";
@@ -103,92 +105,6 @@ namespace DAMS.UI.Views.Controls
             this.ManageGridPage.Size = new System.Drawing.Size(1328, 525);
             this.ManageGridPage.TabIndex = 0;
             this.ManageGridPage.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ManageGridPage_CellContentClick);
-            // 
-            // CheckRecord
-            // 
-            this.CheckRecord.FalseValue = "0";
-            this.CheckRecord.Frozen = true;
-            this.CheckRecord.HeaderText = "";
-            this.CheckRecord.Name = "CheckRecord";
-            this.CheckRecord.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CheckRecord.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CheckRecord.TrueValue = "1";
-            this.CheckRecord.Width = 50;
-            // 
-            // ResourceType
-            // 
-            this.ResourceType.DataPropertyName = "ResourceName";
-            this.ResourceType.HeaderText = "文件类型";
-            this.ResourceType.Name = "ResourceType";
-            this.ResourceType.ReadOnly = true;
-            // 
-            // UserId
-            // 
-            this.UserId.DataPropertyName = "UserId";
-            this.UserId.HeaderText = "人员编号";
-            this.UserId.Name = "UserId";
-            this.UserId.ReadOnly = true;
-            // 
-            // EquipmentNo
-            // 
-            this.EquipmentNo.DataPropertyName = "EquipmentNo";
-            this.EquipmentNo.HeaderText = "设备编号";
-            this.EquipmentNo.Name = "EquipmentNo";
-            this.EquipmentNo.ReadOnly = true;
-            // 
-            // UserName
-            // 
-            this.UserName.DataPropertyName = "UserName";
-            this.UserName.HeaderText = "姓名";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // DepartId
-            // 
-            this.DepartId.DataPropertyName = "DepartId";
-            this.DepartId.HeaderText = "部门";
-            this.DepartId.Name = "DepartId";
-            this.DepartId.ReadOnly = true;
-            // 
-            // UploadTime
-            // 
-            this.UploadTime.DataPropertyName = "UploadTime";
-            this.UploadTime.HeaderText = "拍摄时间";
-            this.UploadTime.Name = "UploadTime";
-            this.UploadTime.ReadOnly = true;
-            // 
-            // UploadTime1
-            // 
-            this.UploadTime1.DataPropertyName = "UploadTime";
-            this.UploadTime1.HeaderText = "上传时间";
-            this.UploadTime1.Name = "UploadTime1";
-            this.UploadTime1.ReadOnly = true;
-            // 
-            // FileName
-            // 
-            this.FileName.DataPropertyName = "Alias";
-            this.FileName.HeaderText = "文件别名";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            this.FileName.Width = 130;
-            // 
-            // Player
-            // 
-            this.Player.HeaderText = "播放";
-            this.Player.Name = "Player";
-            this.Player.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Player.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Player.Text = "播放";
-            this.Player.ToolTipText = "播放视频";
-            this.Player.UseColumnTextForButtonValue = true;
-            this.Player.Width = 80;
-            // 
-            // ResourceId
-            // 
-            this.ResourceId.DataPropertyName = "ResourceId";
-            this.ResourceId.HeaderText = "id";
-            this.ResourceId.Name = "ResourceId";
-            this.ResourceId.Visible = false;
             // 
             // Label1
             // 
@@ -210,12 +126,12 @@ namespace DAMS.UI.Views.Controls
             // 
             this.QResourceType.DropDownAnimationEnabled = false;
             this.QResourceType.DropDownHeight = 110;
-            radCheckedListDataItem4.Text = "视频";
-            radCheckedListDataItem5.Text = "音频";
-            radCheckedListDataItem6.Text = "文档";
-            this.QResourceType.Items.Add(radCheckedListDataItem4);
-            this.QResourceType.Items.Add(radCheckedListDataItem5);
-            this.QResourceType.Items.Add(radCheckedListDataItem6);
+            radCheckedListDataItem1.Text = "视频";
+            radCheckedListDataItem2.Text = "音频";
+            radCheckedListDataItem3.Text = "文档";
+            this.QResourceType.Items.Add(radCheckedListDataItem1);
+            this.QResourceType.Items.Add(radCheckedListDataItem2);
+            this.QResourceType.Items.Add(radCheckedListDataItem3);
             this.QResourceType.Location = new System.Drawing.Point(95, 15);
             this.QResourceType.Margin = new System.Windows.Forms.Padding(4);
             this.QResourceType.Name = "QResourceType";
@@ -387,6 +303,92 @@ namespace DAMS.UI.Views.Controls
             this.QueryButton.TabIndex = 21;
             this.QueryButton.Text = "搜索";
             this.QueryButton.Click += new System.EventHandler(this.QueryButton_Click);
+            // 
+            // CheckRecord
+            // 
+            this.CheckRecord.FalseValue = "0";
+            this.CheckRecord.Frozen = true;
+            this.CheckRecord.HeaderText = "";
+            this.CheckRecord.Name = "CheckRecord";
+            this.CheckRecord.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CheckRecord.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CheckRecord.TrueValue = "1";
+            this.CheckRecord.Width = 50;
+            // 
+            // ResourceType
+            // 
+            this.ResourceType.DataPropertyName = "ResourceName";
+            this.ResourceType.HeaderText = "文件类型";
+            this.ResourceType.Name = "ResourceType";
+            this.ResourceType.ReadOnly = true;
+            // 
+            // UserId
+            // 
+            this.UserId.DataPropertyName = "UserId";
+            this.UserId.HeaderText = "人员编号";
+            this.UserId.Name = "UserId";
+            this.UserId.ReadOnly = true;
+            // 
+            // EquipmentNo
+            // 
+            this.EquipmentNo.DataPropertyName = "EquipmentNo";
+            this.EquipmentNo.HeaderText = "设备编号";
+            this.EquipmentNo.Name = "EquipmentNo";
+            this.EquipmentNo.ReadOnly = true;
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "UserName";
+            this.UserName.HeaderText = "姓名";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            // 
+            // DepartId
+            // 
+            this.DepartId.DataPropertyName = "DepartId";
+            this.DepartId.HeaderText = "部门";
+            this.DepartId.Name = "DepartId";
+            this.DepartId.ReadOnly = true;
+            // 
+            // UploadTime
+            // 
+            this.UploadTime.DataPropertyName = "UploadTime";
+            this.UploadTime.HeaderText = "拍摄时间";
+            this.UploadTime.Name = "UploadTime";
+            this.UploadTime.ReadOnly = true;
+            // 
+            // UploadTime1
+            // 
+            this.UploadTime1.DataPropertyName = "UploadTime";
+            this.UploadTime1.HeaderText = "上传时间";
+            this.UploadTime1.Name = "UploadTime1";
+            this.UploadTime1.ReadOnly = true;
+            // 
+            // FileName
+            // 
+            this.FileName.DataPropertyName = "Alias";
+            this.FileName.HeaderText = "文件别名";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Width = 160;
+            // 
+            // Player
+            // 
+            this.Player.HeaderText = "播放";
+            this.Player.Name = "Player";
+            this.Player.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Player.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Player.Text = "播放";
+            this.Player.ToolTipText = "播放视频";
+            this.Player.UseColumnTextForButtonValue = true;
+            this.Player.Width = 80;
+            // 
+            // ResourceId
+            // 
+            this.ResourceId.DataPropertyName = "ResourceId";
+            this.ResourceId.HeaderText = "id";
+            this.ResourceId.Name = "ResourceId";
+            this.ResourceId.Visible = false;
             // 
             // ResourceControl
             // 

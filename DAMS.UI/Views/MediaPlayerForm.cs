@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DAMS.Common;
 
 namespace DAMS.UI.Views
 {
@@ -20,7 +22,11 @@ namespace DAMS.UI.Views
         {
             InitializeComponent();
 
-            this.axWindowsMediaPlayer1.URL = filepath;
+            var path = CommonHelper.GetAppSettings("desdirectory");
+
+            var allpath = path + filepath;
+
+            this.axWindowsMediaPlayer1.URL = allpath;
             this.axWindowsMediaPlayer1.Show();
             //this.axWindowsMediaPlayer1.Controls.
         }
