@@ -5,6 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+using System.Runtime.Remoting.Messaging;
+using System.Threading;
 using LibUsbDotNet;
 using LibUsbDotNet.Main;
 using LibUsbDotNet.DeviceNotify;
@@ -12,17 +16,14 @@ using DAMS.Common;
 using DAMS.Models;
 using DAMS.Interface;
 using DAMS.Core.ClassFactory;
-using System.Xml;
-using System.Xml.Linq;
-using System.Runtime.Remoting.Messaging;
 using DAMS.Models.DTO;
-using System.Threading;
 
 namespace DAMS.UI.Common
 {
     public class DeviceControl
     {
         private IResourceService deviceService = Assembler<IResourceService>.Create();
+        private ICategoryService categoryService = Assembler<ICategoryService>.Create();
         delegate void DeviceNotifyDelegate();
 
         private int flushReadLength;
@@ -32,6 +33,8 @@ namespace DAMS.UI.Common
         private double currentProgress;
         private string deviceInfo;
         private int percent;
+        private List<Catagorys> categorys;
+        
         public delegate void UpdateProgress(string deviceInfo,int precent);
         public UpdateProgress SetProgressDelegate;
 
@@ -42,6 +45,11 @@ namespace DAMS.UI.Common
             totalLength = 0d;
             currentProgress = 0d;
             percent = 0;
+            categorys = new List<Catagorys>() { 
+                new Catagorys(){Id=1, Type = 5,ItemText = "1",ItemValue=".swf,.wav,.wma,.flv,.f4v,.rm,.wmv,.avi,.3gp,.mov,.mpg,.mpeg,.rmvb,.mp4",CreatedTime = DateTime.Now},
+                new Catagorys(){Id=2, Type = 5,ItemText = "2",ItemValue=".mp3,.m4a",CreatedTime = DateTime.Now},
+                new Catagorys(){Id=3, Type = 5,ItemText = "3",ItemValue=".pdf,.rtf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt",CreatedTime = DateTime.Now}
+            };
         }
         /// <summary>
         /// 校验盘符信息
@@ -139,9 +147,13 @@ namespace DAMS.UI.Common
                 }
                 if (resModel == null)
                 {
+                    var tempCategory = categorys.FirstOrDefault(x => x.ItemValue.IndexOf(file.Extension.ToLower()) > -1);
+                    var fileType = tempCategory != null ? Convert.ToInt32(tempCategory.ItemText) : 1;
+
                     resModel = new Resources()
                     {
                         Extension = file.Extension,
+                        ResourceType = fileType,
                         Alias = file.Name,
                         FilePath = filePath,
                         FileName = itemFileFullName,
