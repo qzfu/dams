@@ -79,7 +79,7 @@ namespace DAMS.UI.Views.Controls
         {
             if (e.EventType == EventType.DeviceArrival)
             {
-                Thread.Sleep(6000);
+                Thread.Sleep(5000);
                 //检查当前设备是否需要续传文件
                 var myVID = e.Device.IdVendor;
                 var myPID = e.Device.IdProduct;

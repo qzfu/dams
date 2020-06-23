@@ -16,6 +16,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Runtime.Remoting.Messaging;
 using DAMS.Models.DTO;
+using System.Threading;
 
 namespace DAMS.UI.Common
 {
@@ -28,7 +29,7 @@ namespace DAMS.UI.Common
         private string desRoot; 
         //总文件数量
         private double totalLength;
-        private double progress;
+        private double currentProgress;
         private string deviceInfo;
         private int percent;
         public delegate void UpdateProgress(string deviceInfo,int precent);
@@ -39,7 +40,7 @@ namespace DAMS.UI.Common
             desRoot = CommonHelper.GetAppSettings("desdirectory");
             flushReadLength =  Convert.ToInt32(CommonHelper.GetAppSettings("FlushReadLength"));
             totalLength = 0d;
-            progress = 0d;
+            currentProgress = 0d;
             percent = 0;
         }
         /// <summary>
@@ -104,6 +105,10 @@ namespace DAMS.UI.Common
             //准备加载资源
             SetProgressDelegate(deviceInfo, percent);
             CopyTo(sourceDirectory, filePath, destinationPath, currResources, deviceInfo, ref dicPath);
+            //异步线程更新文件采集进度
+            Action proressAction = UpdateProgressAction;
+            proressAction.BeginInvoke(null, null);
+
             foreach (var item in dicPath)
             {
                 var fromFile = item.FromPath;
@@ -222,24 +227,19 @@ namespace DAMS.UI.Common
                     //流的当前位置
                     toFile.Position = fromFile.Position;
                     copied += toCopyLength;
-                    progress += (double)toCopyLength / 1024d / 1024d;
-                    if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
-                    {
-                        SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
-                        percent = Convert.ToInt32(progress * 100 / totalLength);
-                    }
+                    currentProgress += (double)toCopyLength / 1024d / 1024d;
                 }
                 int left = (int)(totalFileLength - copied);
                 toCopyLength = fromFile.Read(buffer, 0, left);
                 fromFile.Flush();
                 toFile.Write(buffer, 0, left);
                 toFile.Flush();
-                progress += (double)toCopyLength / 1024d / 1024d;
-                if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
-                {
-                    SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
-                    percent = Convert.ToInt32(progress * 100 / totalLength);
-                }
+                currentProgress += (double)toCopyLength / 1024d / 1024d;
+                //if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
+                //{
+                //    SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
+                //    percent = Convert.ToInt32(progress * 100 / totalLength);
+                //}
             }
             else
             {
@@ -249,18 +249,40 @@ namespace DAMS.UI.Common
                 fromFile.Flush();
                 toFile.Write(buffer, 0, buffer.Length);
                 toFile.Flush();
-                progress += (double)fromFile.Length / 1024d / 1024d;
-                if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
-                {
-                    SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
-                    percent = Convert.ToInt32(progress * 100 / totalLength);
-                }
+                currentProgress += (double)fromFile.Length / 1024d / 1024d;
+                //if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
+                //{
+                //    SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
+                //    percent = Convert.ToInt32(progress * 100 / totalLength);
+                //}
             }
             fromFile.Close();
             toFile.Close();
             return;
         }
 
+        /// <summary>
+        /// 异步线程定时刷新进度
+        /// </summary>
+        public void UpdateProgressAction()
+        {
+            var temp = Convert.ToInt32(currentProgress * 100 / totalLength);
+            percent = 1;
+            while (percent < 100)
+            {
+                if (percent<=temp)
+                {
+                    SetProgressDelegate(deviceInfo, percent);
+                }
+                else
+                {
+                    Thread.Sleep(2000);
+                }
+                temp = Convert.ToInt32(currentProgress * 100 / totalLength);
+                percent++;
+            }
+            SetProgressDelegate(deviceInfo, percent);
+        }
 
     }
 }
