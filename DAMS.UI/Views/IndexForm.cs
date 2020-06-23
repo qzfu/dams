@@ -19,6 +19,7 @@ namespace DAMS.UI.Views
     public partial class IndexForm : Telerik.WinControls.UI.RadForm
     {
         private IResourceService setService = Assembler<IResourceService>.Create();
+        private MainControl mControl;
         public IndexForm()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace DAMS.UI.Views
         {
             this.labTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:ss");
             this.mPanel.Controls.Clear();
-            MainControl mControl = new MainControl();
+            mControl = new MainControl();
             mControl.Dock = DockStyle.Fill;
             this.mPanel.Controls.Add(mControl);
             var user = LoginUser.CurrentUser;
@@ -75,11 +76,9 @@ namespace DAMS.UI.Views
         private void homeBtn_Click(object sender, EventArgs e)
         {
             if (!setService.CheckEffective()) return;
-
             this.mPanel.Controls.Clear();
-            MainControl mainControl = new MainControl();
-            mainControl.Dock = DockStyle.Fill;
-            this.mPanel.Controls.Add(mainControl);
+            mControl.Dock = DockStyle.Fill;
+            this.mPanel.Controls.Add(mControl);
         }
         private void btnResource_Click(object sender, EventArgs e)
         {
@@ -110,7 +109,6 @@ namespace DAMS.UI.Views
                 this.Show();
             }
         }
-
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             RegisterForm registerForm = new RegisterForm();

@@ -23,6 +23,7 @@ namespace DAMS.Core.ClassFactory
             // 该类型实体具有构造参数，实际的配置信息可以从外层机制获得。 
             singleton.dictionary.Add(typeof(IUserService), new TypeConstructor(typeof(UserService)));
             singleton.dictionary.Add(typeof(IResourceService), new TypeConstructor(typeof(ResourceService)));
+            singleton.dictionary.Add(typeof(ICategoryService), new TypeConstructor(typeof(CategoryService)));
             //新接口注入在下面增加
             Instance = singleton;
         }

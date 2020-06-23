@@ -102,8 +102,6 @@ namespace DAMS.UI.Common
             List<Resources> currResources = deviceService.GetCurrentDiskResourceList(vid, pid, serialNumber);
             var dicPath = new List<FileTransactionDTO>();
             var resources = new List<Resources>();
-            //准备加载资源
-            SetProgressDelegate(deviceInfo, percent);
             CopyTo(sourceDirectory, filePath, destinationPath, currResources, deviceInfo, ref dicPath);
             //异步线程更新文件采集进度
             Action proressAction = UpdateProgressAction;
@@ -147,6 +145,7 @@ namespace DAMS.UI.Common
                         Alias = file.Name,
                         FilePath = filePath,
                         FileName = itemFileFullName,
+                        UploadTime = file.CreationTime,
                         IsCopyEnd = 0
                     };
                     deviceService.AddResource(resModel, deviceInfo);
@@ -235,11 +234,6 @@ namespace DAMS.UI.Common
                 toFile.Write(buffer, 0, left);
                 toFile.Flush();
                 currentProgress += (double)toCopyLength / 1024d / 1024d;
-                //if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
-                //{
-                //    SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
-                //    percent = Convert.ToInt32(progress * 100 / totalLength);
-                //}
             }
             else
             {
@@ -250,11 +244,6 @@ namespace DAMS.UI.Common
                 toFile.Write(buffer, 0, buffer.Length);
                 toFile.Flush();
                 currentProgress += (double)fromFile.Length / 1024d / 1024d;
-                //if (Convert.ToInt32(progress * 100 / totalLength) >= percent + 5)
-                //{
-                //    SetProgressDelegate(deviceInfo, Convert.ToInt32(progress * 100 / totalLength));
-                //    percent = Convert.ToInt32(progress * 100 / totalLength);
-                //}
             }
             fromFile.Close();
             toFile.Close();
@@ -270,16 +259,16 @@ namespace DAMS.UI.Common
             percent = 1;
             while (percent < 100)
             {
-                if (percent<=temp)
+                if (percent <= temp)
                 {
                     SetProgressDelegate(deviceInfo, percent);
+                    percent++;
                 }
                 else
                 {
                     Thread.Sleep(2000);
                 }
                 temp = Convert.ToInt32(currentProgress * 100 / totalLength);
-                percent++;
             }
             SetProgressDelegate(deviceInfo, percent);
         }

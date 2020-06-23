@@ -49,6 +49,8 @@ namespace DAMS.Common
             StartEnd = 3,
             [Description("是否注册过")]
             Register = 4,
+            [Description("文件类型格式")]
+            FileType = 5,
         }
     }
 }
