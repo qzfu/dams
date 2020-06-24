@@ -23,6 +23,9 @@ namespace DAMS.UI.Views
         public IndexForm()
         {
             InitializeComponent();
+            this.titPanel.MouseDown += this.IndexForm_MouseDown;
+            this.titPanel.MouseMove += this.IndexForm_MouseMove;
+            this.titPanel.MouseUp += this.IndexForm_MouseUp;
         }
 
         private void IndexForm_Load(object sender, EventArgs e)
@@ -77,7 +80,6 @@ namespace DAMS.UI.Views
         {
             if (!setService.CheckEffective()) return;
             this.mPanel.Controls.Clear();
-            mControl.Dock = DockStyle.Fill;
             this.mPanel.Controls.Add(mControl);
         }
         private void btnResource_Click(object sender, EventArgs e)
@@ -126,6 +128,43 @@ namespace DAMS.UI.Views
             }
         }
 
+        private Point mouseOffset;        //记录鼠标指针的坐标
+        private bool isMouseDown = false; //记录鼠标按键是否按下
+
+        protected void IndexForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            int xOffset;
+            int yOffset;
+
+            if (e.Button == MouseButtons.Left)
+            {
+                xOffset = -e.X - SystemInformation.FrameBorderSize.Width;
+                yOffset = -e.Y - SystemInformation.CaptionHeight -
+                 SystemInformation.FrameBorderSize.Height;
+                mouseOffset = new Point(xOffset, yOffset);
+                isMouseDown = true;
+            }
+        }
+
+        private void IndexForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMouseDown)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouseOffset.X + 5, mouseOffset.Y + 30);
+                Location = mousePos;
+            }
+        }
+
+        private void IndexForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            // 修改鼠标状态isMouseDown的值
+            // 确保只有鼠标左键按下并移动时，才移动窗体
+            if (e.Button == MouseButtons.Left)
+            {
+                isMouseDown = false;
+            }
+        }
 
     }
 }

@@ -45,11 +45,7 @@ namespace DAMS.UI.Common
             totalLength = 0d;
             currentProgress = 0d;
             percent = 0;
-            categorys = new List<Catagorys>() { 
-                new Catagorys(){Id=1, Type = 5,ItemText = "1",ItemValue=".swf,.wav,.wma,.flv,.f4v,.rm,.wmv,.avi,.3gp,.mov,.mpg,.mpeg,.rmvb,.mp4",CreatedTime = DateTime.Now},
-                new Catagorys(){Id=2, Type = 5,ItemText = "2",ItemValue=".mp3,.m4a",CreatedTime = DateTime.Now},
-                new Catagorys(){Id=3, Type = 5,ItemText = "3",ItemValue=".pdf,.rtf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt",CreatedTime = DateTime.Now}
-            };
+            categorys = categoryService.GetCategorysByType((int)EnumData.CatagoryType.FileType);
         }
         /// <summary>
         /// 校验盘符信息
@@ -147,8 +143,8 @@ namespace DAMS.UI.Common
                 }
                 if (resModel == null)
                 {
-                    var tempCategory = categorys.FirstOrDefault(x => x.ItemValue.IndexOf(file.Extension.ToLower()) > -1);
-                    var fileType = tempCategory != null ? Convert.ToInt32(tempCategory.ItemText) : 1;
+                    var tempCategory = categorys.FirstOrDefault(x => x.ItemText.IndexOf(file.Extension.ToLower()) > -1);
+                    var fileType = tempCategory != null ? Convert.ToInt32(tempCategory.ItemValue) : (int)EnumData.ResourceType.World;
 
                     resModel = new Resources()
                     {
