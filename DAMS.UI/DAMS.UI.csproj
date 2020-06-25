@@ -15,7 +15,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -32,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo48.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibUsbDotNet, Version=2.2.8.104, Culture=neutral, processorArchitecture=MSIL">
@@ -212,6 +215,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="logo48.ico" />
     <Content Include="Resources\1061476.png" />
     <Content Include="Resources\addaccount.png" />
     <Content Include="Resources\AddNewpor.png" />
@@ -437,6 +441,10 @@
     <None Include="Resources\Register1.png" />
     <None Include="Resources\key.png" />
     <None Include="Resources\lock.png" />
+    <Content Include="Resources\Home_64_2.png" />
+    <Content Include="Resources\logo.ico" />
+    <Content Include="Resources\logo48.ico" />
+    <Content Include="Resources\logo_64_tm.png" />
     <Content Include="Views\Browser\js\bootstrap.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

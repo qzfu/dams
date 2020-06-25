@@ -47,16 +47,17 @@
             this.setPanelMenu.Controls.Add(this.menuTree);
             this.setPanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.setPanelMenu.Location = new System.Drawing.Point(0, 0);
-            this.setPanelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.setPanelMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.setPanelMenu.Name = "setPanelMenu";
-            this.setPanelMenu.Size = new System.Drawing.Size(267, 679);
+            this.setPanelMenu.Size = new System.Drawing.Size(300, 815);
             this.setPanelMenu.TabIndex = 0;
             // 
             // menuTree
             // 
             this.menuTree.BackColor = System.Drawing.SystemColors.Menu;
+            this.menuTree.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.menuTree.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.menuTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuTree.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuTree.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.menuTree.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.menuTree.ImageIndex = 0;
@@ -64,7 +65,7 @@
             this.menuTree.ItemHeight = 25;
             this.menuTree.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.menuTree.Location = new System.Drawing.Point(0, 0);
-            this.menuTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.menuTree.Margin = new System.Windows.Forms.Padding(0);
             this.menuTree.Name = "menuTree";
             treeNode1.ImageKey = "Down_Open_24.png";
             treeNode1.Name = "node1";
@@ -93,7 +94,7 @@
             treeNode4,
             treeNode5});
             this.menuTree.SelectedImageIndex = 0;
-            this.menuTree.Size = new System.Drawing.Size(267, 679);
+            this.menuTree.Size = new System.Drawing.Size(300, 815);
             this.menuTree.StateImageList = this.treeImageList;
             this.menuTree.TabIndex = 0;
             this.menuTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.menuTree_AfterSelect);
@@ -108,22 +109,23 @@
             // setPanelContent
             // 
             this.setPanelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.setPanelContent.Location = new System.Drawing.Point(267, 0);
-            this.setPanelContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.setPanelContent.Location = new System.Drawing.Point(300, 0);
+            this.setPanelContent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.setPanelContent.Name = "setPanelContent";
-            this.setPanelContent.Size = new System.Drawing.Size(1061, 679);
+            this.setPanelContent.Padding = new System.Windows.Forms.Padding(3);
+            this.setPanelContent.Size = new System.Drawing.Size(1194, 815);
             this.setPanelContent.TabIndex = 1;
             // 
             // SettingControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.setPanelContent);
             this.Controls.Add(this.setPanelMenu);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "SettingControl";
-            this.Size = new System.Drawing.Size(1328, 679);
+            this.Size = new System.Drawing.Size(1494, 815);
             this.setPanelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

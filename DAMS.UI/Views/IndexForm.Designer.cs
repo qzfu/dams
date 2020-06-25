@@ -66,6 +66,7 @@
             this.mPanel.Location = new System.Drawing.Point(0, 84);
             this.mPanel.Margin = new System.Windows.Forms.Padding(0);
             this.mPanel.Name = "mPanel";
+            this.mPanel.Padding = new System.Windows.Forms.Padding(1);
             this.mPanel.Size = new System.Drawing.Size(996, 543);
             this.mPanel.TabIndex = 1;
             // 
@@ -142,15 +143,17 @@
             // homeBtn
             // 
             this.homeBtn.BackColor = System.Drawing.Color.Transparent;
-            this.homeBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.home_48;
+            this.homeBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.logo_64_tm;
+            this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.homeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeBtn.FlatAppearance.BorderSize = 0;
             this.homeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.homeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.homeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeBtn.Location = new System.Drawing.Point(32, 12);
+            this.homeBtn.ForeColor = System.Drawing.Color.Transparent;
+            this.homeBtn.Location = new System.Drawing.Point(26, 7);
             this.homeBtn.Name = "homeBtn";
-            this.homeBtn.Size = new System.Drawing.Size(59, 48);
+            this.homeBtn.Size = new System.Drawing.Size(64, 64);
             this.homeBtn.TabIndex = 11;
             this.homeBtn.UseVisualStyleBackColor = false;
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);

@@ -33,6 +33,17 @@ namespace DAMS.UI.Views.Controls
             Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem2 = new Telerik.WinControls.UI.RadCheckedListDataItem();
             Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem3 = new Telerik.WinControls.UI.RadCheckedListDataItem();
             this.ManageGridPage = new System.Windows.Forms.DataGridView();
+            this.CheckRecord = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EquipmentNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepartId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UploadTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UploadTime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Player = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Label1 = new System.Windows.Forms.Label();
             this.object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2 = new Telerik.WinControls.RootRadElement();
             this.QResourceType = new Telerik.WinControls.UI.RadCheckedDropDownList();
@@ -52,17 +63,6 @@ namespace DAMS.UI.Views.Controls
             this.DownLoadButton = new Telerik.WinControls.UI.RadButton();
             this.ResetButton = new Telerik.WinControls.UI.RadButton();
             this.QueryButton = new Telerik.WinControls.UI.RadButton();
-            this.CheckRecord = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EquipmentNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DepartId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UploadTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UploadTime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Player = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ResourceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ManageGridPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QResourceType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QBeginDate)).BeginInit();
@@ -83,6 +83,7 @@ namespace DAMS.UI.Views.Controls
             this.ManageGridPage.AllowUserToDeleteRows = false;
             this.ManageGridPage.AllowUserToResizeRows = false;
             this.ManageGridPage.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.ManageGridPage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ManageGridPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ManageGridPage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckRecord,
@@ -97,212 +98,14 @@ namespace DAMS.UI.Views.Controls
             this.Player,
             this.ResourceId});
             this.ManageGridPage.GridColor = System.Drawing.Color.LavenderBlush;
-            this.ManageGridPage.Location = new System.Drawing.Point(0, 154);
-            this.ManageGridPage.Margin = new System.Windows.Forms.Padding(4);
+            this.ManageGridPage.Location = new System.Drawing.Point(0, 185);
+            this.ManageGridPage.Margin = new System.Windows.Forms.Padding(0);
             this.ManageGridPage.Name = "ManageGridPage";
             this.ManageGridPage.RowHeadersVisible = false;
             this.ManageGridPage.RowTemplate.Height = 23;
-            this.ManageGridPage.Size = new System.Drawing.Size(1328, 525);
+            this.ManageGridPage.Size = new System.Drawing.Size(1488, 630);
             this.ManageGridPage.TabIndex = 0;
             this.ManageGridPage.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ManageGridPage_CellContentClick);
-            // 
-            // Label1
-            // 
-            this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(16, 20);
-            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(67, 15);
-            this.Label1.TabIndex = 1;
-            this.Label1.Text = "文件类型";
-            // 
-            // object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2
-            // 
-            this.object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2.Name = "object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2";
-            this.object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2.StretchHorizontally = true;
-            this.object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2.StretchVertically = true;
-            // 
-            // QResourceType
-            // 
-            this.QResourceType.DropDownAnimationEnabled = false;
-            this.QResourceType.DropDownHeight = 110;
-            radCheckedListDataItem1.Text = "视频";
-            radCheckedListDataItem2.Text = "音频";
-            radCheckedListDataItem3.Text = "文档";
-            this.QResourceType.Items.Add(radCheckedListDataItem1);
-            this.QResourceType.Items.Add(radCheckedListDataItem2);
-            this.QResourceType.Items.Add(radCheckedListDataItem3);
-            this.QResourceType.Location = new System.Drawing.Point(95, 15);
-            this.QResourceType.Margin = new System.Windows.Forms.Padding(4);
-            this.QResourceType.Name = "QResourceType";
-            this.QResourceType.ShowCheckAllItems = true;
-            this.QResourceType.Size = new System.Drawing.Size(253, 20);
-            this.QResourceType.TabIndex = 2;
-            ((Telerik.WinControls.UI.RadCheckedDropDownListElement)(this.QResourceType.GetChildAt(0))).DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDown;
-            ((Telerik.WinControls.UI.RadCheckedDropDownListElement)(this.QResourceType.GetChildAt(0))).CaseSensitive = false;
-            // 
-            // QDateType
-            // 
-            this.QDateType.FormattingEnabled = true;
-            this.QDateType.Items.AddRange(new object[] {
-            "拍摄时间",
-            "上传时间"});
-            this.QDateType.Location = new System.Drawing.Point(456, 15);
-            this.QDateType.Margin = new System.Windows.Forms.Padding(4);
-            this.QDateType.Name = "QDateType";
-            this.QDateType.Size = new System.Drawing.Size(139, 23);
-            this.QDateType.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(627, 20);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "从";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(911, 19);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 15);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "到";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 61);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "人员编号";
-            // 
-            // QBeginDate
-            // 
-            this.QBeginDate.Location = new System.Drawing.Point(657, 15);
-            this.QBeginDate.Margin = new System.Windows.Forms.Padding(4);
-            this.QBeginDate.Name = "QBeginDate";
-            this.QBeginDate.Size = new System.Drawing.Size(240, 24);
-            this.QBeginDate.TabIndex = 10;
-            this.QBeginDate.TabStop = false;
-            this.QBeginDate.Text = "2020年6月6日";
-            this.QBeginDate.Value = new System.DateTime(2020, 6, 6, 0, 0, 0, 0);
-            // 
-            // QEndDate
-            // 
-            this.QEndDate.Location = new System.Drawing.Point(941, 15);
-            this.QEndDate.Margin = new System.Windows.Forms.Padding(4);
-            this.QEndDate.Name = "QEndDate";
-            this.QEndDate.Size = new System.Drawing.Size(235, 24);
-            this.QEndDate.TabIndex = 11;
-            this.QEndDate.TabStop = false;
-            this.QEndDate.Text = "2020年6月13日";
-            this.QEndDate.Value = new System.DateTime(2020, 6, 13, 0, 0, 0, 0);
-            // 
-            // QUserId
-            // 
-            this.QUserId.Location = new System.Drawing.Point(95, 59);
-            this.QUserId.Margin = new System.Windows.Forms.Padding(4);
-            this.QUserId.Name = "QUserId";
-            this.QUserId.Size = new System.Drawing.Size(253, 24);
-            this.QUserId.TabIndex = 12;
-            // 
-            // QUserName
-            // 
-            this.QUserName.Location = new System.Drawing.Point(535, 61);
-            this.QUserName.Margin = new System.Windows.Forms.Padding(4);
-            this.QUserName.Name = "QUserName";
-            this.QUserName.Size = new System.Drawing.Size(253, 24);
-            this.QUserName.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(456, 64);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 15);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "人员姓名";
-            // 
-            // QEquipmentNo
-            // 
-            this.QEquipmentNo.Location = new System.Drawing.Point(923, 64);
-            this.QEquipmentNo.Margin = new System.Windows.Forms.Padding(4);
-            this.QEquipmentNo.Name = "QEquipmentNo";
-            this.QEquipmentNo.Size = new System.Drawing.Size(253, 24);
-            this.QEquipmentNo.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(844, 66);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 15);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "设备编号";
-            // 
-            // CheckButton
-            // 
-            this.CheckButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CheckButton.Location = new System.Drawing.Point(23, 104);
-            this.CheckButton.Margin = new System.Windows.Forms.Padding(4);
-            this.CheckButton.Name = "CheckButton";
-            this.CheckButton.Size = new System.Drawing.Size(100, 30);
-            this.CheckButton.TabIndex = 17;
-            this.CheckButton.Text = "全选/反选";
-            this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DeleteButton.Location = new System.Drawing.Point(248, 104);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(100, 30);
-            this.DeleteButton.TabIndex = 18;
-            this.DeleteButton.Text = "删除";
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
-            // DownLoadButton
-            // 
-            this.DownLoadButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DownLoadButton.Location = new System.Drawing.Point(395, 104);
-            this.DownLoadButton.Margin = new System.Windows.Forms.Padding(4);
-            this.DownLoadButton.Name = "DownLoadButton";
-            this.DownLoadButton.Size = new System.Drawing.Size(100, 30);
-            this.DownLoadButton.TabIndex = 19;
-            this.DownLoadButton.Text = "下载";
-            this.DownLoadButton.Visible = false;
-            // 
-            // ResetButton
-            // 
-            this.ResetButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ResetButton.Location = new System.Drawing.Point(887, 104);
-            this.ResetButton.Margin = new System.Windows.Forms.Padding(4);
-            this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(100, 30);
-            this.ResetButton.TabIndex = 20;
-            this.ResetButton.Text = "重置";
-            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
-            // 
-            // QueryButton
-            // 
-            this.QueryButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.QueryButton.Location = new System.Drawing.Point(1076, 104);
-            this.QueryButton.Margin = new System.Windows.Forms.Padding(4);
-            this.QueryButton.Name = "QueryButton";
-            this.QueryButton.Size = new System.Drawing.Size(100, 30);
-            this.QueryButton.TabIndex = 21;
-            this.QueryButton.Text = "搜索";
-            this.QueryButton.Click += new System.EventHandler(this.QueryButton_Click);
             // 
             // CheckRecord
             // 
@@ -390,9 +193,207 @@ namespace DAMS.UI.Views.Controls
             this.ResourceId.Name = "ResourceId";
             this.ResourceId.Visible = false;
             // 
+            // Label1
+            // 
+            this.Label1.AutoSize = true;
+            this.Label1.Location = new System.Drawing.Point(18, 24);
+            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(80, 18);
+            this.Label1.TabIndex = 1;
+            this.Label1.Text = "文件类型";
+            // 
+            // object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2
+            // 
+            this.object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2.Name = "object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2";
+            this.object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2.StretchHorizontally = true;
+            this.object_e53cd9ac_f4fb_4c07_8ae9_8bd9a5fb7ca2.StretchVertically = true;
+            // 
+            // QResourceType
+            // 
+            this.QResourceType.DropDownAnimationEnabled = false;
+            this.QResourceType.DropDownHeight = 110;
+            radCheckedListDataItem1.Text = "视频";
+            radCheckedListDataItem2.Text = "音频";
+            radCheckedListDataItem3.Text = "文档";
+            this.QResourceType.Items.Add(radCheckedListDataItem1);
+            this.QResourceType.Items.Add(radCheckedListDataItem2);
+            this.QResourceType.Items.Add(radCheckedListDataItem3);
+            this.QResourceType.Location = new System.Drawing.Point(107, 18);
+            this.QResourceType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.QResourceType.Name = "QResourceType";
+            this.QResourceType.ShowCheckAllItems = true;
+            this.QResourceType.Size = new System.Drawing.Size(285, 20);
+            this.QResourceType.TabIndex = 2;
+            ((Telerik.WinControls.UI.RadCheckedDropDownListElement)(this.QResourceType.GetChildAt(0))).DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDown;
+            ((Telerik.WinControls.UI.RadCheckedDropDownListElement)(this.QResourceType.GetChildAt(0))).CaseSensitive = false;
+            // 
+            // QDateType
+            // 
+            this.QDateType.FormattingEnabled = true;
+            this.QDateType.Items.AddRange(new object[] {
+            "拍摄时间",
+            "上传时间"});
+            this.QDateType.Location = new System.Drawing.Point(513, 18);
+            this.QDateType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.QDateType.Name = "QDateType";
+            this.QDateType.Size = new System.Drawing.Size(156, 26);
+            this.QDateType.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(705, 24);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 18);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "从";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1025, 23);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 18);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "到";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 73);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 18);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "人员编号";
+            // 
+            // QBeginDate
+            // 
+            this.QBeginDate.Location = new System.Drawing.Point(739, 18);
+            this.QBeginDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.QBeginDate.Name = "QBeginDate";
+            this.QBeginDate.Size = new System.Drawing.Size(270, 27);
+            this.QBeginDate.TabIndex = 10;
+            this.QBeginDate.TabStop = false;
+            this.QBeginDate.Text = "2020年6月6日";
+            this.QBeginDate.Value = new System.DateTime(2020, 6, 6, 0, 0, 0, 0);
+            // 
+            // QEndDate
+            // 
+            this.QEndDate.Location = new System.Drawing.Point(1059, 18);
+            this.QEndDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.QEndDate.Name = "QEndDate";
+            this.QEndDate.Size = new System.Drawing.Size(264, 27);
+            this.QEndDate.TabIndex = 11;
+            this.QEndDate.TabStop = false;
+            this.QEndDate.Text = "2020年6月13日";
+            this.QEndDate.Value = new System.DateTime(2020, 6, 13, 0, 0, 0, 0);
+            // 
+            // QUserId
+            // 
+            this.QUserId.Location = new System.Drawing.Point(107, 71);
+            this.QUserId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.QUserId.Name = "QUserId";
+            this.QUserId.Size = new System.Drawing.Size(285, 27);
+            this.QUserId.TabIndex = 12;
+            // 
+            // QUserName
+            // 
+            this.QUserName.Location = new System.Drawing.Point(602, 73);
+            this.QUserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.QUserName.Name = "QUserName";
+            this.QUserName.Size = new System.Drawing.Size(285, 27);
+            this.QUserName.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(513, 77);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 18);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "人员姓名";
+            // 
+            // QEquipmentNo
+            // 
+            this.QEquipmentNo.Location = new System.Drawing.Point(1038, 77);
+            this.QEquipmentNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.QEquipmentNo.Name = "QEquipmentNo";
+            this.QEquipmentNo.Size = new System.Drawing.Size(285, 27);
+            this.QEquipmentNo.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(950, 79);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 18);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "设备编号";
+            // 
+            // CheckButton
+            // 
+            this.CheckButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CheckButton.Location = new System.Drawing.Point(26, 125);
+            this.CheckButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CheckButton.Name = "CheckButton";
+            this.CheckButton.Size = new System.Drawing.Size(112, 36);
+            this.CheckButton.TabIndex = 17;
+            this.CheckButton.Text = "全选/反选";
+            this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteButton.Location = new System.Drawing.Point(279, 125);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(112, 36);
+            this.DeleteButton.TabIndex = 18;
+            this.DeleteButton.Text = "删除";
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // DownLoadButton
+            // 
+            this.DownLoadButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DownLoadButton.Location = new System.Drawing.Point(444, 125);
+            this.DownLoadButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DownLoadButton.Name = "DownLoadButton";
+            this.DownLoadButton.Size = new System.Drawing.Size(112, 36);
+            this.DownLoadButton.TabIndex = 19;
+            this.DownLoadButton.Text = "下载";
+            this.DownLoadButton.Visible = false;
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ResetButton.Location = new System.Drawing.Point(998, 125);
+            this.ResetButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(112, 36);
+            this.ResetButton.TabIndex = 20;
+            this.ResetButton.Text = "重置";
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
+            // QueryButton
+            // 
+            this.QueryButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.QueryButton.Location = new System.Drawing.Point(1210, 125);
+            this.QueryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.QueryButton.Name = "QueryButton";
+            this.QueryButton.Size = new System.Drawing.Size(112, 36);
+            this.QueryButton.TabIndex = 21;
+            this.QueryButton.Text = "搜索";
+            this.QueryButton.Click += new System.EventHandler(this.QueryButton_Click);
+            // 
             // ResourceControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.QueryButton);
@@ -416,7 +417,7 @@ namespace DAMS.UI.Views.Controls
             this.Controls.Add(this.ManageGridPage);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ResourceControl";
-            this.Size = new System.Drawing.Size(1328, 679);
+            this.Size = new System.Drawing.Size(1494, 815);
             ((System.ComponentModel.ISupportInitialize)(this.ManageGridPage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QResourceType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QBeginDate)).EndInit();

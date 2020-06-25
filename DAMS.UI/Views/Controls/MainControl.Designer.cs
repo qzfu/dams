@@ -33,12 +33,12 @@
             // 
             // chartBrowser
             // 
-            this.chartBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartBrowser.Location = new System.Drawing.Point(0, 0);
-            this.chartBrowser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.chartBrowser.MinimumSize = new System.Drawing.Size(30, 30);
             this.chartBrowser.Name = "chartBrowser";
-            this.chartBrowser.Size = new System.Drawing.Size(1494, 814);
+            this.chartBrowser.ScrollBarsEnabled = false;
+            this.chartBrowser.Size = new System.Drawing.Size(1485, 810);
             this.chartBrowser.TabIndex = 0;
             this.chartBrowser.Url = new System.Uri("", System.UriKind.Relative);
             // 
