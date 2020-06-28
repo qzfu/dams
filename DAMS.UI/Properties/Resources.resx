@@ -118,121 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="flat_warning_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_warning_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exit_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flat_download_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_download_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flat_download" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_download1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flat_inform_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_inform_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="exit-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exit-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="exit-16-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exit-16-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="home-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="home-64-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home-64-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="computer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\computer2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flat_refresh2_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_refresh2_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flat_search_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_search_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="key" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\key.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flat_home_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_home_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Register" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Register1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="System_64_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\System_64_32px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sys1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sys1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Login_Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Login_Loading1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="home_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forb_16_lan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forb_16_lan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flat_home" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_home1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tit-bg2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tit-bg2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="warn_16_lan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warn_16_lan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flat_setting_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_setting_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UserManage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UserManage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bg-gred" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg-gred.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flat_pin_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_pin_25251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flat_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_lock1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Home_64_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Home_64_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flat_refresh1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_refresh11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="System_64_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\System_64_24px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="computer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\computer2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="res1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\res1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flat_refresh2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_refresh21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="UserManage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UserManage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="home-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btm_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btm_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exit-32-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exit-32-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tit_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tit_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="home-64-21" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home-64-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Login_Loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Login_Loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="main-btn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\main-btn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flat_warning_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flat_warning_2525.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="flat_home2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\flat_home2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flat_warning_25251" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flat_warning_2525.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tit-bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tit-bg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flat_inform_2525" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flat_inform_2525.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_64_tm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_64_tm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lock_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lock_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -123,4 +123,19 @@
   <metadata name="btmDock.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="RegisterButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAH0AAAAvCAYAAADOxsXZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAHQSURBVHhe7dxdS1RRFMbx82WELGJwIJAgiAQh8NhFIAhB4EUQBIHQhSgIMYIgRBANSGrm9B5J
+        EUZlTJSKomRq2svXGL1frrVHng+xn2fD7+Iszt1/c/a52oUW4Xr235LqNytd0x06k2xEz+jaZ2ZFKBr/
+        UvDapRWz8R2z2b9mPpNMRM/oGn2jc4oeOyAG0wdm8/6C5Cn69rTDlxG9OfrLbO6P5C46R++I3nq4b/bI
+        d4Lkre6do3dEt+nfwiJ6p+j1PWGB6A92hQWi3/cDXjgg+r1tYYHoUz+FBaJPbgkLRJ/YFBaIfndDWCD6
+        +LqwQPSxNWGB6COrwgLR7/wQFog+/F1YIPptoYHot5rCAtFvfhUWiH5jWVgg+tBnYYHo1z8JC0S/9lFY
+        IPrgkrBA9IEPwgLRr74XFoh+5Z2wQPS+RWGB6JffCgtE730jLBC957WwQPSLr4QFol94ISwQ/fxzYYHo
+        3U+FBaKfawgLRK8uCI2T6K2KP1TmJXtPUvTDiN6s+K/82ceSu+gcvSN62fXF7IzvhNNzkqvoG52jd3Fq
+        Nn3iayn8S7NO3xE+k0xEz+h6Erx9Y2THjCU+6Hdxh+iRSwe+ZCF6RtcSd8Nqsa2iOAaY/DRudq/akgAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
 </root>

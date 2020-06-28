@@ -77,7 +77,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::DAMS.UI.Properties.Resources._lock;
+            this.pictureBox2.Image = global::DAMS.UI.Properties.Resources.lock_32px;
             this.pictureBox2.Location = new System.Drawing.Point(49, 111);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(34, 33);
@@ -108,7 +108,7 @@
             // 
             this.RegisterButton.AutoEllipsis = true;
             this.RegisterButton.BackColor = System.Drawing.Color.Transparent;
-            this.RegisterButton.BackgroundImage = global::DAMS.UI.Properties.Resources.main_btn;
+            this.RegisterButton.BackgroundImage = global::DAMS.UI.Properties.Resources.btn_bg;
             this.RegisterButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RegisterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegisterButton.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -127,7 +127,7 @@
             // 
             this.CancelButton.AutoEllipsis = true;
             this.CancelButton.BackColor = System.Drawing.Color.Transparent;
-            this.CancelButton.BackgroundImage = global::DAMS.UI.Properties.Resources.main_btn;
+            this.CancelButton.BackgroundImage = global::DAMS.UI.Properties.Resources.btn_bg;
             this.CancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));

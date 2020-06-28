@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IndexForm));
             this.systemTimer = new System.Windows.Forms.Timer(this.components);
             this.mPanel = new Telerik.WinControls.UI.RadPanel();
             this.btmDock = new Telerik.WinControls.UI.Docking.RadDock();
@@ -72,7 +73,7 @@
             // 
             // btmDock
             // 
-            this.btmDock.BackgroundImage = global::DAMS.UI.Properties.Resources.tit_bg1;
+            this.btmDock.BackgroundImage = global::DAMS.UI.Properties.Resources.btm_bg;
             this.btmDock.Controls.Add(this.documentContainer1);
             this.btmDock.IsCleanUpTarget = true;
             this.btmDock.Location = new System.Drawing.Point(0, 626);
@@ -98,7 +99,7 @@
             // 
             // titPanel
             // 
-            this.titPanel.BackgroundImage = global::DAMS.UI.Properties.Resources.tit_bg2;
+            this.titPanel.BackgroundImage = global::DAMS.UI.Properties.Resources.tit_bg;
             this.titPanel.Controls.Add(this.warnlabel);
             this.titPanel.Controls.Add(this.RegisterButton);
             this.titPanel.Controls.Add(this.homeBtn);
@@ -123,7 +124,7 @@
             this.warnlabel.ForeColor = System.Drawing.Color.Red;
             this.warnlabel.Location = new System.Drawing.Point(500, 6);
             this.warnlabel.Name = "warnlabel";
-            this.warnlabel.Size = new System.Drawing.Size(194, 22);
+            this.warnlabel.Size = new System.Drawing.Size(134, 16);
             this.warnlabel.TabIndex = 13;
             this.warnlabel.Text = "*试用期已过，请先注册！";
             this.warnlabel.Visible = false;
@@ -131,7 +132,7 @@
             // RegisterButton
             // 
             this.RegisterButton.BackColor = System.Drawing.Color.Transparent;
-            this.RegisterButton.BackgroundImage = global::DAMS.UI.Properties.Resources.main_btn;
+            this.RegisterButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RegisterButton.BackgroundImage")));
             this.RegisterButton.ForeColor = System.Drawing.Color.White;
             this.RegisterButton.Location = new System.Drawing.Point(411, 6);
             this.RegisterButton.Name = "RegisterButton";
@@ -143,7 +144,7 @@
             // homeBtn
             // 
             this.homeBtn.BackColor = System.Drawing.Color.Transparent;
-            this.homeBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.logo_64_tm;
+            this.homeBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.home_64px;
             this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.homeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.homeBtn.FlatAppearance.BorderSize = 0;
@@ -161,7 +162,7 @@
             // loginOutBtn
             // 
             this.loginOutBtn.BackColor = System.Drawing.Color.Transparent;
-            this.loginOutBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.exit_16_2;
+            this.loginOutBtn.BackgroundImage = global::DAMS.UI.Properties.Resources.exit_16px;
             this.loginOutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginOutBtn.FlatAppearance.BorderSize = 0;
             this.loginOutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -221,7 +222,7 @@
             // 
             this.btnSystem.AutoEllipsis = true;
             this.btnSystem.BackColor = System.Drawing.Color.Transparent;
-            this.btnSystem.BackgroundImage = global::DAMS.UI.Properties.Resources.main_btn;
+            this.btnSystem.BackgroundImage = global::DAMS.UI.Properties.Resources.btn_bg;
             this.btnSystem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSystem.FlatAppearance.BorderSize = 0;
             this.btnSystem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -229,7 +230,7 @@
             this.btnSystem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSystem.Font = new System.Drawing.Font("微软雅黑", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btnSystem.ForeColor = System.Drawing.Color.White;
-            this.btnSystem.Image = global::DAMS.UI.Properties.Resources.res1;
+            this.btnSystem.Image = global::DAMS.UI.Properties.Resources.sys1;
             this.btnSystem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSystem.Location = new System.Drawing.Point(644, 28);
             this.btnSystem.Margin = new System.Windows.Forms.Padding(0);
@@ -245,7 +246,7 @@
             // 
             this.btnResource.AutoEllipsis = true;
             this.btnResource.BackColor = System.Drawing.Color.Transparent;
-            this.btnResource.BackgroundImage = global::DAMS.UI.Properties.Resources.main_btn;
+            this.btnResource.BackgroundImage = global::DAMS.UI.Properties.Resources.btn_bg;
             this.btnResource.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnResource.FlatAppearance.BorderSize = 0;
             this.btnResource.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
