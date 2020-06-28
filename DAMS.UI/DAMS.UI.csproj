@@ -218,11 +218,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Resources\bg.jpg" />
     <Content Include="Resources\bg.png" />
-    <None Include="Resources\dams-logo.png" />
     <Content Include="Resources\btm_bg.png" />
     <Content Include="Resources\btn_bg.png" />
     <Content Include="Resources\computer2.png" />
-    <Content Include="Resources\exit-16-2.png" />
     <None Include="Resources\register.bmp" />
     <None Include="Resources\Register.png" />
     <None Include="Resources\Register1.png" />
