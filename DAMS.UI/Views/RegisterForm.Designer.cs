@@ -108,16 +108,19 @@
             // 
             this.RegisterButton.AutoEllipsis = true;
             this.RegisterButton.BackColor = System.Drawing.Color.Transparent;
-            this.RegisterButton.BackgroundImage = global::DAMS.UI.Properties.Resources.btn_bg;
+            this.RegisterButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RegisterButton.BackgroundImage")));
             this.RegisterButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RegisterButton.FlatAppearance.BorderSize = 0;
+            this.RegisterButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.RegisterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.RegisterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegisterButton.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.RegisterButton.ForeColor = System.Drawing.Color.White;
             this.RegisterButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.RegisterButton.Location = new System.Drawing.Point(90, 246);
+            this.RegisterButton.Location = new System.Drawing.Point(57, 270);
             this.RegisterButton.Margin = new System.Windows.Forms.Padding(0);
             this.RegisterButton.Name = "RegisterButton";
-            this.RegisterButton.Size = new System.Drawing.Size(93, 36);
+            this.RegisterButton.Size = new System.Drawing.Size(107, 38);
             this.RegisterButton.TabIndex = 5;
             this.RegisterButton.Text = "注册";
             this.RegisterButton.UseVisualStyleBackColor = false;
@@ -127,16 +130,19 @@
             // 
             this.CancelButton.AutoEllipsis = true;
             this.CancelButton.BackColor = System.Drawing.Color.Transparent;
-            this.CancelButton.BackgroundImage = global::DAMS.UI.Properties.Resources.btn_bg;
+            this.CancelButton.BackgroundImage = global::DAMS.UI.Properties.Resources.main_middle_btn;
             this.CancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CancelButton.FlatAppearance.BorderSize = 0;
+            this.CancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.CancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.CancelButton.ForeColor = System.Drawing.Color.White;
             this.CancelButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CancelButton.Location = new System.Drawing.Point(240, 246);
+            this.CancelButton.Location = new System.Drawing.Point(277, 270);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(0);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(93, 36);
+            this.CancelButton.Size = new System.Drawing.Size(107, 38);
             this.CancelButton.TabIndex = 6;
             this.CancelButton.Text = "取消";
             this.CancelButton.UseVisualStyleBackColor = false;

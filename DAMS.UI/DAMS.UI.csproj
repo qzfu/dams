@@ -231,6 +231,8 @@
     <Content Include="Resources\home_64px.png" />
     <Content Include="Resources\key.png" />
     <Content Include="Resources\lock_32px.png" />
+    <None Include="Resources\main-small-btn.png" />
+    <None Include="Resources\main-middle-btn.png" />
     <Content Include="Resources\sys1.png" />
     <None Include="Resources\tit_bg.png" />
     <Content Include="Views\Browser\js\bootstrap.js">

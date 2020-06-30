@@ -183,6 +183,26 @@ namespace DAMS.UI.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap main_middle_btn {
+            get {
+                object obj = ResourceManager.GetObject("main-middle-btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap main_small_btn {
+            get {
+                object obj = ResourceManager.GetObject("main-small-btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Register {
             get {
                 object obj = ResourceManager.GetObject("Register", resourceCulture);

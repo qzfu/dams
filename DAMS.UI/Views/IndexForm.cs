@@ -57,7 +57,7 @@ namespace DAMS.UI.Views
             //验证是否注册过
             if (setService.CheckRegistered())
             {
-                this.RegisterButton.Visible = false;
+                this.Register1Button.Visible = false;
             }
             //验证是否过了试用期
             if (!setService.CheckEffective())
@@ -116,7 +116,7 @@ namespace DAMS.UI.Views
             RegisterForm registerForm = new RegisterForm();
             if (registerForm.ShowDialog() == DialogResult.OK)
             {
-                this.RegisterButton.Visible = false;
+                this.Register1Button.Visible = false;
                 this.warnlabel.Visible = false;
 
                 //注册成功后
@@ -163,6 +163,23 @@ namespace DAMS.UI.Views
             if (e.Button == MouseButtons.Left)
             {
                 isMouseDown = false;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RegisterForm registerForm = new RegisterForm();
+            if (registerForm.ShowDialog() == DialogResult.OK)
+            {
+                this.Register1Button.Visible = false;
+                this.warnlabel.Visible = false;
+
+                //注册成功后
+                //重新渲染画布，启动U盘监听机制
+                this.mPanel.Controls.Clear();
+                MainControl mainControl = new MainControl();
+                mainControl.Dock = DockStyle.Fill;
+                this.mPanel.Controls.Add(mainControl);
             }
         }
 
