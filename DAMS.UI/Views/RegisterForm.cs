@@ -35,6 +35,7 @@ namespace DAMS.UI.Views
                 return;
             }
 
+            var code = RegistrationHelper.getRNum();
             if (registerCode != RegistrationHelper.getRNum())
             {
                 this.titlelabel.Visible = true;
@@ -42,7 +43,7 @@ namespace DAMS.UI.Views
                 return;
             }
 
-            deviceService.SaveRegister();
+            deviceService.SaveRegister(code);
             DialogResult = DialogResult.OK;
             //this.Close();
         }

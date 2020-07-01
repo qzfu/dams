@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -180,7 +182,7 @@ namespace DAMS.Core
         /// <returns></returns>
         public bool UpdateCopyStateResource(Resources res)
         {
-            using (var db =new EFDbContext())
+            using (var db = new EFDbContext())
             {
                 var entity = db.Resources.FirstOrDefault(x => x.ResourceId == res.ResourceId);
                 entity.IsCopyEnd = 1;
@@ -222,7 +224,7 @@ namespace DAMS.Core
                 {
                     db.Catagorys.Add(new Catagorys
                     {
-                        Type = (int) EnumData.CatagoryType.Size,
+                        Type = (int)EnumData.CatagoryType.Size,
                         ItemText = itemText,
                         ItemValue = itemValue,
                         Remark = "系统分辨率",
@@ -257,12 +259,12 @@ namespace DAMS.Core
         {
             using (var db = new EFDbContext())
             {
-                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int) EnumData.CatagoryType.IndexCount);
+                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.IndexCount);
                 if (data == null)
                 {
                     db.Catagorys.Add(new Catagorys
                     {
-                        Type = (int) EnumData.CatagoryType.IndexCount,
+                        Type = (int)EnumData.CatagoryType.IndexCount,
                         ItemText = itemText,
                         ItemValue = itemValue,
                         Remark = "加载U盘个数",
@@ -329,17 +331,26 @@ namespace DAMS.Core
                 }
 
                 data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Register);
+                var registerCode = MD5Helper.GenerateMD5(RegistrationHelper.getRNum());
                 if (data == null)
                 {
                     db.Catagorys.Add(new Catagorys
                     {
                         Type = (int)EnumData.CatagoryType.Register,
-                        ItemText = "0",
+                        ItemText = registerCode,
                         ItemValue = "0",
                         Remark = "",
                         CreatedTime = DateTime.Now
                     });
                     db.SaveChanges();
+                }
+                else
+                {
+                    if (data.ItemText == "0" || data.ItemText == "1")
+                    {
+                        data.ItemText = registerCode;
+                        db.SaveChanges();
+                    }
                 }
             }
         }
@@ -348,7 +359,7 @@ namespace DAMS.Core
         /// 注册成功保存记录
         /// </summary>
         /// <returns></returns>
-        public bool SaveRegister()
+        public bool SaveRegister(string code)
         {
             using (var db = new EFDbContext())
             {
@@ -356,22 +367,31 @@ namespace DAMS.Core
                 var data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Register);
                 if (data == null)
                 {
+                    var registerCode = MD5Helper.GenerateMD5(RegistrationHelper.getRNum());
                     db.Catagorys.Add(new Catagorys
                     {
-                        Type = (int) EnumData.CatagoryType.Register,
-                        ItemText = "1",
-                        ItemValue = "1",
+                        Type = (int)EnumData.CatagoryType.Register,
+                        ItemText = registerCode,
+                        ItemValue = code,
                         Remark = "",
                         CreatedTime = DateTime.Now
                     });
                 }
                 else
                 {
-                    data.ItemText = "1";
-                    data.ItemValue = "1";
+                    //data.ItemText = "1";
+                    data.ItemValue = code;
                 }
+                try
+                {
 
-                return db.SaveChanges() > 0;
+                    return db.SaveChanges() > 0;
+                }
+                catch (DbEntityValidationException ex)
+                {
+
+                    throw ex;
+                }
             }
         }
 
@@ -387,10 +407,11 @@ namespace DAMS.Core
                 var data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Register);
                 if (data == null)
                 {
+                    var registerCode = MD5Helper.GenerateMD5(RegistrationHelper.getRNum());
                     db.Catagorys.Add(new Catagorys
                     {
                         Type = (int)EnumData.CatagoryType.Register,
-                        ItemText = "0",
+                        ItemText = registerCode,
                         ItemValue = "0",
                         Remark = "",
                         CreatedTime = DateTime.Now
@@ -401,7 +422,7 @@ namespace DAMS.Core
                 }
                 else
                 {
-                    if (data.ItemValue == "0")
+                    if (MD5Helper.GenerateMD5(data.ItemValue) != data.ItemText)
                     {
                         return false;
                     }
@@ -422,13 +443,14 @@ namespace DAMS.Core
         {
             using (var db = new EFDbContext())
             {
-                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int) EnumData.CatagoryType.Register);
+                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Register);
                 if (data == null)
                 {
+                    var registerCode = MD5Helper.GenerateMD5(RegistrationHelper.getRNum());
                     db.Catagorys.Add(new Catagorys
                     {
-                        Type = (int) EnumData.CatagoryType.Register,
-                        ItemText = "0",
+                        Type = (int)EnumData.CatagoryType.Register,
+                        ItemText = registerCode,
                         ItemValue = "0",
                         Remark = "",
                         CreatedTime = DateTime.Now
@@ -438,7 +460,7 @@ namespace DAMS.Core
                 }
                 else
                 {
-                    if (data.ItemValue == "1") return true;
+                    if (MD5Helper.GenerateMD5(data.ItemValue) == data.ItemText) return true;
 
                     var date = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.StartEnd);
 
@@ -446,7 +468,7 @@ namespace DAMS.Core
                     {
                         db.Catagorys.Add(new Catagorys
                         {
-                            Type = (int) EnumData.CatagoryType.StartEnd,
+                            Type = (int)EnumData.CatagoryType.StartEnd,
                             ItemText = DateTime.Now.ToString("yyyy-MM-dd"),
                             ItemValue = DateTime.Now.ToString("yyyy-MM-dd"),
                             Remark = "",
@@ -461,7 +483,7 @@ namespace DAMS.Core
                         DateTime.TryParse(date.ItemValue, out startDate);
 
                         TimeSpan sp = DateTime.Today.Subtract(startDate);
-                        if (sp.Days > 7)
+                        if (sp.Days >= 7)
                         {
                             return false;
                         }
@@ -475,5 +497,28 @@ namespace DAMS.Core
                 }
             }
         }
+
+        /// <summary>
+        /// 获取剩余天数
+        /// </summary>
+        /// <returns></returns>
+        public int GetRemainDays()
+        {
+            using (var db = new EFDbContext())
+            {
+                if (CheckEffective())
+                {
+                    var cfg = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.StartEnd);
+                    var startDate = Convert.ToDateTime(cfg.ItemValue);
+
+                    var span = DateTime.Today.Subtract(startDate);
+
+                    return 7 - span.Days;
+                }
+                return 0;
+            }
+
+        }
+
     }
 }

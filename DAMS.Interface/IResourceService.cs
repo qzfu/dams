@@ -95,7 +95,7 @@ namespace DAMS.Interface
         /// 注册成功保存记录
         /// </summary>
         /// <returns></returns>
-        bool SaveRegister();
+        bool SaveRegister(string code);
 
         /// <summary>
         /// 校验是否登陆成功
@@ -108,5 +108,11 @@ namespace DAMS.Interface
         /// </summary>
         /// <returns></returns>
         bool CheckEffective();
+
+        /// <summary>
+        /// 获取剩余天数
+        /// </summary>
+        /// <returns></returns>
+        int GetRemainDays();
     }
 }

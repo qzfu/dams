@@ -44,6 +44,7 @@
             this.btnSystem = new System.Windows.Forms.Button();
             this.btnResource = new System.Windows.Forms.Button();
             this.titLab = new System.Windows.Forms.Label();
+            this.warn1label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btmDock)).BeginInit();
             this.btmDock.SuspendLayout();
@@ -98,6 +99,7 @@
             // titPanel
             // 
             this.titPanel.BackgroundImage = global::DAMS.UI.Properties.Resources.tit_bg;
+            this.titPanel.Controls.Add(this.warn1label);
             this.titPanel.Controls.Add(this.Register1Button);
             this.titPanel.Controls.Add(this.warnlabel);
             this.titPanel.Controls.Add(this.homeBtn);
@@ -144,7 +146,7 @@
             this.warnlabel.ForeColor = System.Drawing.Color.Red;
             this.warnlabel.Location = new System.Drawing.Point(500, 6);
             this.warnlabel.Name = "warnlabel";
-            this.warnlabel.Size = new System.Drawing.Size(194, 22);
+            this.warnlabel.Size = new System.Drawing.Size(170, 19);
             this.warnlabel.TabIndex = 13;
             this.warnlabel.Text = "*试用期已过，请先注册！";
             this.warnlabel.Visible = false;
@@ -284,10 +286,23 @@
             this.titLab.Location = new System.Drawing.Point(93, 24);
             this.titLab.Margin = new System.Windows.Forms.Padding(0);
             this.titLab.Name = "titLab";
-            this.titLab.Size = new System.Drawing.Size(302, 31);
+            this.titLab.Size = new System.Drawing.Size(315, 33);
             this.titLab.TabIndex = 1;
             this.titLab.Text = "天马智能数据采集管理系统";
             this.titLab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // warn1label
+            // 
+            this.warn1label.AutoSize = true;
+            this.warn1label.BackColor = System.Drawing.Color.Transparent;
+            this.warn1label.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.warn1label.ForeColor = System.Drawing.Color.Red;
+            this.warn1label.Location = new System.Drawing.Point(514, 6);
+            this.warn1label.Name = "warn1label";
+            this.warn1label.Size = new System.Drawing.Size(170, 19);
+            this.warn1label.TabIndex = 15;
+            this.warn1label.Text = "*试用期已过，请先注册！";
+            this.warn1label.Visible = false;
             // 
             // IndexForm
             // 
@@ -340,6 +355,7 @@
         private System.Windows.Forms.Button homeBtn;
         private System.Windows.Forms.Label warnlabel;
         private System.Windows.Forms.Button Register1Button;
+        private System.Windows.Forms.Label warn1label;
 
     }
 }
