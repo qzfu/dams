@@ -979,6 +979,7 @@
                     v.info.value = percent;
                     v.data[0].value = percent;
                     v.data[0].label = dataStyle;
+					v.data[1].value = 35 + (100-percent);
                     return false;
                 }
                 else if (v.info && (v.info.value == 0 || v.info.value >= 100)) {
@@ -986,12 +987,27 @@
                     v.info.value = percent;
                     v.data[0].value = percent;
                     v.data[0].label = dataStyle;
+					v.data[1].value = 35 + (100-percent);
                     return false;
                 }
             });
             myChart.setOption(option);
         }
-
+		//移除U盘刷新采集站状态
+		function removeDevice(deviceInfo){
+			$.each(option.series, function (i, v) {
+                if (v.info && v.info.index == deviceInfo) {
+					v.info.index='';
+                    v.info.value = 0;
+                    v.data[0].value = 0;
+                    v.data[0].label = defaultStyle;
+					v.data[1].value = 35;
+                    return false;
+                }
+            });
+            myChart.setOption(option);
+		}
+		
     </script>
 
 </body>

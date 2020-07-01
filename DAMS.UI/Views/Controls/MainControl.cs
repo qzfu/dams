@@ -31,7 +31,8 @@ namespace DAMS.UI.Views.Controls
         public static UsbDevice MyUsbDevice;//USB设备
         private IDeviceNotifier deviceNotifier;//设备变化通知函数
 
-        public delegate void AsynUpdateProgress(string deviceInfo, int percent);//声明一个更新主线程的委托
+        public delegate void AsynUpdateProgress(string deviceInfo, int percent);//声明一个更新资源加载进度的委托
+        public delegate void AsynRemoveDevice(string deviceInfo);//声明一个清空资源采集站状态的委托
 
         //当前程序根目录
         string dirRoot = System.Environment.CurrentDirectory;
@@ -106,9 +107,14 @@ namespace DAMS.UI.Views.Controls
             else if (e.EventType == EventType.DeviceRemoveComplete)
             {
                 //移除USB设备,渲染界面资源加载状态
+                var myVID = e.Device.IdVendor;
+                var myPID = e.Device.IdProduct;
+                var serialNumber = e.Device.SerialNumber;
+                var deviceInfo = myVID.ToString() + "." + myPID.ToString() + "." + serialNumber;
+                HandleRemoveDevice(deviceInfo);
             }
         }
-        //winform访问web的JS函数
+        //更新资源加载进度
         private void HandleRefreshProgess(string deviceInfo, int percent)
         {
             if (InvokeRequired)
@@ -129,6 +135,27 @@ namespace DAMS.UI.Views.Controls
                 objArray[0] = (Object)deviceInfo;
                 objArray[1] = (Object)percent;
                 doc.InvokeScript("refreshProgess", objArray);
+            }
+        }
+        //清空资源采集站状态
+        private void HandleRemoveDevice(string deviceInfo)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new AsynRemoveDevice(delegate(string info)
+                {
+                    HtmlDocument doc = chartBrowser.Document;
+                    Object[] objArray = new Object[1];
+                    objArray[0] = (Object)info;
+                    doc.InvokeScript("removeDevice", objArray);
+                }), deviceInfo);
+            }
+            else
+            {
+                HtmlDocument doc = chartBrowser.Document;
+                Object[] objArray = new Object[1];
+                objArray[0] = (Object)deviceInfo;
+                doc.InvokeScript("removeDevice", objArray);
             }
         }
     }

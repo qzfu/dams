@@ -97,7 +97,7 @@ namespace DAMS.UI.Common
         {
             //创建目标根目录
             CommonHelper.CreateDirectoryIfNotExist(desRoot);
-            //以U盘vid.Pid.serialNumber创建目标文件家
+            //以U盘vid.Pid.serialNumber创建目标文件夹
             deviceInfo = vid.ToString() + "." + pid.ToString() + "." + serialNumber;
             var filePath = @"/" + deviceInfo;
             var destinationPath = desRoot + filePath;
