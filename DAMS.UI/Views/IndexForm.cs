@@ -59,10 +59,19 @@ namespace DAMS.UI.Views
             {
                 this.Register1Button.Visible = false;
             }
-            //验证是否过了试用期
-            if (!setService.CheckEffective())
+            else
             {
-                this.warnlabel.Visible = true;
+                //验证是否过了试用期
+                if (!setService.CheckEffective())
+                {
+                    this.warnlabel.Visible = true;
+                }
+                else
+                {
+                    string message = string.Format("*剩余使用期限{0}天", setService.GetRemainDays());
+                    this.warn1label.Text = message;
+                    this.warn1label.Visible = true;
+                }
             }
         }
 
@@ -118,6 +127,7 @@ namespace DAMS.UI.Views
             {
                 this.Register1Button.Visible = false;
                 this.warnlabel.Visible = false;
+                this.warn1label.Visible = false;
 
                 //注册成功后
                 //重新渲染画布，启动U盘监听机制
