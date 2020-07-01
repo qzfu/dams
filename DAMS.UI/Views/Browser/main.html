@@ -38,7 +38,7 @@
                 position: 'center',
                 show: true,
                 textStyle: {
-                    fontSize: '36',
+                    fontSize: '26',
                     fontWeight: 'normal',
                     color: '#34374E'
                 }
@@ -50,923 +50,101 @@
                 position: 'center',
                 show: true,
                 textStyle: {
-                    fontSize: '36',
+                    fontSize: '26',
                     fontWeight: 'normal',
                     color: '#34374E'
                 }
             }
         };
-
+        var titleArr = [];
+        var seriesArr = [];
+        for (var i = 1; i <= 4; i++) {
+            for (var j = 1; j <= 4; j++) {
+                var title = {
+                    text: '采集站' + i * j,
+                    left: 12.6 + (j - 1) * 25 + '%',
+                    top: 18 + (i - 1) * 25 + '%',
+                    textAlign: 'center',
+                    textStyle: {
+                        fontWeight: 'normal',
+                        fontSize: '14',
+                        color: '#AAAFC8',
+                        textAlign: 'center',
+                    }
+                };
+                titleArr.push(title);
+                //底层环形配置
+                var seriesBtm = {
+                    type: 'pie',
+                    hoverAnimation: false, //鼠标经过的特效
+                    radius: ['20%', '24%'],
+                    center: [13 + (j - 1) * 25 + '%', 14 + (i - 1) * 25 + '%'],
+                    startAngle: 225,
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    label: {
+                        normal: {
+                            position: 'center'
+                        }
+                    },
+                    data: [{
+                        value: 100,
+                        itemStyle: {
+                            normal: {
+                                color: '#E1E8EE'
+                            }
+                        },
+                    }, {
+                        value: 35,
+                        itemStyle: placeHolderStyle,
+                    }]
+                };
+                seriesArr.push(seriesBtm);
+                //上层环形配置
+                var seriesTop = {
+                    type: 'pie',
+                    hoverAnimation: false, //鼠标经过的特效
+                    radius: ['20%', '24%'],
+                    center: [13 + (j - 1) * 25 + '%', 14 + (i - 1) * 25 + '%'],
+                    startAngle: 225,
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    label: {
+                        normal: {
+                            position: 'center'
+                        }
+                    },
+                    data: [{
+                        value: 0,
+                        itemStyle: {
+                            normal: {
+                                color: '#4897f6'
+                            }
+                        },
+                        label: defaultStyle,
+                    }, {
+                        value: 35,
+                        itemStyle: placeHolderStyle,
+                    }],
+                    info: {
+                        index: '',
+                        value: 0,
+                    }
+                }
+                seriesArr.push(seriesTop);
+            }
+        }
 
         option = {
             backgroundColor: '#fff',
-            title: [{
-                text: '采集站1',
-                left: '12.6%',
-                top: '24%',
-                textAlign: 'center',
-                textStyle: {
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    color: '#AAAFC8',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站2',
-                left: '36.6%',
-                top: '24%',
-                textAlign: 'center',
-                textStyle: {
-                    color: '#AAAFC8',
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站3',
-                left: '60.6%',
-                top: '24%',
-                textAlign: 'center',
-                textStyle: {
-                    color: '#AAAFC8',
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站4',
-                left: '85%',
-                top: '24%',
-                textAlign: 'center',
-                textStyle: {
-                    color: '#AAAFC8',
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站5',
-                left: '12.6%',
-                top: '58%',
-                textAlign: 'center',
-                textStyle: {
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    color: '#AAAFC8',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站6',
-                left: '36.6%',
-                top: '58%',
-                textAlign: 'center',
-                textStyle: {
-                    color: '#AAAFC8',
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站7',
-                left: '60.6%',
-                top: '58%',
-                textAlign: 'center',
-                textStyle: {
-                    color: '#AAAFC8',
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站8',
-                left: '85%',
-                top: '58%',
-                textAlign: 'center',
-                textStyle: {
-                    color: '#AAAFC8',
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站9',
-                left: '12.6%',
-                top: '91%',
-                textAlign: 'center',
-                textStyle: {
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    color: '#AAAFC8',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站10',
-                left: '36.6%',
-                top: '91%',
-                textAlign: 'center',
-                textStyle: {
-                    color: '#AAAFC8',
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站11',
-                left: '60.6%',
-                top: '91%',
-                textAlign: 'center',
-                textStyle: {
-                    color: '#AAAFC8',
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    textAlign: 'center',
-                },
-            }, {
-                text: '采集站12',
-                left: '85%',
-                top: '91%',
-                textAlign: 'center',
-                textStyle: {
-                    color: '#AAAFC8',
-                    fontWeight: 'normal',
-                    fontSize: '16',
-                    textAlign: 'center',
-                },
-            }],
-
-            //第一个图表
-            series: [{
-                type: 'pie',
-                hoverAnimation: false, //鼠标经过的特效
-                radius: ['25%', '30%'],
-                center: ['13%', '18%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false, //鼠标经过的特效
-                radius: ['25%', '30%'],
-                center: ['13%', '18%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第二个图表
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['37%', '18%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['37%', '18%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 55,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第三个图表
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['61%', '18%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['61%', '18%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 55,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第四个图表
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['85%', '18%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['85%', '18%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 55,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第五个图表
-            {
-                type: 'pie',
-                hoverAnimation: false, //鼠标经过的特效
-                radius: ['25%', '30%'],
-                center: ['13%', '52%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false, //鼠标经过的特效
-                radius: ['25%', '30%'],
-                center: ['13%', '52%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第六个图表
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['37%', '52%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['37%', '52%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 55,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第七个图表
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['61%', '52%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['61%', '52%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 55,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第八个图表
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['85%', '52%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['85%', '52%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 55,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第九个图层
-            {
-                type: 'pie',
-                hoverAnimation: false, //鼠标经过的特效
-                radius: ['25%', '30%'],
-                center: ['13%', '85%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false, //鼠标经过的特效
-                radius: ['25%', '30%'],
-                center: ['13%', '85%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第10个图表
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['37%', '85%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                },
-
-                ]
-            },
-
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['37%', '85%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 55,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //11个图表
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['61%', '85%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['61%', '85%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 55,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            },
-            //第12个图表
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['85%', '85%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 100,
-                    itemStyle: {
-                        normal: {
-                            color: '#E1E8EE'
-                        }
-                    },
-
-                }, {
-                    value: 35,
-                    itemStyle: placeHolderStyle,
-                }]
-            },
-
-            //上层环形配置
-            {
-                type: 'pie',
-                hoverAnimation: false,
-                radius: ['25%', '30%'],
-                center: ['85%', '85%'],
-                startAngle: 225,
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    value: 0,
-                    itemStyle: {
-                        normal: {
-                            color: '#4897f6'
-                        }
-                    },
-                    label: defaultStyle,
-                }, {
-                    value: 55,
-                    itemStyle: placeHolderStyle,
-                }],
-                info: {
-                    index: '',
-                    value: 0,
-                }
-            }]
+            title: titleArr,
+            series: seriesArr
         };
 
         // 使用刚指定的配置项和数据显示图表。
@@ -979,7 +157,7 @@
                     v.info.value = percent;
                     v.data[0].value = percent;
                     v.data[0].label = dataStyle;
-					v.data[1].value = 35 + (100-percent);
+                    v.data[1].value = 35 + (100 - percent);
                     return false;
                 }
                 else if (v.info && (v.info.value == 0 || v.info.value >= 100)) {
@@ -987,27 +165,26 @@
                     v.info.value = percent;
                     v.data[0].value = percent;
                     v.data[0].label = dataStyle;
-					v.data[1].value = 35 + (100-percent);
+                    v.data[1].value = 35 + (100 - percent);
                     return false;
                 }
             });
             myChart.setOption(option);
         }
 		//移除U盘刷新采集站状态
-		function removeDevice(deviceInfo){
-			$.each(option.series, function (i, v) {
+        function removeDevice(deviceInfo) {
+            $.each(option.series, function (i, v) {
                 if (v.info && v.info.index == deviceInfo) {
-					v.info.index='';
+                    v.info.index = '';
                     v.info.value = 0;
                     v.data[0].value = 0;
                     v.data[0].label = defaultStyle;
-					v.data[1].value = 35;
+                    v.data[1].value = 35;
                     return false;
                 }
             });
             myChart.setOption(option);
-		}
-		
+        }
     </script>
 
 </body>
