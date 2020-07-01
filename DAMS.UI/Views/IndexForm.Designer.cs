@@ -125,9 +125,10 @@
             this.Register1Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Register1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Register1Button.Font = new System.Drawing.Font("微软雅黑", 6.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Register1Button.ForeColor = System.Drawing.Color.Transparent;
+            this.Register1Button.ForeColor = System.Drawing.Color.White;
             this.Register1Button.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Register1Button.Location = new System.Drawing.Point(411, 7);
+            this.Register1Button.Margin = new System.Windows.Forms.Padding(0);
             this.Register1Button.Name = "Register1Button";
             this.Register1Button.Size = new System.Drawing.Size(64, 24);
             this.Register1Button.TabIndex = 14;
@@ -143,7 +144,7 @@
             this.warnlabel.ForeColor = System.Drawing.Color.Red;
             this.warnlabel.Location = new System.Drawing.Point(500, 6);
             this.warnlabel.Name = "warnlabel";
-            this.warnlabel.Size = new System.Drawing.Size(170, 19);
+            this.warnlabel.Size = new System.Drawing.Size(194, 22);
             this.warnlabel.TabIndex = 13;
             this.warnlabel.Text = "*试用期已过，请先注册！";
             this.warnlabel.Visible = false;
@@ -283,7 +284,7 @@
             this.titLab.Location = new System.Drawing.Point(93, 24);
             this.titLab.Margin = new System.Windows.Forms.Padding(0);
             this.titLab.Name = "titLab";
-            this.titLab.Size = new System.Drawing.Size(315, 33);
+            this.titLab.Size = new System.Drawing.Size(302, 31);
             this.titLab.TabIndex = 1;
             this.titLab.Text = "天马智能数据采集管理系统";
             this.titLab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

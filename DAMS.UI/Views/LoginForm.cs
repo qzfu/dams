@@ -64,7 +64,7 @@ namespace DAMS.UI.Views
             if (_userTable.Any())
             {
                 cmbLoginID.DataSource=_userTable;
-                cmbLoginID.DisplayMember = "UserName";
+                cmbLoginID.DisplayMember = "UserId";
                 cmbLoginID.ValueMember = "UserId";
                 if (_userTable.Any())
                 {
@@ -177,7 +177,7 @@ namespace DAMS.UI.Views
 
             ShowMessage("正在登录......");
             Thread.CurrentThread.Join(500);
-            DialogResult = DialogResult.OK;
+            //DialogResult = DialogResult.OK;
             try
             {
                 var loginId = cmbLoginID.Text;
@@ -186,6 +186,7 @@ namespace DAMS.UI.Views
                 if (user == null)
                 {
                     ShowMessage("用户名或密码不正确！");
+                    this.btnLogin.Enabled = true;
                     return;
                 }
                 LoginUser.loginID = this.cmbLoginID.Text;
