@@ -89,7 +89,7 @@ namespace DAMS.UI.Views.Controls
                 var collected = false;
                 while (!collected)
                 {
-                    this.Delay(5000);
+                    this.Delay(4000);
                     //检查当前设备是否需要续传文件
                     if (e.Device == null)
                     {
@@ -120,10 +120,9 @@ namespace DAMS.UI.Views.Controls
             else if (e.EventType == EventType.DeviceRemoveComplete)
             {
                 //移除USB设备,渲染界面资源加载状态
-                var myVID = e.Device.IdVendor;
-                var myPID = e.Device.IdProduct;
                 var serialNumber = e.Device.SerialNumber;
-                var deviceInfo = myVID.ToString() + "." + myPID.ToString() + "." + serialNumber;
+                var deviceInfo = serialNumber;
+                Delay(3000);
                 HandleRemoveDevice(deviceInfo);
             }
         }
