@@ -15,7 +15,7 @@ namespace DAMS.Models
         [Key]
         public int Id { get; set; }
         public int Type { get; set; }
-        [MaxLength(20)]
+        [MaxLength(100)]
         public string ItemValue { get; set; }
         [MaxLength(200)]
         public string ItemText { get; set; }

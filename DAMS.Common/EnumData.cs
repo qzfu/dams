@@ -19,7 +19,8 @@ namespace DAMS.Common
             Warning,
             Confirm,
             Ask,
-            DialogInfo
+            DialogInfo,
+            Auto
         }
 
 

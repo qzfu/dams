@@ -55,7 +55,7 @@ namespace DAMS.UI.Common
         /// <param name="pid">Pid</param>
         /// <param name="serialNumber">serialNumber</param>
         /// <returns>0新增盘符，1中断续传，-1不同磁盘</returns>
-        public int CheckDeviceToken(string root, int vid, int pid, string serialNumber)
+        public int CheckDeviceToken(string root, string serialNumber)
         {
             string xmlPath = root + "deviceToken.xml";
             if (!File.Exists(xmlPath))
@@ -64,8 +64,6 @@ namespace DAMS.UI.Common
                 //获取根节点对象
                 XDocument document = new XDocument();
                 XElement node = new XElement("token");
-                node.SetElementValue("vid", vid);
-                node.SetElementValue("pid", pid);
                 node.SetElementValue("serialNumber", serialNumber);
                 node.Save(xmlPath);
                 return 0;
@@ -77,10 +75,8 @@ namespace DAMS.UI.Common
                     XDocument doc = XDocument.Load(xmlPath);
                     XElement nodeRoot = doc.Root;
                     IEnumerable<XElement> nodes = nodeRoot.Elements();
-                    var nodeVid = nodes.FirstOrDefault(x => x.Name == "vid").Value;
-                    var nodePid = nodes.FirstOrDefault(x => x.Name == "pid").Value;
                     var nodeSerialNumber = nodes.FirstOrDefault(x => x.Name == "serialNumber").Value;
-                    if (nodeVid == vid.ToString() && nodePid == pid.ToString() && nodeSerialNumber == serialNumber)
+                    if (nodeSerialNumber == serialNumber)
                     {
                         return 1;
                     }
@@ -93,17 +89,17 @@ namespace DAMS.UI.Common
             }
         }
 
-        public void CopyFilesTo(DirectoryInfo sourceDirectory, int vid, int pid, string serialNumber)
+        public void CopyFilesTo(DirectoryInfo sourceDirectory, string serialNumber)
         {
             //创建目标根目录
             CommonHelper.CreateDirectoryIfNotExist(desRoot);
             //以U盘vid.Pid.serialNumber创建目标文件夹
-            deviceInfo = vid.ToString() + "." + pid.ToString() + "." + serialNumber;
+            deviceInfo = serialNumber;
             var filePath = @"/" + deviceInfo;
             var destinationPath = desRoot + filePath;
             CommonHelper.CreateDirectoryIfNotExist(destinationPath);
             //获取目标文件夹中已存在的文件列表
-            List<Resources> currResources = deviceService.GetCurrentDiskResourceList(vid, pid, serialNumber);
+            List<Resources> currResources = deviceService.GetCurrentDiskResourceList(serialNumber);
             var dicPath = new List<FileTransactionDTO>();
             var resources = new List<Resources>();
             CopyTo(sourceDirectory, filePath, destinationPath, currResources, deviceInfo, ref dicPath);
@@ -205,6 +201,7 @@ namespace DAMS.UI.Common
             {
                 toFile = File.OpenWrite(toPath);
                 startPosition = toFile.Length;
+                currentProgress += (double)startPosition / 1024d / 1024d;
             }
             else
             {

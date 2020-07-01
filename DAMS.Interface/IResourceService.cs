@@ -26,11 +26,9 @@ namespace DAMS.Interface
         /// <summary>
         /// 获取原磁盘文件列表
         /// </summary>
-        /// <param name="vid"></param>
-        /// <param name="pid"></param>
         /// <param name="serialNumber"></param>
         /// <returns></returns>
-        List<Resources> GetCurrentDiskResourceList(int vid, int pid, string serialNumber);
+        List<Resources> GetCurrentDiskResourceList(string serialNumber);
         /// <summary>
         /// 新增资源
         /// </summary>

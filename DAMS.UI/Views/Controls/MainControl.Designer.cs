@@ -51,7 +51,6 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "MainControl";
             this.Size = new System.Drawing.Size(1494, 814);
-            this.Load += new System.EventHandler(this.MainControl_Load);
             this.ResumeLayout(false);
 
         }

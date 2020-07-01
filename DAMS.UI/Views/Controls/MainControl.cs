@@ -20,6 +20,7 @@ using DAMS.Core.ClassFactory;
 using DAMS.UI.Common;
 using System.Management;
 using System.Threading;
+using System.Diagnostics;
 
 namespace DAMS.UI.Views.Controls
 {
@@ -70,39 +71,51 @@ namespace DAMS.UI.Views.Controls
             chartBrowser.ObjectForScripting = this;
         }
         
-        private void MainControl_Load(object sender, EventArgs e)
+        public void Delay(int millSeconds)
         {
-            
-            
+            Stopwatch watch = Stopwatch.StartNew();
+            while (watch.ElapsedMilliseconds < millSeconds)
+            {
+                System.Threading.Thread.Sleep(50);
+                Application.DoEvents();
+            }
+            watch.Stop();
         }
-
         private void OnDeviceNotifyEvent(object sender, DeviceNotifyEventArgs e)
         {
             if (e.EventType == EventType.DeviceArrival)
             {
-                Thread.Sleep(15000);
-                //检查当前设备是否需要续传文件
-                var myVID = e.Device.IdVendor;
-                var myPID = e.Device.IdProduct;
-                var serialNumber = e.Device.SerialNumber;
-
-                DriveInfo[] allDrives = DriveInfo.GetDrives();
-                DeviceControl device = new DeviceControl();
-                foreach (DriveInfo d in allDrives)
+                MessageUtil.ShowMessage("正在识别资源，请等待...", EnumData.MessageType.Information, this);
+                var collected = false;
+                while (!collected)
                 {
-                    if (d.DriveType == DriveType.Removable)
+                    this.Delay(5000);
+                    //检查当前设备是否需要续传文件
+                    if (e.Device == null)
                     {
-                        var deviceName = d.Name;
-                        var deviceRoot = d.RootDirectory;
-                        var checkToken = device.CheckDeviceToken(deviceName, myVID, myPID, serialNumber);
-                        if (checkToken < 0) continue;
-                        device.SetProgressDelegate += HandleRefreshProgess;
-                        Action<DirectoryInfo, int, int, string> copyAction = device.CopyFilesTo;
-                        copyAction.BeginInvoke(deviceRoot, myVID, myPID, serialNumber, null, null);
-                        //device.CopyFilesTo(deviceRoot, myVID, myPID, serialNumber);
+                        collected = true;
+                        break;
+                    }
+                    var serialNumber = e.Device.SerialNumber.ToUpper();
+                    DriveInfo[] allDrives = DriveInfo.GetDrives();
+                    DeviceControl device = new DeviceControl();
+                    foreach (DriveInfo d in allDrives)
+                    {
+                        if (d.DriveType == DriveType.Removable)
+                        {
+                            var deviceName = d.Name;
+                            var deviceRoot = d.RootDirectory;
+                            var checkToken = device.CheckDeviceToken(deviceName, serialNumber);
+                            if (checkToken < 0) continue;
+                            device.SetProgressDelegate += HandleRefreshProgess;
+                            Action<DirectoryInfo, string> copyAction = device.CopyFilesTo;
+                            copyAction.BeginInvoke(deviceRoot, serialNumber, null, null);
+                            collected = true;
+                            break;
+                        }
                     }
                 }
-
+                collected = false;
             }
             else if (e.EventType == EventType.DeviceRemoveComplete)
             {

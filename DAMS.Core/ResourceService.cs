@@ -119,12 +119,11 @@ namespace DAMS.Core
             }
         }
 
-        public List<Resources> GetCurrentDiskResourceList(int vid, int pid, string serialNumber)
+        public List<Resources> GetCurrentDiskResourceList(string serialNumber)
         {
             using (var db = new EFDbContext())
             {
-                var deviceInfo = vid.ToString() + "." + pid.ToString() + "." + serialNumber;
-                return db.Resources.Where(x => x.DeviceInfo == deviceInfo).ToList();
+                return db.Resources.Where(x => x.DeviceInfo == serialNumber).ToList();
             }
         }
         public void AddResource(Resources resource, string deviceInfo)
