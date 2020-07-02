@@ -87,10 +87,19 @@ namespace DAMS.UI.Views.Controls
                 {
                     return;
                 }
-                deviceDic.Add(serialNumber, true);
+                if (!deviceDic.ContainsKey(serialNumber))
+                {
+                    deviceDic.Add(serialNumber, true);
+                }
+                else
+                {
+                    deviceDic[serialNumber] = true;
+                }
+
                 //开启任务异步操作，避免多个采集站统计加载时界面假死
-                var deviceTask = Task.Factory.StartNew(() => {
-                    MessageUtil.ShowMessage("正在识别资源，请等待...", EnumData.MessageType.Information, this);
+                Thread ts = new Thread(() =>
+                {
+                    MessageUtil.ShowMessage("正在识别资源，请等待...", EnumData.MessageType.DialogInfo, this);
                     var collected = false;
                     while (!collected)
                     {
@@ -114,7 +123,9 @@ namespace DAMS.UI.Views.Controls
                             }
                         }
                     }
-                }); 
+                });
+                ts.IsBackground = true;
+                ts.Start();
             }
             else if (e.EventType == EventType.DeviceRemoveComplete)
             {
@@ -129,11 +140,10 @@ namespace DAMS.UI.Views.Controls
                 {
                     deviceDic[serialNumber] = false;
                     //开启任务异步操作，避免界面假死
-                    var exitTask = Task.Factory.StartNew(() =>
-                    {
+                    var exit = new Thread(() => {
                         Thread.Sleep(3000);
                         HandleRemoveDevice(serialNumber);
-                    }); 
+                    });
                 }
             }
         }

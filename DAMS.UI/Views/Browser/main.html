@@ -159,7 +159,7 @@
                     v.data[1].value = 35 + (100 - percent);
                     return false;
                 }
-                else if (v.info && v.info.index == '' && v.info.value) {
+                else if (v.info && v.info.index == '' && v.info.value==0) {
                     v.info.index = deviceInfo;
                     v.info.value = percent;
                     v.data[0].value = percent;

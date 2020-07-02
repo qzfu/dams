@@ -40,8 +40,6 @@ namespace DAMS.UI.Common
                         return ShowConfirmMessage(strMessage, parent);
                     case EnumData.MessageType.DialogInfo:
                         return ShowDialogInfoMessage(strMessage, parent);
-                    case EnumData.MessageType.Auto:
-                        return ShowAutoCloseDialogMessage(strMessage, parent);
                     default:
                         return DialogResult.Yes;
                 }
@@ -51,30 +49,7 @@ namespace DAMS.UI.Common
                 return DialogResult.Yes;
             }
         }
-        /// <summary>
-        /// 消息提示框自动关闭
-        /// </summary>
-        /// <param name="strMessage"></param>
-        /// <param name="parent"></param>
-        /// <returns></returns>
-        private static DialogResult ShowAutoCloseDialogMessage(string strMessage, Control parent)
-        {
-            if (parent != null && parent.InvokeRequired)
-            {
-                Func<Control, string, string, MessageBoxButtons, RadMessageIcon, DialogResult> fun = new Func<Control, string, string, MessageBoxButtons, RadMessageIcon, DialogResult>(RadMessageBox.Show);
 
-                object obj = parent.Invoke(fun, parent, strMessage, "警告消息提示", MessageBoxButtons.OK, RadMessageIcon.Exclamation);
-
-                return (DialogResult)obj;
-            }
-            else
-            {
-                if (parent == null)
-                    return RadMessageBox.Show(strMessage, "警告消息提示");
-                else
-                    return RadMessageBox.Show(parent, strMessage, "警告消息提示");
-            }
-        }
         /// <summary>
         /// 错误消息提示框
         /// </summary>
