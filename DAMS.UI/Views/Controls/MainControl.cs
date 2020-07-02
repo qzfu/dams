@@ -37,6 +37,7 @@ namespace DAMS.UI.Views.Controls
 
         //当前程序根目录
         string dirRoot = System.Environment.CurrentDirectory;
+        Dictionary<string, bool> deviceDic;
         public MainControl()
         {
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace DAMS.UI.Views.Controls
 
             //若过了试用期并且未注册，则不进行U盘监听
             if (!deviceService.CheckEffective()) return;
-
+            deviceDic = new Dictionary<string, bool>();
             deviceNotifier = DeviceNotifier.OpenDeviceNotifier();
             deviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
         }
@@ -71,59 +72,69 @@ namespace DAMS.UI.Views.Controls
             chartBrowser.ObjectForScripting = this;
         }
         
-        public void Delay(int millSeconds)
-        {
-            Stopwatch watch = Stopwatch.StartNew();
-            while (watch.ElapsedMilliseconds < millSeconds)
-            {
-                System.Threading.Thread.Sleep(50);
-                Application.DoEvents();
-            }
-            watch.Stop();
-        }
         private void OnDeviceNotifyEvent(object sender, DeviceNotifyEventArgs e)
         {
             if (e.EventType == EventType.DeviceArrival)
             {
-                MessageUtil.ShowMessage("正在识别资源，请等待...", EnumData.MessageType.Information, this);
-                var collected = false;
-                while (!collected)
+                //检查当前设备是否需要续传文件
+                if (e.Device == null)
                 {
-                    this.Delay(4000);
-                    //检查当前设备是否需要续传文件
-                    if (e.Device == null)
+                    return;
+                }
+                //已存在同步资源的采集站，跳过
+                var serialNumber = e.Device.SerialNumber.ToUpper();
+                if (deviceDic.ContainsKey(serialNumber) && deviceDic[serialNumber])
+                {
+                    return;
+                }
+                deviceDic.Add(serialNumber, true);
+                //开启任务异步操作，避免多个采集站统计加载时界面假死
+                var deviceTask = Task.Factory.StartNew(() => {
+                    MessageUtil.ShowMessage("正在识别资源，请等待...", EnumData.MessageType.Information, this);
+                    var collected = false;
+                    while (!collected)
                     {
-                        collected = true;
-                        break;
-                    }
-                    var serialNumber = e.Device.SerialNumber.ToUpper();
-                    DriveInfo[] allDrives = DriveInfo.GetDrives();
-                    DeviceControl device = new DeviceControl();
-                    foreach (DriveInfo d in allDrives)
-                    {
-                        if (d.DriveType == DriveType.Removable)
+                        //每个3秒检测U盘设备
+                        Thread.Sleep(3000);
+                        DriveInfo[] allDrives = DriveInfo.GetDrives();
+                        DeviceControl device = new DeviceControl();
+                        foreach (DriveInfo d in allDrives)
                         {
-                            var deviceName = d.Name;
-                            var deviceRoot = d.RootDirectory;
-                            var checkToken = device.CheckDeviceToken(deviceName, serialNumber);
-                            if (checkToken < 0) continue;
-                            device.SetProgressDelegate += HandleRefreshProgess;
-                            Action<DirectoryInfo, string> copyAction = device.CopyFilesTo;
-                            copyAction.BeginInvoke(deviceRoot, serialNumber, null, null);
-                            collected = true;
-                            break;
+                            if (d.DriveType == DriveType.Removable)
+                            {
+                                var deviceName = d.Name;
+                                var deviceRoot = d.RootDirectory;
+                                var checkToken = device.CheckDeviceToken(deviceName, serialNumber);
+                                if (checkToken < 0) continue;
+                                device.SetProgressDelegate += HandleRefreshProgess;
+                                Action<DirectoryInfo, string> copyAction = device.CopyFilesTo;
+                                copyAction.BeginInvoke(deviceRoot, serialNumber, null, null);
+                                collected = true;
+                                break;
+                            }
                         }
                     }
-                }
-                collected = false;
+                }); 
             }
             else if (e.EventType == EventType.DeviceRemoveComplete)
             {
                 //移除USB设备,渲染界面资源加载状态
-                var serialNumber = e.Device.SerialNumber;
-                var deviceInfo = serialNumber;
-                Delay(3000);
-                HandleRemoveDevice(deviceInfo);
+                if (e.Device == null)
+                {
+                    return;
+                }
+                //检测采集站同步资源状态
+                var serialNumber = e.Device.SerialNumber.ToUpper();
+                if (deviceDic.ContainsKey(serialNumber) && deviceDic[serialNumber])
+                {
+                    deviceDic[serialNumber] = false;
+                    //开启任务异步操作，避免界面假死
+                    var exitTask = Task.Factory.StartNew(() =>
+                    {
+                        Thread.Sleep(3000);
+                        HandleRemoveDevice(serialNumber);
+                    }); 
+                }
             }
         }
         //更新资源加载进度

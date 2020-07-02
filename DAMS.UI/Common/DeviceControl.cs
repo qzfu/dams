@@ -33,6 +33,7 @@ namespace DAMS.UI.Common
         private double currentProgress;
         private string deviceInfo;
         private int percent;
+        private bool progressAbort = false;
         private List<Catagorys> categorys;
         
         public delegate void UpdateProgress(string deviceInfo,int precent);
@@ -106,17 +107,23 @@ namespace DAMS.UI.Common
             //异步线程更新文件采集进度
             Action proressAction = UpdateProgressAction;
             proressAction.BeginInvoke(null, null);
-
-            foreach (var item in dicPath)
+            try
             {
-                var fromFile = item.FromPath;
-                var toFile = item.ToPath;
-                var resModel = item.Resource;
+                foreach (var item in dicPath)
+                {
+                    var fromFile = item.FromPath;
+                    var toFile = item.ToPath;
+                    var resModel = item.Resource;
 
-                //执行Copy文件中断续传
-                CopyFile(fromFile, toFile, flushReadLength);
-                //更新当前资源采集状态为已完成
-                deviceService.UpdateCopyStateResource(resModel);
+                    //执行Copy文件中断续传
+                    CopyFile(fromFile, toFile, flushReadLength);
+                    //更新当前资源采集状态为已完成
+                    deviceService.UpdateCopyStateResource(resModel);
+                }
+            }
+            catch
+            {
+                progressAbort = true;
             }
         }
 
@@ -262,7 +269,7 @@ namespace DAMS.UI.Common
         {
             var temp = Convert.ToInt32(currentProgress * 100 / totalLength);
             percent = 1;
-            while (percent < 100)
+            while (percent < 100 && !progressAbort)//加载资源过程被强制拔出U盘的操作终止子线程
             {
                 if (percent <= temp)
                 {
