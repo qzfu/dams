@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAMS.Core.ClassFactory;
@@ -40,6 +41,11 @@ namespace DAMS.UI.Views.Controls.Setting
             if (data != null)
             {
                 this.AmountTextBox.Text = data.ItemText;
+            }
+            var url = setService.GetDownLoadUrl();
+            if (!string.IsNullOrEmpty(url))
+            {
+                this.DownLoadBox.Text = url;
             }
         }
 
@@ -94,7 +100,41 @@ namespace DAMS.UI.Views.Controls.Setting
                 throw ex;
             }
 
+            try
+            {
+                var text = this.DownLoadBox.Text;
+                Regex regex = new Regex(@"^([a-zA-Z]:\\)?[^\/\:\*\?\""\<\>\|\,]*$");
+                Match m = regex.Match(text);
+                if (!m.Success)
+                {
+                    MessageBox.Show("非法的文件保存路径，请重新选择或输入！");
+                    return;
+                }
+                //regex = new Regex(@"^[^\/\:\*\?\""\<\>\|\,]+$");
+                //m = regex.Match(text);
+                //if (!m.Success)
+                //{
+                //    MessageBox.Show("请勿在文件名中包含\\ / : * ？ \" < > |等字符，请重新输入有效文件名！");
+                //    return;
+                //}
+                setService.SaveDownLoadUrl(text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("文件路径错误，请重新填写!");
+                throw ex;
+            }
+
             MessageBox.Show("保存成功!");
+        }
+
+        private void SelectUrlButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = this.urlfolderBrowserDialog.ShowDialog();
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                this.DownLoadBox.Text = this.urlfolderBrowserDialog.SelectedPath;
+            }
         }
 
     }

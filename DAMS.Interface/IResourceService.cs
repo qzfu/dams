@@ -114,5 +114,20 @@ namespace DAMS.Interface
         /// </summary>
         /// <returns></returns>
         int GetRemainDays();
+
+
+        /// <summary>
+        /// 保存文件下载路径
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        bool SaveDownLoadUrl(string url);
+
+        /// <summary>
+        /// 保存文件下载路径
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        string GetDownLoadUrl();
     }
 }

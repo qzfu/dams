@@ -42,6 +42,11 @@ namespace DAMS.UI.Common
         public DeviceControl()
         {
             desRoot = CommonHelper.GetAppSettings("desdirectory");
+            var setRoot = deviceService.GetDownLoadUrl();
+            //获取配置路径
+            if (!string.IsNullOrEmpty(setRoot))
+                desRoot = setRoot;
+
             flushReadLength =  Convert.ToInt32(CommonHelper.GetAppSettings("FlushReadLength"));
             totalLength = 0d;
             currentProgress = 0d;

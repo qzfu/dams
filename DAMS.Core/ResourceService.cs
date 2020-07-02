@@ -460,7 +460,7 @@ namespace DAMS.Core
                 }
                 else
                 {
-                    if (MD5Helper.GenerateMD5(data.ItemValue) == data.ItemText) return true;
+                    if (MD5Helper.GenerateMD5(data.ItemValue) == data.ItemText && RegistrationHelper.getRNum() == data.ItemValue) return true;
 
                     var date = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.StartEnd);
 
@@ -518,6 +518,57 @@ namespace DAMS.Core
                 return 0;
             }
 
+        }
+
+        /// <summary>
+        /// 保存文件下载路径
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public bool SaveDownLoadUrl(string url)
+        {
+
+            using (var db = new EFDbContext())
+            {
+                var date = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.DownLoadUrl);
+
+                if (date == null)
+                {
+                    db.Catagorys.Add(new Catagorys
+                    {
+                        Type = (int) EnumData.CatagoryType.DownLoadUrl,
+                        ItemText = url,
+                        ItemValue = url,
+                        Remark = "",
+                        CreatedTime = DateTime.Now
+                    });
+                    db.SaveChanges();
+                    return false;
+                }
+                else
+                {
+                    date.ItemText = url;
+                    date.ItemValue = url;
+                }
+                return db.SaveChanges() > 0;
+            }
+        }
+
+        /// <summary>
+        /// 保存文件下载路径
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public string GetDownLoadUrl()
+        {
+            using (var db = new EFDbContext())
+            {
+                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int) EnumData.CatagoryType.DownLoadUrl);
+                if (data == null)
+                    return string.Empty;
+
+                return data.ItemValue;
+            }
         }
 
     }

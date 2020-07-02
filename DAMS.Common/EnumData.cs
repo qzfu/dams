@@ -52,6 +52,8 @@ namespace DAMS.Common
             Register = 4,
             [Description("文件类型格式")]
             FileType = 5,
+            [Description("文件下载地址")]
+            DownLoadUrl = 6
         }
     }
 }

@@ -65,6 +65,10 @@
             this.SaveButton = new Telerik.WinControls.UI.RadButton();
             this.RestartButton = new Telerik.WinControls.UI.RadButton();
             this.AmountTextBox = new Telerik.WinControls.UI.RadTextBox();
+            this.DownLoadBox = new Telerik.WinControls.UI.RadTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.urlfolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.SelectUrlButton = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.SIzeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radDropDownList3)).BeginInit();
@@ -79,6 +83,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SaveButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RestartButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountTextBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DownLoadBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectUrlButton)).BeginInit();
             this.SuspendLayout();
             // 
             // SIzeList
@@ -296,7 +302,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(266, 424);
+            this.SaveButton.Location = new System.Drawing.Point(289, 488);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(67, 30);
             this.SaveButton.TabIndex = 25;
@@ -305,7 +311,7 @@
             // 
             // RestartButton
             // 
-            this.RestartButton.Location = new System.Drawing.Point(448, 424);
+            this.RestartButton.Location = new System.Drawing.Point(471, 488);
             this.RestartButton.Name = "RestartButton";
             this.RestartButton.Size = new System.Drawing.Size(85, 30);
             this.RestartButton.TabIndex = 26;
@@ -320,10 +326,41 @@
             this.AmountTextBox.TabIndex = 25;
             this.AmountTextBox.Text = "12";
             // 
+            // DownLoadBox
+            // 
+            this.DownLoadBox.Location = new System.Drawing.Point(251, 394);
+            this.DownLoadBox.Name = "DownLoadBox";
+            this.DownLoadBox.Size = new System.Drawing.Size(156, 24);
+            this.DownLoadBox.TabIndex = 28;
+            this.DownLoadBox.Text = "D:\\DAMS";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(133, 398);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 15);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "下载地址";
+            // 
+            // SelectUrlButton
+            // 
+            this.SelectUrlButton.Font = new System.Drawing.Font("微软雅黑", 4.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectUrlButton.Location = new System.Drawing.Point(410, 395);
+            this.SelectUrlButton.Name = "SelectUrlButton";
+            this.SelectUrlButton.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.SelectUrlButton.Size = new System.Drawing.Size(21, 23);
+            this.SelectUrlButton.TabIndex = 26;
+            this.SelectUrlButton.Text = "...";
+            this.SelectUrlButton.Click += new System.EventHandler(this.SelectUrlButton_Click);
+            // 
             // CollectControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SelectUrlButton);
+            this.Controls.Add(this.DownLoadBox);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.AmountTextBox);
             this.Controls.Add(this.RestartButton);
             this.Controls.Add(this.SaveButton);
@@ -366,6 +403,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SaveButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RestartButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountTextBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DownLoadBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SelectUrlButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,5 +438,9 @@
         private Telerik.WinControls.UI.RadButton SaveButton;
         private Telerik.WinControls.UI.RadButton RestartButton;
         private Telerik.WinControls.UI.RadTextBox AmountTextBox;
+        private Telerik.WinControls.UI.RadTextBox DownLoadBox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.FolderBrowserDialog urlfolderBrowserDialog;
+        private Telerik.WinControls.UI.RadButton SelectUrlButton;
     }
 }
