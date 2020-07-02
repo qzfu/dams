@@ -99,7 +99,7 @@ namespace DAMS.UI.Views.Controls
                 //开启任务异步操作，避免多个采集站统计加载时界面假死
                 Thread ts = new Thread(() =>
                 {
-                    MessageUtil.ShowMessage("正在识别资源，请等待...", EnumData.MessageType.DialogInfo, this);
+                    MessageUtil.ShowMessage("正在识别资源，请等待...", EnumData.MessageType.Information, this);
                     var collected = false;
                     while (!collected)
                     {
@@ -139,12 +139,15 @@ namespace DAMS.UI.Views.Controls
                 if (deviceDic.ContainsKey(serialNumber) && deviceDic[serialNumber])
                 {
                     deviceDic[serialNumber] = false;
-                    //开启任务异步操作，避免界面假死
-                    var exit = new Thread(() => {
-                        Thread.Sleep(3000);
-                        HandleRemoveDevice(serialNumber);
-                    });
                 }
+                //开启任务异步操作，避免界面假死
+                var exit = new Thread(() =>
+                {
+                    Thread.Sleep(3000);
+                    HandleRemoveDevice(serialNumber);
+                });
+                exit.IsBackground = true;
+                exit.Start();
             }
         }
         //更新资源加载进度

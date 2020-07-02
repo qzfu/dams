@@ -30,7 +30,7 @@ namespace DAMS.UI.Common
                     case EnumData.MessageType.Error:
                         return ShowErrorMessage(strMessage, parent);
                     case EnumData.MessageType.Information:
-                        ShowDesktopAlertMessage(strMessage);
+                        ShowDesktopAlertMessage(strMessage, parent);
                         return DialogResult.OK;
                     case EnumData.MessageType.Warning:
                         return ShowWarningMessage(strMessage, parent);
@@ -176,34 +176,35 @@ namespace DAMS.UI.Common
                     return RadMessageBox.Show(parent, strMessage, "询问消息提示框", MessageBoxButtons.YesNoCancel, RadMessageIcon.Question);
             }
         }
-
-        public static void ShowDesktopAlertMessage(string message,
-            EnumData.MessageType messageType = EnumData.MessageType.Information)
+        //声明一个弹出框的委托
+        public delegate void ActionDelegate(string message,Control parent);
+        public static void ShowDesktopAlertMessage(string message, Control parent)
         {
-            var alert = new RadDesktopAlert();
-
-            alert.ShowOptionsButton = true;
-
-            alert.ShowPinButton = false;
-
-            alert.ThemeName = "Office2010Blue";
-
-            if (messageType == EnumData.MessageType.Information)
+            if (parent != null && parent.InvokeRequired)
             {
+                parent.Invoke(new ActionDelegate(delegate(string s,  Control p)
+                {
+                    var alert = new RadDesktopAlert();
+                    alert.ShowOptionsButton = true;
+                    alert.ShowPinButton = false;
+                    alert.ThemeName = "Office2010Blue";
+                    alert.CaptionText = "消息提示";
+                    alert.ContentImage = Resources.flat_inform_2525;
+                    alert.ContentText = message;
+                    alert.Show();
+                }), message, parent);
+            }
+            else
+            {
+                var alert = new RadDesktopAlert();
+                alert.ShowOptionsButton = true;
+                alert.ShowPinButton = false;
+                alert.ThemeName = "Office2010Blue";
                 alert.CaptionText = "消息提示";
-
                 alert.ContentImage = Resources.flat_inform_2525;
+                alert.ContentText = message;
+                alert.Show();
             }
-            else if (messageType == EnumData.MessageType.Warning)
-            {
-                alert.CaptionText = "消息警告";
-
-                alert.ContentImage = Resources.flat_warning_2525;
-            }
-
-            alert.ContentText = message;
-
-            alert.Show();
         }
         #endregion
     }
