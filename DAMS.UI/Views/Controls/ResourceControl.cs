@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DAMS.Common;
 using DAMS.Core.ClassFactory;
 using DAMS.Core;
 using DAMS.Models.DTO;
@@ -109,7 +110,7 @@ namespace DAMS.UI.Views.Controls
         }
 
         /// <summary>
-        /// 博凡按钮触发
+        /// 播放按钮触发
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -209,26 +210,46 @@ namespace DAMS.UI.Views.Controls
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             var datas = GetSelectData().ToList();
-            var result = Assembler<IResourceService>.Create().DeleteReoucrceByIds(datas.Select(x => x.ResourceId).ToList());
 
-            foreach (var data in datas)
+            DialogResult dr = MessageBox.Show("是否删除源文件", "删除", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes || dr == DialogResult.No)
             {
-                if (File.Exists(data.FilePath))
+
+                var result =
+                    Assembler<IResourceService>.Create().DeleteReoucrceByIds(datas.Select(x => x.ResourceId).ToList());
+
+                //删除源文件
+                if (dr == DialogResult.Yes)
                 {
-                    File.Delete(data.FilePath);
+                    //var path = CommonHelper.GetAppSettings("desdirectory");
+                    //var setRoot = Assembler<IResourceService>.Create().GetDownLoadUrl();
+                    ////获取配置路径
+                    //if (!string.IsNullOrEmpty(setRoot))
+                    //    path = setRoot;
+
+                    foreach (var data in datas)
+                    {
+
+                        //var allpath = path + data.FileName;
+
+                        if (File.Exists(data.FileName))
+                        {
+                            File.Delete(data.FileName);
+                        }
+                    }
                 }
-            }
+                //重新查询
+                this.QueryButton_Click(sender, e);
 
-            //重新查询
-            this.QueryButton_Click(sender, e);
-
-            if (result)
-            {
-                MessageBox.Show("删除成功！");
-            }
-            else
-            {
-                MessageBox.Show("删除成功！");
+                if (result)
+                {
+                    MessageBox.Show("删除成功！");
+                }
+                else
+                {
+                    MessageBox.Show("删除成功！");
+                }
             }
         }
 

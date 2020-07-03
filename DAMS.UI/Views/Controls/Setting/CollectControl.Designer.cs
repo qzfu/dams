@@ -89,7 +89,7 @@
             // 
             // SIzeList
             // 
-            radListDataItem1.Text = "1142×585";
+            radListDataItem1.Text = "996×685";
             radListDataItem2.Text = "1280×1024";
             this.SIzeList.Items.Add(radListDataItem1);
             this.SIzeList.Items.Add(radListDataItem2);
@@ -324,7 +324,7 @@
             this.AmountTextBox.Name = "AmountTextBox";
             this.AmountTextBox.Size = new System.Drawing.Size(156, 24);
             this.AmountTextBox.TabIndex = 25;
-            this.AmountTextBox.Text = "12";
+            this.AmountTextBox.Text = "16";
             // 
             // DownLoadBox
             // 
