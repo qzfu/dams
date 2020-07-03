@@ -101,14 +101,13 @@ namespace DAMS.UI.Common
             CommonHelper.CreateDirectoryIfNotExist(desRoot);
             //以U盘vid.Pid.serialNumber创建目标文件夹
             deviceInfo = serialNumber;
-            var filePath = @"/" + deviceInfo;
-            var destinationPath = desRoot + filePath;
-            CommonHelper.CreateDirectoryIfNotExist(destinationPath);
+            var filePath = desRoot + @"\" + deviceInfo;
+            CommonHelper.CreateDirectoryIfNotExist(filePath);
             //获取目标文件夹中已存在的文件列表
             List<Resources> currResources = deviceService.GetCurrentDiskResourceList(serialNumber);
             var dicPath = new List<FileTransactionDTO>();
             var resources = new List<Resources>();
-            CopyTo(sourceDirectory, filePath, destinationPath, currResources, deviceInfo, ref dicPath);
+            CopyTo(sourceDirectory, filePath, currResources, deviceInfo, ref dicPath);
             //异步线程更新文件采集进度
             Action proressAction = UpdateProgressAction;
             proressAction.BeginInvoke(null, null);
@@ -132,7 +131,7 @@ namespace DAMS.UI.Common
             }
         }
 
-        private void CopyTo(DirectoryInfo sourceDirectory, string filePath, string destinationPath, List<Resources> currResources, string deviceInfo, ref List<FileTransactionDTO> dicPath)
+        private void CopyTo(DirectoryInfo sourceDirectory, string filePath, List<Resources> currResources, string deviceInfo, ref List<FileTransactionDTO> dicPath)
         {
             //复制文件夹下面的文件
             FileInfo[] fileArray = sourceDirectory.GetFiles();
@@ -142,7 +141,7 @@ namespace DAMS.UI.Common
                 {
                     continue;
                 }
-                var itemFileFullName = filePath + "/" + file.Name;
+                var itemFileFullName = filePath + @"\" + file.Name;
                 var resModel = currResources.FirstOrDefault(x => String.Compare(x.FileName, itemFileFullName) == 0);
                 //文件已经存在且已经Copy完毕跳过本层循环
                 if (resModel != null && resModel.IsCopyEnd == 1)
@@ -170,11 +169,9 @@ namespace DAMS.UI.Common
                 totalLength += (double)file.Length / 1024d / 1024d;
                 //源文件文件地址名称
                 var fromFile = file.FullName;
-                //定义目标文件地址名称
-                var tofile = destinationPath + "/" + file.Name;
                 dicPath.Add(new FileTransactionDTO() {
                     FromPath = fromFile,
-                    ToPath = tofile,
+                    ToPath = itemFileFullName,
                     Resource = resModel
                 });
             }
@@ -187,11 +184,10 @@ namespace DAMS.UI.Common
                 {
                     continue;
                 }
-                var itemFilePath = filePath + "/" + dirPath;
-                var itemDirPath = destinationPath + "/" + dirPath;
+                var itemFilePath = filePath + @"\" + dirPath;
 
-                CommonHelper.CreateDirectoryIfNotExist(itemDirPath);
-                CopyTo(dir, itemFilePath, itemDirPath, currResources, deviceInfo, ref dicPath);
+                CommonHelper.CreateDirectoryIfNotExist(itemFilePath);
+                CopyTo(dir, itemFilePath,  currResources, deviceInfo, ref dicPath);
             }
         }
 
