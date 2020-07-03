@@ -69,6 +69,7 @@ namespace DAMS.UI.Views
                 if (_userTable.Any())
                 {
                     cmbLoginID.SelectedValue = _userTable.FirstOrDefault().UserId;
+                    txtPassword.Text = "1"; //_userTable.FirstOrDefault().Password;
                 }
                 else
                 {

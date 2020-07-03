@@ -26,7 +26,7 @@ namespace DAMS.UI.Views.Controls
         {
             InitializeComponent();
             ResetQueryElement();
-          
+            this.QueryData();
         }
 
         /// <summary>
@@ -61,6 +61,11 @@ namespace DAMS.UI.Views.Controls
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void QueryButton_Click(object sender, EventArgs e)
+        {
+           this.QueryData();
+        }
+
+        public void QueryData()
         {
             var queryItem = new ResourceQueryDTO
             {
