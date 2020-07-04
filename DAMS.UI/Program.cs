@@ -16,7 +16,7 @@ namespace DAMS.UI
         [STAThread]
         static void Main()
         {
-            DatabaseInitializer.Initialize();
+            //DatabaseInitializer.Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             LoginForm loginForm = new LoginForm();//加载登录窗体
@@ -25,7 +25,6 @@ namespace DAMS.UI
                 indexForm = new IndexForm();
                 Application.Run(indexForm);//如果登录成功则打开主窗体
             }
-            //Application.Run(new Form1());
         }
     }
 }

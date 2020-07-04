@@ -64,13 +64,9 @@
     <Compile Include="EFDbContext.cs" />
     <Compile Include="Equipments.cs" />
     <Compile Include="Initialize\DatabaseInitializer.cs" />
-    <Compile Include="Migrations\202006211143027_initial.cs" />
-    <Compile Include="Migrations\202006211143027_initial.Designer.cs">
-      <DependentUpon>202006211143027_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202007011544026_update.cs" />
-    <Compile Include="Migrations\202007011544026_update.Designer.cs">
-      <DependentUpon>202007011544026_update.cs</DependentUpon>
+    <Compile Include="Migrations\202007031410043_initial.cs" />
+    <Compile Include="Migrations\202007031410043_initial.Designer.cs">
+      <DependentUpon>202007031410043_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,11 +84,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006211143027_initial.resx">
-      <DependentUpon>202006211143027_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007011544026_update.resx">
-      <DependentUpon>202007011544026_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202007031410043_initial.resx">
+      <DependentUpon>202007031410043_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,7 @@ namespace DAMS.Models.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202006211143027_initial"; }
+            get { return "202007031410043_initial"; }
         }
         
         string IMigrationMetadata.Source

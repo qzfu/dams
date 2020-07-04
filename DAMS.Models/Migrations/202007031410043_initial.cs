@@ -13,7 +13,7 @@ namespace DAMS.Models.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Type = c.Int(nullable: false),
-                        ItemValue = c.String(maxLength: 20, storeType: "nvarchar"),
+                        ItemValue = c.String(maxLength: 100, storeType: "nvarchar"),
                         ItemText = c.String(maxLength: 200, storeType: "nvarchar"),
                         Remark = c.String(maxLength: 2000, storeType: "nvarchar"),
                         CreatedTime = c.DateTime(nullable: false, precision: 0),

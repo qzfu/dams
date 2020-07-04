@@ -38,6 +38,9 @@ namespace DAMS.UI.Views.Controls
         //当前程序根目录
         string dirRoot = System.Environment.CurrentDirectory;
         Dictionary<string, bool> deviceDic;
+        string[] diskArray;
+        int driveNumber;
+        DriveInfo[] allUsbDrives;
         public MainControl()
         {
             InitializeComponent();
@@ -50,6 +53,65 @@ namespace DAMS.UI.Views.Controls
             deviceDic = new Dictionary<string, bool>();
             deviceNotifier = DeviceNotifier.OpenDeviceNotifier();
             deviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
+
+            try
+            {
+                allUsbDrives = DriveInfo.GetDrives().Where(x => x.DriveType == DriveType.Removable).ToArray();
+                //开启任务异步操作，避免多个采集站统计加载时界面假死
+                Thread ts = new Thread(() =>
+                {
+                    MessageUtil.ShowMessage("正在识别资源，请等待...", EnumData.MessageType.Information, this);
+                    var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_LogicalDiskToPartition");
+                    foreach (ManagementObject dm in searcher.Get())
+                    {
+                        var drive = getValueInQuotes(dm["Dependent"].ToString())+@"\";
+                        diskArray = getValueInQuotes(dm["Antecedent"].ToString()).Split(',');
+                        driveNumber = Convert.ToInt32(diskArray[0].Remove(0, 6).Trim());
+                        var disks = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
+                        foreach (ManagementObject disk in disks.Get())
+                        {
+                            if (disk["Name"].ToString() == ("\\\\.\\PHYSICALDRIVE" + driveNumber.ToString()) & disk["InterfaceType"].ToString() == "USB")
+                            {
+                                DeviceControl device = new DeviceControl();
+                                var serialNumber = parseSerialFromDeviceID(disk["PNPDeviceID"].ToString());
+                                DriveInfo d = allUsbDrives.FirstOrDefault(x => x.Name == drive);
+                                if (d == null)
+                                {
+                                    continue;
+                                }
+                                var deviceName = d.Name;
+                                var deviceRoot = d.RootDirectory;
+                                var checkToken = device.CheckDeviceToken(deviceName, serialNumber);
+                                if (checkToken < 0) continue;
+                                device.SetProgressDelegate += HandleRefreshProgess;
+                                Action<DirectoryInfo, string> copyAction = device.CopyFilesTo;
+                                copyAction.BeginInvoke(deviceRoot, serialNumber, null, null);
+                            }
+                        }
+                    }
+                });
+                ts.IsBackground = true;
+                ts.Start();
+            }
+            catch 
+            {
+
+            }
+        }
+        private static string parseSerialFromDeviceID(string deviceId)
+        {
+            var splitDeviceId = deviceId.Split('\\');
+            var arrayLen = splitDeviceId.Length - 1;
+            var serialArray = splitDeviceId[arrayLen].Split('&');
+            var serial = serialArray[0];
+            return serial;
+        }
+        private static string getValueInQuotes(string inValue)
+        {
+            var posFoundStart = inValue.IndexOf("\"");
+            var posFoundEnd = inValue.IndexOf("\"", posFoundStart + 1);
+            var parsedValue = inValue.Substring(posFoundStart + 1, (posFoundEnd - posFoundStart) - 1);
+            return parsedValue;
         }
         /// <summary>
         /// 初始化浏览器
@@ -105,22 +167,19 @@ namespace DAMS.UI.Views.Controls
                     {
                         //每个3秒检测U盘设备
                         Thread.Sleep(3000);
-                        DriveInfo[] allDrives = DriveInfo.GetDrives();
+                        DriveInfo[] allDrives = DriveInfo.GetDrives().Where(x => x.DriveType == DriveType.Removable).ToArray();
                         DeviceControl device = new DeviceControl();
                         foreach (DriveInfo d in allDrives)
                         {
-                            if (d.DriveType == DriveType.Removable)
-                            {
-                                var deviceName = d.Name;
-                                var deviceRoot = d.RootDirectory;
-                                var checkToken = device.CheckDeviceToken(deviceName, serialNumber);
-                                if (checkToken < 0) continue;
-                                device.SetProgressDelegate += HandleRefreshProgess;
-                                Action<DirectoryInfo, string> copyAction = device.CopyFilesTo;
-                                copyAction.BeginInvoke(deviceRoot, serialNumber, null, null);
-                                collected = true;
-                                break;
-                            }
+                            var deviceName = d.Name;
+                            var deviceRoot = d.RootDirectory;
+                            var checkToken = device.CheckDeviceToken(deviceName, serialNumber);
+                            if (checkToken < 0) continue;
+                            device.SetProgressDelegate += HandleRefreshProgess;
+                            Action<DirectoryInfo, string> copyAction = device.CopyFilesTo;
+                            copyAction.BeginInvoke(deviceRoot, serialNumber, null, null);
+                            collected = true;
+                            break;
                         }
                     }
                 });
