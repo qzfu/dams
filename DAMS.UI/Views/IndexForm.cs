@@ -30,7 +30,7 @@ namespace DAMS.UI.Views
 
         private void IndexForm_Load(object sender, EventArgs e)
         {
-            this.labTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:ss");
+            this.labTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             this.mPanel.Controls.Clear();
             mControl = new MainControl();
             mControl.Dock = DockStyle.Fill;
@@ -77,7 +77,7 @@ namespace DAMS.UI.Views
 
         private void systemTimer_Tick(object sender, EventArgs e)
         {
-            this.labTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:ss");
+            this.labTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         private void btnMin_Click(object sender, EventArgs e)
