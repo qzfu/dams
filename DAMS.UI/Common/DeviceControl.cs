@@ -248,40 +248,46 @@ namespace DAMS.UI.Common
             long totalFileLength = fromFile.Length - startPosition;
             //调整源文件读取针位置
             fromFile.Seek(startPosition, SeekOrigin.Current);
-            if (eachReadLength < totalFileLength)
+            try
             {
-                byte[] buffer = new byte[eachReadLength];
-                long copied = 0;
-                while (copied < totalFileLength)
+                if (eachReadLength < totalFileLength)
                 {
-                    toCopyLength = fromFile.Read(buffer, 0, eachReadLength);
+                    byte[] buffer = new byte[eachReadLength];
+                    long copied = 0;
+                    while (copied < totalFileLength)
+                    {
+                        toCopyLength = fromFile.Read(buffer, 0, eachReadLength);
+                        fromFile.Flush();
+                        toFile.Write(buffer, 0, eachReadLength);
+                        toFile.Flush();
+                        //流的当前位置
+                        toFile.Position = fromFile.Position;
+                        copied += toCopyLength;
+                        currentProgress += (double)toCopyLength / 1024d / 1024d;
+                    }
+                    int left = (int)(totalFileLength - copied);
+                    toCopyLength = fromFile.Read(buffer, 0, left);
                     fromFile.Flush();
-                    toFile.Write(buffer, 0, eachReadLength);
+                    toFile.Write(buffer, 0, left);
                     toFile.Flush();
-                    //流的当前位置
-                    toFile.Position = fromFile.Position;
-                    copied += toCopyLength;
                     currentProgress += (double)toCopyLength / 1024d / 1024d;
                 }
-                int left = (int)(totalFileLength - copied);
-                toCopyLength = fromFile.Read(buffer, 0, left);
-                fromFile.Flush();
-                toFile.Write(buffer, 0, left);
-                toFile.Flush();
-                currentProgress += (double)toCopyLength / 1024d / 1024d;
+                else
+                {
+                    //如果每次拷贝的文件长度大于源文件的长度 则将实际文件长度直接拷贝
+                    byte[] buffer = new byte[totalFileLength];
+                    fromFile.Read(buffer, 0, buffer.Length);
+                    fromFile.Flush();
+                    toFile.Write(buffer, 0, buffer.Length);
+                    toFile.Flush();
+                    currentProgress += (double)fromFile.Length / 1024d / 1024d;
+                }
             }
-            else
+            catch
             {
-                //如果每次拷贝的文件长度大于源文件的长度 则将实际文件长度直接拷贝
-                byte[] buffer = new byte[totalFileLength];
-                fromFile.Read(buffer, 0, buffer.Length);
-                fromFile.Flush();
-                toFile.Write(buffer, 0, buffer.Length);
-                toFile.Flush();
-                currentProgress += (double)fromFile.Length / 1024d / 1024d;
+                fromFile.Close();
+                toFile.Close();
             }
-            fromFile.Close();
-            toFile.Close();
             return;
         }
 
