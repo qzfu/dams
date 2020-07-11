@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICategoryService.cs" />
+    <Compile Include="IEquipmentService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="IResourceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

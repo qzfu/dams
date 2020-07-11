@@ -50,15 +50,14 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.radTextBox1 = new Telerik.WinControls.UI.RadTextBox();
-            this.radTextBox2 = new Telerik.WinControls.UI.RadTextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.relationGridView = new System.Windows.Forms.DataGridView();
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
+            this.EquipmentNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaveButtonCol = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.relationGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
             this.SuspendLayout();
@@ -86,9 +85,9 @@
             this.panel1.Controls.Add(this.checkBox3);
             this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Location = new System.Drawing.Point(18, 26);
+            this.panel1.Location = new System.Drawing.Point(56, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(558, 184);
+            this.panel1.Size = new System.Drawing.Size(595, 184);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -302,75 +301,83 @@
             this.checkBox1.Text = "通用U盘";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // relationGridView
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 275);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "设备编号";
-            // 
-            // radTextBox1
-            // 
-            this.radTextBox1.Location = new System.Drawing.Point(115, 269);
-            this.radTextBox1.Name = "radTextBox1";
-            this.radTextBox1.Size = new System.Drawing.Size(263, 24);
-            this.radTextBox1.TabIndex = 2;
-            // 
-            // radTextBox2
-            // 
-            this.radTextBox2.Location = new System.Drawing.Point(115, 339);
-            this.radTextBox2.Name = "radTextBox2";
-            this.radTextBox2.Size = new System.Drawing.Size(263, 24);
-            this.radTextBox2.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 345);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "人员编号";
+            this.relationGridView.AllowUserToAddRows = false;
+            this.relationGridView.AllowUserToDeleteRows = false;
+            this.relationGridView.AllowUserToResizeRows = false;
+            this.relationGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.relationGridView.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.relationGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.relationGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.relationGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.relationGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EquipmentNo,
+            this.UserName,
+            this.SaveButtonCol});
+            this.relationGridView.GridColor = System.Drawing.Color.Silver;
+            this.relationGridView.Location = new System.Drawing.Point(56, 238);
+            this.relationGridView.Name = "relationGridView";
+            this.relationGridView.RowHeadersVisible = false;
+            this.relationGridView.RowTemplate.Height = 27;
+            this.relationGridView.Size = new System.Drawing.Size(595, 232);
+            this.relationGridView.TabIndex = 7;
             // 
             // radButton1
             // 
-            this.radButton1.Location = new System.Drawing.Point(74, 426);
+            this.radButton1.Location = new System.Drawing.Point(169, 530);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(64, 30);
             this.radButton1.TabIndex = 5;
             this.radButton1.Text = "查询";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
             // 
             // radButton2
             // 
-            this.radButton2.Location = new System.Drawing.Point(314, 426);
+            this.radButton2.Location = new System.Drawing.Point(409, 530);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(64, 30);
             this.radButton2.TabIndex = 6;
-            this.radButton2.Text = "修改";
+            this.radButton2.Text = "保存";
+            this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
+            // 
+            // EquipmentNo
+            // 
+            this.EquipmentNo.DataPropertyName = "EquipmentNo";
+            this.EquipmentNo.HeaderText = "设备编号";
+            this.EquipmentNo.Name = "EquipmentNo";
+            this.EquipmentNo.ReadOnly = true;
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "Name";
+            this.UserName.HeaderText = "人员编号";
+            this.UserName.Name = "UserName";
+            // 
+            // SaveButtonCol
+            // 
+            this.SaveButtonCol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButtonCol.HeaderText = "操作";
+            this.SaveButtonCol.Name = "SaveButtonCol";
+            this.SaveButtonCol.Text = "保存";
+            this.SaveButtonCol.Visible = false;
             // 
             // LawControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.relationGridView);
             this.Controls.Add(this.radButton2);
             this.Controls.Add(this.radButton1);
-            this.Controls.Add(this.radTextBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.radTextBox1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "LawControl";
-            this.Size = new System.Drawing.Size(595, 575);
+            this.Size = new System.Drawing.Size(725, 651);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radTextBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.relationGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -398,11 +405,11 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label1;
-        private Telerik.WinControls.UI.RadTextBox radTextBox1;
-        private Telerik.WinControls.UI.RadTextBox radTextBox2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView relationGridView;
         private Telerik.WinControls.UI.RadButton radButton1;
         private Telerik.WinControls.UI.RadButton radButton2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EquipmentNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.DataGridViewButtonColumn SaveButtonCol;
     }
 }

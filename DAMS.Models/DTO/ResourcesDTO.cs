@@ -20,5 +20,9 @@ namespace DAMS.Models.DTO
         public string FileName { get; set; }
         public string Alias { get; set; }
         public string Extension { get; set; }
+        /// <summary>
+        /// VID.PID.SerialNumber
+        /// </summary>
+        public string DeviceInfo { get; set; }
     }
 }

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryService.cs" />
+    <Compile Include="EquipmentService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="ClassFactory\ITypeMap.cs" />
     <Compile Include="ClassFactory\ObjectFactory.cs" />

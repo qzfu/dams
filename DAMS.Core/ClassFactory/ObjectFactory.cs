@@ -24,6 +24,7 @@ namespace DAMS.Core.ClassFactory
             singleton.dictionary.Add(typeof(IUserService), new TypeConstructor(typeof(UserService)));
             singleton.dictionary.Add(typeof(IResourceService), new TypeConstructor(typeof(ResourceService)));
             singleton.dictionary.Add(typeof(ICategoryService), new TypeConstructor(typeof(CategoryService)));
+            singleton.dictionary.Add(typeof(IEquipmentService), new TypeConstructor(typeof(EquipmentService)));
             //新接口注入在下面增加
             Instance = singleton;
         }

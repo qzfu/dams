@@ -24,6 +24,7 @@ namespace DAMS.UI.Common
     {
         private IResourceService deviceService = Assembler<IResourceService>.Create();
         private ICategoryService categoryService = Assembler<ICategoryService>.Create();
+        private IEquipmentService equipmentService = Assembler<IEquipmentService>.Create();
         delegate void DeviceNotifyDelegate();
 
         private int flushReadLength;
@@ -164,6 +165,7 @@ namespace DAMS.UI.Common
                         IsCopyEnd = 0
                     };
                     deviceService.AddResource(resModel, deviceInfo);
+                    equipmentService.IfNoExistAndSaveEquipmentNo(deviceInfo);
                 }
                 //获取文件大小
                 totalLength += (double)file.Length / 1024d / 1024d;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAMS.Common;
+using DAMS.Core.ClassFactory;
 using DAMS.Interface;
 using DAMS.Models;
 using DAMS.Models.DTO;
@@ -17,6 +18,7 @@ namespace DAMS.Core
 {
     public class ResourceService : IResourceService
     {
+        private IEquipmentService equipmentService = Assembler<IEquipmentService>.Create();
         public List<Resources> GetResources()
         {
             using (var db = new EFDbContext())
@@ -99,14 +101,18 @@ namespace DAMS.Core
                 var data = list.ToList();
                 var result = new List<ResourcesDTO>();
 
+                var equipments = equipmentService.GetEquipments();
+
                 foreach (var temp in data)
                 {
+                    var equipment = equipments.FirstOrDefault(x => x.EquipmentNo == temp.DeviceInfo);
+
                     result.Add(new ResourcesDTO
                     {
                         ResourceName = EnumHelper.GetByValue<DAMS.Common.EnumData.ResourceType>(temp.ResourceType).Description,
                         ResourceId = temp.ResourceId,
                         ResourceType = temp.ResourceType,
-                        UserId = temp.UserId,
+                        UserId = (equipment == null ? string.Empty : equipment.Name),//temp.UserId,
                         EquipmentNo = temp.EquipmentNo,
                         UserName = temp.UserName,
                         DepartId = temp.DepartId,
@@ -114,7 +120,8 @@ namespace DAMS.Core
                         FilePath = temp.FilePath,
                         FileName = temp.FileName,
                         Alias = temp.Alias,
-                        Extension = temp.Extension
+                        Extension = temp.Extension,
+                        DeviceInfo = temp.DeviceInfo
                     });
                 }
                 return result;
