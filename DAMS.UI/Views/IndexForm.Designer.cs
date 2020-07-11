@@ -34,6 +34,7 @@
             this.btmDock = new Telerik.WinControls.UI.Docking.RadDock();
             this.documentContainer1 = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.titPanel = new System.Windows.Forms.Panel();
+            this.warn1label = new System.Windows.Forms.Label();
             this.Register1Button = new System.Windows.Forms.Button();
             this.warnlabel = new System.Windows.Forms.Label();
             this.homeBtn = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.btnSystem = new System.Windows.Forms.Button();
             this.btnResource = new System.Windows.Forms.Button();
             this.titLab = new System.Windows.Forms.Label();
-            this.warn1label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btmDock)).BeginInit();
             this.btmDock.SuspendLayout();
@@ -115,6 +115,19 @@
             this.titPanel.Name = "titPanel";
             this.titPanel.Size = new System.Drawing.Size(996, 83);
             this.titPanel.TabIndex = 2;
+            // 
+            // warn1label
+            // 
+            this.warn1label.AutoSize = true;
+            this.warn1label.BackColor = System.Drawing.Color.Transparent;
+            this.warn1label.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.warn1label.ForeColor = System.Drawing.Color.Red;
+            this.warn1label.Location = new System.Drawing.Point(514, 6);
+            this.warn1label.Name = "warn1label";
+            this.warn1label.Size = new System.Drawing.Size(170, 19);
+            this.warn1label.TabIndex = 15;
+            this.warn1label.Text = "*试用期已过，请先注册！";
+            this.warn1label.Visible = false;
             // 
             // Register1Button
             // 
@@ -227,6 +240,7 @@
             this.labUserInfo.TabIndex = 5;
             this.labUserInfo.Text = "Admin,您好！";
             this.labUserInfo.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.labUserInfo.Click += new System.EventHandler(this.labUserInfo_Click);
             // 
             // btnSystem
             // 
@@ -290,19 +304,6 @@
             this.titLab.TabIndex = 1;
             this.titLab.Text = "天马智能数据采集管理系统";
             this.titLab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // warn1label
-            // 
-            this.warn1label.AutoSize = true;
-            this.warn1label.BackColor = System.Drawing.Color.Transparent;
-            this.warn1label.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.warn1label.ForeColor = System.Drawing.Color.Red;
-            this.warn1label.Location = new System.Drawing.Point(514, 6);
-            this.warn1label.Name = "warn1label";
-            this.warn1label.Size = new System.Drawing.Size(170, 19);
-            this.warn1label.TabIndex = 15;
-            this.warn1label.Text = "*试用期已过，请先注册！";
-            this.warn1label.Visible = false;
             // 
             // IndexForm
             // 

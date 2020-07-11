@@ -31,9 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("执法仪设置");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("采集站设置");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("部门管理");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("用户管理");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("日志查询");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("个人信息");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("部门管理");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("用户管理");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("日志查询");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingControl));
             this.setPanelMenu = new System.Windows.Forms.Panel();
             this.menuTree = new System.Windows.Forms.TreeView();
@@ -47,9 +48,9 @@
             this.setPanelMenu.Controls.Add(this.menuTree);
             this.setPanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.setPanelMenu.Location = new System.Drawing.Point(0, 0);
-            this.setPanelMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.setPanelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.setPanelMenu.Name = "setPanelMenu";
-            this.setPanelMenu.Size = new System.Drawing.Size(300, 815);
+            this.setPanelMenu.Size = new System.Drawing.Size(267, 679);
             this.setPanelMenu.TabIndex = 0;
             // 
             // menuTree
@@ -76,25 +77,30 @@
             treeNode2.SelectedImageKey = "Right_Close_24.png";
             treeNode2.Text = "采集站设置";
             treeNode3.ImageKey = "Down_Open_24.png";
-            treeNode3.Name = "node3";
+            treeNode3.Name = "node6";
             treeNode3.SelectedImageKey = "Right_Close_24.png";
-            treeNode3.Text = "部门管理";
+            treeNode3.Text = "个人信息";
             treeNode4.ImageKey = "Down_Open_24.png";
-            treeNode4.Name = "node4";
+            treeNode4.Name = "node3";
             treeNode4.SelectedImageKey = "Right_Close_24.png";
-            treeNode4.Text = "用户管理";
+            treeNode4.Text = "部门管理";
             treeNode5.ImageKey = "Down_Open_24.png";
-            treeNode5.Name = "node5";
+            treeNode5.Name = "node4";
             treeNode5.SelectedImageKey = "Right_Close_24.png";
-            treeNode5.Text = "日志查询";
+            treeNode5.Text = "用户管理";
+            treeNode6.ImageKey = "Down_Open_24.png";
+            treeNode6.Name = "node5";
+            treeNode6.SelectedImageKey = "Right_Close_24.png";
+            treeNode6.Text = "日志查询";
             this.menuTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
             treeNode4,
-            treeNode5});
+            treeNode5,
+            treeNode6});
             this.menuTree.SelectedImageIndex = 0;
-            this.menuTree.Size = new System.Drawing.Size(300, 815);
+            this.menuTree.Size = new System.Drawing.Size(267, 679);
             this.menuTree.StateImageList = this.treeImageList;
             this.menuTree.TabIndex = 0;
             this.menuTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.menuTree_AfterSelect);
@@ -109,23 +115,23 @@
             // setPanelContent
             // 
             this.setPanelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.setPanelContent.Location = new System.Drawing.Point(300, 0);
-            this.setPanelContent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.setPanelContent.Location = new System.Drawing.Point(267, 0);
+            this.setPanelContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.setPanelContent.Name = "setPanelContent";
-            this.setPanelContent.Padding = new System.Windows.Forms.Padding(3);
-            this.setPanelContent.Size = new System.Drawing.Size(1194, 815);
+            this.setPanelContent.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.setPanelContent.Size = new System.Drawing.Size(1061, 679);
             this.setPanelContent.TabIndex = 1;
             // 
             // SettingControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.setPanelContent);
             this.Controls.Add(this.setPanelMenu);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "SettingControl";
-            this.Size = new System.Drawing.Size(1494, 815);
+            this.Size = new System.Drawing.Size(1328, 679);
             this.setPanelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

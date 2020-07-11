@@ -194,5 +194,15 @@ namespace DAMS.UI.Views
             }
         }
 
+        private void labUserInfo_Click(object sender, EventArgs e)
+        {
+            if (!setService.CheckEffective()) return;
+
+            this.mPanel.Controls.Clear();
+            SettingControl settings = new SettingControl(2);
+            settings.Dock = DockStyle.Fill;
+            this.mPanel.Controls.Add(settings);
+        }
+
     }
 }

@@ -14,5 +14,8 @@ namespace DAMS.Interface
 
         Users GetUserByUserId(string userId,string password);
 
+        bool SaveUserByUserId(Users user);
+        List<Roles> GetAllRolese();
+        bool SaveChangePassword(string userId, string newPassWord);
     }
 }
