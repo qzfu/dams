@@ -73,7 +73,7 @@ namespace DAMS.UI.Views.Controls
                             if (disk["Name"].ToString() == ("\\\\.\\PHYSICALDRIVE" + driveNumber.ToString()) & disk["InterfaceType"].ToString() == "USB")
                             {
                                 DeviceControl device = new DeviceControl();
-                                var serialNumber = parseSerialFromDeviceID(disk["PNPDeviceID"].ToString());
+                                var serialNumber = parseSerialFromDeviceID(disk["PNPDeviceID"].ToString()).ToUpper();
                                 DriveInfo d = allUsbDrives.FirstOrDefault(x => x.Name == drive);
                                 if (d == null)
                                 {

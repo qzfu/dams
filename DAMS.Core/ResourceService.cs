@@ -144,6 +144,7 @@ namespace DAMS.Core
                 resource.CreatedTime = DateTime.Now;
                 resource.IsCopyEnd = 0;
                 resource.DeviceInfo = deviceInfo;
+                resource.EquipmentNo = deviceInfo;
                 db.Resources.Add(resource);
                 db.SaveChanges();
                 return;

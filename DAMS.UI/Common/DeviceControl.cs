@@ -98,9 +98,22 @@ namespace DAMS.UI.Common
 
         public void CopyFilesTo(DirectoryInfo sourceDirectory, string serialNumber)
         {
+            //若目标目录不存在，提示请先修改
+            try
+            {
+                if (!Directory.Exists(desRoot))
+                {
+                    Directory.CreateDirectory(desRoot);
+                }
+            }
+            catch
+            {
+                MessageUtil.ShowMessage("存储目录创建失败，请先修改！", EnumData.MessageType.Warning);
+                return;
+            }
             //创建目标根目录
             CommonHelper.CreateDirectoryIfNotExist(desRoot);
-            //以U盘vid.Pid.serialNumber创建目标文件夹
+            //以U盘serialNumber创建目标文件夹
             deviceInfo = serialNumber;
             var filePath = desRoot + @"\" + deviceInfo;
             CommonHelper.CreateDirectoryIfNotExist(filePath);
@@ -142,11 +155,22 @@ namespace DAMS.UI.Common
                 {
                     continue;
                 }
-                var itemFileFullName = filePath + @"\" + file.Name;
+
+                //获取文件大小
+                totalLength += (double)file.Length / 1024d / 1024d;
+
+                var uploadTime = file.CreationTime;
+                var year = uploadTime.Year.ToString();
+                var month = uploadTime.Month.ToString();
+                var day = uploadTime.Day.ToString();
+                var itemFilePath = filePath + @"\" + year + @"\" + month + @"\" + day;
+                CommonHelper.CreateDirectoryIfNotExist(itemFilePath);
+                var itemFileFullName = itemFilePath + @"\" + file.Name;
                 var resModel = currResources.FirstOrDefault(x => String.Compare(x.FileName, itemFileFullName) == 0);
                 //文件已经存在且已经Copy完毕跳过本层循环
                 if (resModel != null && resModel.IsCopyEnd == 1)
                 {
+                    currentProgress += (double)file.Length / 1024d / 1024d;
                     continue;
                 }
                 if (resModel == null)
@@ -167,8 +191,6 @@ namespace DAMS.UI.Common
                     deviceService.AddResource(resModel, deviceInfo);
                     equipmentService.IfNoExistAndSaveEquipmentNo(deviceInfo);
                 }
-                //获取文件大小
-                totalLength += (double)file.Length / 1024d / 1024d;
                 //源文件文件地址名称
                 var fromFile = file.FullName;
                 dicPath.Add(new FileTransactionDTO() {
@@ -186,10 +208,8 @@ namespace DAMS.UI.Common
                 {
                     continue;
                 }
-                var itemFilePath = filePath + @"\" + dirPath;
 
-                CommonHelper.CreateDirectoryIfNotExist(itemFilePath);
-                CopyTo(dir, itemFilePath,  currResources, deviceInfo, ref dicPath);
+                CopyTo(dir, filePath, currResources, deviceInfo, ref dicPath);
             }
         }
 
@@ -253,7 +273,7 @@ namespace DAMS.UI.Common
             else
             {
                 //如果每次拷贝的文件长度大于源文件的长度 则将实际文件长度直接拷贝
-                byte[] buffer = new byte[fromFile.Length];
+                byte[] buffer = new byte[totalFileLength];
                 fromFile.Read(buffer, 0, buffer.Length);
                 fromFile.Flush();
                 toFile.Write(buffer, 0, buffer.Length);
