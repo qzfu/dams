@@ -74,12 +74,12 @@ namespace DAMS.Core
                 {
                     if (queryItem.BeginDate != null)
                     {
-                        list = list.Where(x => x.UploadTime >= queryItem.BeginDate);
+                        list = list.Where(x => x.CreatedTime >= queryItem.BeginDate);
                     }
                     if (queryItem.EndDate != null)
                     {
                         var endDate = queryItem.EndDate.AddDays(1);
-                        list = list.Where(x => x.UploadTime < endDate);
+                        list = list.Where(x => x.CreatedTime < endDate);
                     }
                 }
 

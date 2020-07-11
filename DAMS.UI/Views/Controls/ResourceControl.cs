@@ -128,26 +128,28 @@ namespace DAMS.UI.Views.Controls
                     x => x.ResourceId == (int) this.ManageGridPage.Rows[e.RowIndex].Cells[10].Value);
 
 
-            if (string.IsNullOrEmpty(data.Extension) || !_resourceTypes.Any(x => x.Contains(data.Extension)))
-            {
-                MessageBox.Show("无法播放此文件！");
-                return;
-            }
+            //if (string.IsNullOrEmpty(data.Extension) || !_resourceTypes.Any(x => x.Contains(data.Extension)))
+            //{
+            //    MessageBox.Show("无法播放此文件！");
+            //    return;
+            //}
             
-            if (data.ResourceType != (int) DAMS.Common.EnumData.ResourceType.Video &&
-                data.ResourceType != (int)DAMS.Common.EnumData.ResourceType.VoiceFrequency)
-            {
-                MessageBox.Show("无法播放此文件！");
-                return;
-            }
+            //if (data.ResourceType != (int) DAMS.Common.EnumData.ResourceType.Video &&
+            //    data.ResourceType != (int)DAMS.Common.EnumData.ResourceType.VoiceFrequency)
+            //{
+            //    MessageBox.Show("无法播放此文件！");
+            //    return;
+            //}
 
             if (mediaPlayer != null)
             {
                 mediaPlayer.Dispose();
             }
-            
-            mediaPlayer = new MediaPlayerForm(data.FileName);
-            mediaPlayer.Show(this);
+
+            System.Diagnostics.Process.Start(data.FileName);
+
+            //mediaPlayer = new MediaPlayerForm(data.FileName);
+            //mediaPlayer.Show(this);
             //Application.Run(mediaPlayer);
         }
 
@@ -203,7 +205,7 @@ namespace DAMS.UI.Views.Controls
         private List<string> _resourceTypes =
             @".asf、bai.wma、.wmv、.wm、.avi、.mpg、.mpeg、.m1v、.mp2、.mp3、.mpa、.mpe、.m3u、.mid、.midi、.rmi、
             .aif、.aifc、.aiff、.au、.snd、.wav、.cda、.ivf、.mov、.m4a、.mp4、.m4v、.mp4v、.3g2、.3gp2、.3gp、.3gpp、
-            .aac、.adt、.adts、.m2ts、rmvb"
+            .aac、.adt、.adts、.m2ts、.rmvb"
                 .Split('、').ToList();
 
 

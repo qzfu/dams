@@ -183,6 +183,7 @@ namespace DAMS.UI.Views
             {
                 this.Register1Button.Visible = false;
                 this.warnlabel.Visible = false;
+                this.warn1label.Visible = false;
 
                 //注册成功后
                 //重新渲染画布，启动U盘监听机制

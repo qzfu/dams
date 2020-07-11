@@ -29,12 +29,12 @@ namespace DAMS.UI.Views.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem4 = new Telerik.WinControls.UI.RadCheckedListDataItem();
-            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem5 = new Telerik.WinControls.UI.RadCheckedListDataItem();
-            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem6 = new Telerik.WinControls.UI.RadCheckedListDataItem();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem1 = new Telerik.WinControls.UI.RadCheckedListDataItem();
+            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem2 = new Telerik.WinControls.UI.RadCheckedListDataItem();
+            Telerik.WinControls.UI.RadCheckedListDataItem radCheckedListDataItem3 = new Telerik.WinControls.UI.RadCheckedListDataItem();
             this.ManageGridPage = new System.Windows.Forms.DataGridView();
             this.CheckRecord = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ResourceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,14 +88,14 @@ namespace DAMS.UI.Views.Controls
             this.ManageGridPage.AllowUserToResizeRows = false;
             this.ManageGridPage.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.ManageGridPage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ManageGridPage.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ManageGridPage.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ManageGridPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ManageGridPage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CheckRecord,
@@ -109,26 +109,26 @@ namespace DAMS.UI.Views.Controls
             this.FileName,
             this.Player,
             this.ResourceId});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ManageGridPage.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ManageGridPage.DefaultCellStyle = dataGridViewCellStyle2;
             this.ManageGridPage.GridColor = System.Drawing.Color.LavenderBlush;
             this.ManageGridPage.Location = new System.Drawing.Point(0, 138);
             this.ManageGridPage.Margin = new System.Windows.Forms.Padding(0);
             this.ManageGridPage.Name = "ManageGridPage";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ManageGridPage.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ManageGridPage.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.ManageGridPage.RowHeadersVisible = false;
             this.ManageGridPage.RowTemplate.Height = 23;
             this.ManageGridPage.Size = new System.Drawing.Size(1323, 525);
@@ -241,12 +241,12 @@ namespace DAMS.UI.Views.Controls
             // 
             this.QResourceType.DropDownAnimationEnabled = false;
             this.QResourceType.DropDownHeight = 110;
-            radCheckedListDataItem4.Text = "视频";
-            radCheckedListDataItem5.Text = "音频";
-            radCheckedListDataItem6.Text = "文档";
-            this.QResourceType.Items.Add(radCheckedListDataItem4);
-            this.QResourceType.Items.Add(radCheckedListDataItem5);
-            this.QResourceType.Items.Add(radCheckedListDataItem6);
+            radCheckedListDataItem1.Text = "视频";
+            radCheckedListDataItem2.Text = "音频";
+            radCheckedListDataItem3.Text = "文档";
+            this.QResourceType.Items.Add(radCheckedListDataItem1);
+            this.QResourceType.Items.Add(radCheckedListDataItem2);
+            this.QResourceType.Items.Add(radCheckedListDataItem3);
             this.QResourceType.Location = new System.Drawing.Point(95, 15);
             this.QResourceType.Margin = new System.Windows.Forms.Padding(4);
             this.QResourceType.Name = "QResourceType";
@@ -271,7 +271,7 @@ namespace DAMS.UI.Views.Controls
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(603, 21);
+            this.label2.Location = new System.Drawing.Point(567, 21);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(22, 15);
@@ -281,7 +281,7 @@ namespace DAMS.UI.Views.Controls
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(772, 20);
+            this.label3.Location = new System.Drawing.Point(744, 20);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 15);
@@ -300,7 +300,7 @@ namespace DAMS.UI.Views.Controls
             // 
             // QBeginDate
             // 
-            this.QBeginDate.Location = new System.Drawing.Point(629, 16);
+            this.QBeginDate.Location = new System.Drawing.Point(593, 16);
             this.QBeginDate.Margin = new System.Windows.Forms.Padding(4);
             this.QBeginDate.Name = "QBeginDate";
             this.QBeginDate.Size = new System.Drawing.Size(142, 24);
@@ -311,10 +311,10 @@ namespace DAMS.UI.Views.Controls
             // 
             // QEndDate
             // 
-            this.QEndDate.Location = new System.Drawing.Point(793, 16);
+            this.QEndDate.Location = new System.Drawing.Point(775, 16);
             this.QEndDate.Margin = new System.Windows.Forms.Padding(4);
             this.QEndDate.Name = "QEndDate";
-            this.QEndDate.Size = new System.Drawing.Size(132, 24);
+            this.QEndDate.Size = new System.Drawing.Size(151, 24);
             this.QEndDate.TabIndex = 11;
             this.QEndDate.TabStop = false;
             this.QEndDate.Text = "2020年6月13日";
