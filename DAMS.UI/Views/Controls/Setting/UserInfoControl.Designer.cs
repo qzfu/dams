@@ -29,157 +29,139 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ChangeButton = new Telerik.WinControls.UI.RadButton();
-            this.UserInfoButton = new Telerik.WinControls.UI.RadButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.UserIdTextBox = new Telerik.WinControls.UI.RadTextBox();
-            this.UserNameTextBox = new Telerik.WinControls.UI.RadTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ManaRootComboBox = new System.Windows.Forms.ComboBox();
-            this.departmentTextBox = new Telerik.WinControls.UI.RadTextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.Warn3label = new System.Windows.Forms.Label();
+            this.Warn2label = new System.Windows.Forms.Label();
+            this.Warn1label = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.SaveButton = new Telerik.WinControls.UI.RadButton();
+            this.label6 = new System.Windows.Forms.Label();
             this.GenderComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.CreatedTimeTextBox = new Telerik.WinControls.UI.RadTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.SaveButton = new Telerik.WinControls.UI.RadButton();
-            this.OldPWTextBox = new Telerik.WinControls.UI.RadTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.NewPWTextBox = new Telerik.WinControls.UI.RadTextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.NewPW2TextBox = new Telerik.WinControls.UI.RadTextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Warn1label = new System.Windows.Forms.Label();
-            this.Warn2label = new System.Windows.Forms.Label();
-            this.Warn3label = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ManaRootComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ChangeButton = new Telerik.WinControls.UI.RadButton();
+            this.UserInfoButton = new Telerik.WinControls.UI.RadButton();
+            this.UserIdTextBox = new System.Windows.Forms.TextBox();
+            this.OldPWTextBox = new System.Windows.Forms.TextBox();
+            this.UserNameTextBox = new System.Windows.Forms.TextBox();
+            this.NewPWTextBox = new System.Windows.Forms.TextBox();
+            this.NewPW2TextBox = new System.Windows.Forms.TextBox();
+            this.departmentTextBox = new System.Windows.Forms.TextBox();
+            this.CreatedTimeTextBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserInfoButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserIdTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserNameTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CreatedTimeTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaveButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OldPWTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NewPWTextBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NewPW2TextBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.CreatedTimeTextBox);
+            this.panel1.Controls.Add(this.departmentTextBox);
+            this.panel1.Controls.Add(this.NewPW2TextBox);
+            this.panel1.Controls.Add(this.NewPWTextBox);
+            this.panel1.Controls.Add(this.UserNameTextBox);
+            this.panel1.Controls.Add(this.OldPWTextBox);
+            this.panel1.Controls.Add(this.UserIdTextBox);
             this.panel1.Controls.Add(this.Warn3label);
             this.panel1.Controls.Add(this.Warn2label);
             this.panel1.Controls.Add(this.Warn1label);
-            this.panel1.Controls.Add(this.NewPW2TextBox);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.NewPWTextBox);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.OldPWTextBox);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.SaveButton);
-            this.panel1.Controls.Add(this.CreatedTimeTextBox);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.GenderComboBox);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.departmentTextBox);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.ManaRootComboBox);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.UserNameTextBox);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.UserIdTextBox);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(23, 52);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(891, 631);
             this.panel1.TabIndex = 5;
             // 
-            // ChangeButton
+            // Warn3label
             // 
-            this.ChangeButton.Location = new System.Drawing.Point(194, 16);
-            this.ChangeButton.Name = "ChangeButton";
-            this.ChangeButton.Size = new System.Drawing.Size(102, 30);
-            this.ChangeButton.TabIndex = 4;
-            this.ChangeButton.Text = "修改密码";
-            this.ChangeButton.Click += new System.EventHandler(this.ChangeButton_Click);
+            this.Warn3label.AutoSize = true;
+            this.Warn3label.ForeColor = System.Drawing.Color.Red;
+            this.Warn3label.Location = new System.Drawing.Point(513, 175);
+            this.Warn3label.Name = "Warn3label";
+            this.Warn3label.Size = new System.Drawing.Size(105, 15);
+            this.Warn3label.TabIndex = 36;
+            this.Warn3label.Text = "*请输入新密码";
             // 
-            // UserInfoButton
+            // Warn2label
             // 
-            this.UserInfoButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.UserInfoButton.Location = new System.Drawing.Point(77, 16);
-            this.UserInfoButton.Name = "UserInfoButton";
-            this.UserInfoButton.Size = new System.Drawing.Size(102, 30);
-            this.UserInfoButton.TabIndex = 3;
-            this.UserInfoButton.Text = "个人信息";
-            this.UserInfoButton.Click += new System.EventHandler(this.UserInfoButton_Click);
+            this.Warn2label.AutoSize = true;
+            this.Warn2label.ForeColor = System.Drawing.Color.Red;
+            this.Warn2label.Location = new System.Drawing.Point(513, 246);
+            this.Warn2label.Name = "Warn2label";
+            this.Warn2label.Size = new System.Drawing.Size(135, 15);
+            this.Warn2label.TabIndex = 35;
+            this.Warn2label.Text = "*新密码输入不一致";
             // 
-            // label1
+            // Warn1label
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(161, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "用户名";
+            this.Warn1label.AutoSize = true;
+            this.Warn1label.ForeColor = System.Drawing.Color.Red;
+            this.Warn1label.Location = new System.Drawing.Point(513, 109);
+            this.Warn1label.Name = "Warn1label";
+            this.Warn1label.Size = new System.Drawing.Size(135, 15);
+            this.Warn1label.TabIndex = 34;
+            this.Warn1label.Text = "*原密码输入不正确";
             // 
-            // UserIdTextBox
+            // label9
             // 
-            this.UserIdTextBox.Enabled = false;
-            this.UserIdTextBox.Location = new System.Drawing.Point(231, 69);
-            this.UserIdTextBox.Name = "UserIdTextBox";
-            this.UserIdTextBox.Size = new System.Drawing.Size(256, 24);
-            this.UserIdTextBox.TabIndex = 1;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(131, 246);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(82, 15);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "确认新密码";
             // 
-            // UserNameTextBox
+            // label8
             // 
-            this.UserNameTextBox.Location = new System.Drawing.Point(231, 135);
-            this.UserNameTextBox.Name = "UserNameTextBox";
-            this.UserNameTextBox.Size = new System.Drawing.Size(256, 24);
-            this.UserNameTextBox.TabIndex = 3;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(161, 175);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 15);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "新密码";
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(176, 139);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "姓名";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(161, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 15);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "原密码";
             // 
-            // label3
+            // SaveButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(146, 208);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "人员权限";
+            this.SaveButton.Location = new System.Drawing.Point(317, 477);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(67, 30);
+            this.SaveButton.TabIndex = 27;
+            this.SaveButton.Text = "保存";
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // ManaRootComboBox
+            // label6
             // 
-            this.ManaRootComboBox.FormattingEnabled = true;
-            this.ManaRootComboBox.Location = new System.Drawing.Point(231, 205);
-            this.ManaRootComboBox.Name = "ManaRootComboBox";
-            this.ManaRootComboBox.Size = new System.Drawing.Size(256, 23);
-            this.ManaRootComboBox.TabIndex = 5;
-            // 
-            // departmentTextBox
-            // 
-            this.departmentTextBox.Enabled = false;
-            this.departmentTextBox.Location = new System.Drawing.Point(231, 272);
-            this.departmentTextBox.Name = "departmentTextBox";
-            this.departmentTextBox.Size = new System.Drawing.Size(256, 24);
-            this.departmentTextBox.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(176, 276);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 15);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "部门";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(146, 414);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 15);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "创建时间";
             // 
             // GenderComboBox
             // 
@@ -201,112 +183,123 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "性别";
             // 
-            // CreatedTimeTextBox
+            // label4
             // 
-            this.CreatedTimeTextBox.Enabled = false;
-            this.CreatedTimeTextBox.Location = new System.Drawing.Point(231, 410);
-            this.CreatedTimeTextBox.Name = "CreatedTimeTextBox";
-            this.CreatedTimeTextBox.Size = new System.Drawing.Size(256, 24);
-            this.CreatedTimeTextBox.TabIndex = 11;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(176, 276);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 15);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "部门";
             // 
-            // label6
+            // ManaRootComboBox
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(146, 414);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 15);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "创建时间";
+            this.ManaRootComboBox.FormattingEnabled = true;
+            this.ManaRootComboBox.Location = new System.Drawing.Point(231, 205);
+            this.ManaRootComboBox.Name = "ManaRootComboBox";
+            this.ManaRootComboBox.Size = new System.Drawing.Size(256, 23);
+            this.ManaRootComboBox.TabIndex = 5;
             // 
-            // SaveButton
+            // label3
             // 
-            this.SaveButton.Location = new System.Drawing.Point(317, 477);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(67, 30);
-            this.SaveButton.TabIndex = 27;
-            this.SaveButton.Text = "保存";
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(146, 208);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "人员权限";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(176, 139);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "姓名";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(161, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "用户名";
+            // 
+            // ChangeButton
+            // 
+            this.ChangeButton.Location = new System.Drawing.Point(194, 16);
+            this.ChangeButton.Name = "ChangeButton";
+            this.ChangeButton.Size = new System.Drawing.Size(102, 30);
+            this.ChangeButton.TabIndex = 4;
+            this.ChangeButton.Text = "修改密码";
+            this.ChangeButton.Click += new System.EventHandler(this.ChangeButton_Click);
+            // 
+            // UserInfoButton
+            // 
+            this.UserInfoButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.UserInfoButton.Location = new System.Drawing.Point(77, 16);
+            this.UserInfoButton.Name = "UserInfoButton";
+            this.UserInfoButton.Size = new System.Drawing.Size(102, 30);
+            this.UserInfoButton.TabIndex = 3;
+            this.UserInfoButton.Text = "个人信息";
+            this.UserInfoButton.Click += new System.EventHandler(this.UserInfoButton_Click);
+            // 
+            // UserIdTextBox
+            // 
+            this.UserIdTextBox.Enabled = false;
+            this.UserIdTextBox.Location = new System.Drawing.Point(231, 70);
+            this.UserIdTextBox.Name = "UserIdTextBox";
+            this.UserIdTextBox.Size = new System.Drawing.Size(256, 25);
+            this.UserIdTextBox.TabIndex = 37;
             // 
             // OldPWTextBox
             // 
             this.OldPWTextBox.Location = new System.Drawing.Point(231, 105);
             this.OldPWTextBox.Name = "OldPWTextBox";
             this.OldPWTextBox.PasswordChar = '*';
-            this.OldPWTextBox.Size = new System.Drawing.Size(256, 24);
-            this.OldPWTextBox.TabIndex = 29;
+            this.OldPWTextBox.Size = new System.Drawing.Size(256, 25);
+            this.OldPWTextBox.TabIndex = 38;
             // 
-            // label7
+            // UserNameTextBox
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(161, 110);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 15);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "原密码";
+            this.UserNameTextBox.Location = new System.Drawing.Point(231, 136);
+            this.UserNameTextBox.Name = "UserNameTextBox";
+            this.UserNameTextBox.Size = new System.Drawing.Size(256, 25);
+            this.UserNameTextBox.TabIndex = 39;
             // 
             // NewPWTextBox
             // 
-            this.NewPWTextBox.Location = new System.Drawing.Point(231, 170);
+            this.NewPWTextBox.Location = new System.Drawing.Point(231, 171);
             this.NewPWTextBox.Name = "NewPWTextBox";
             this.NewPWTextBox.PasswordChar = '*';
-            this.NewPWTextBox.Size = new System.Drawing.Size(256, 24);
-            this.NewPWTextBox.TabIndex = 31;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(161, 175);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 15);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "新密码";
+            this.NewPWTextBox.Size = new System.Drawing.Size(256, 25);
+            this.NewPWTextBox.TabIndex = 40;
             // 
             // NewPW2TextBox
             // 
             this.NewPW2TextBox.Location = new System.Drawing.Point(231, 242);
             this.NewPW2TextBox.Name = "NewPW2TextBox";
             this.NewPW2TextBox.PasswordChar = '*';
-            this.NewPW2TextBox.Size = new System.Drawing.Size(256, 24);
-            this.NewPW2TextBox.TabIndex = 33;
+            this.NewPW2TextBox.Size = new System.Drawing.Size(256, 25);
+            this.NewPW2TextBox.TabIndex = 41;
             // 
-            // label9
+            // departmentTextBox
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(131, 246);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 15);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "确认新密码";
+            this.departmentTextBox.Enabled = false;
+            this.departmentTextBox.Location = new System.Drawing.Point(231, 273);
+            this.departmentTextBox.Name = "departmentTextBox";
+            this.departmentTextBox.Size = new System.Drawing.Size(256, 25);
+            this.departmentTextBox.TabIndex = 42;
             // 
-            // Warn1label
+            // CreatedTimeTextBox
             // 
-            this.Warn1label.AutoSize = true;
-            this.Warn1label.ForeColor = System.Drawing.Color.Red;
-            this.Warn1label.Location = new System.Drawing.Point(513, 109);
-            this.Warn1label.Name = "Warn1label";
-            this.Warn1label.Size = new System.Drawing.Size(135, 15);
-            this.Warn1label.TabIndex = 34;
-            this.Warn1label.Text = "*原密码输入不正确";
-            // 
-            // Warn2label
-            // 
-            this.Warn2label.AutoSize = true;
-            this.Warn2label.ForeColor = System.Drawing.Color.Red;
-            this.Warn2label.Location = new System.Drawing.Point(513, 246);
-            this.Warn2label.Name = "Warn2label";
-            this.Warn2label.Size = new System.Drawing.Size(135, 15);
-            this.Warn2label.TabIndex = 35;
-            this.Warn2label.Text = "*新密码输入不一致";
-            // 
-            // Warn3label
-            // 
-            this.Warn3label.AutoSize = true;
-            this.Warn3label.ForeColor = System.Drawing.Color.Red;
-            this.Warn3label.Location = new System.Drawing.Point(513, 175);
-            this.Warn3label.Name = "Warn3label";
-            this.Warn3label.Size = new System.Drawing.Size(105, 15);
-            this.Warn3label.TabIndex = 36;
-            this.Warn3label.Text = "*请输入新密码";
+            this.CreatedTimeTextBox.Enabled = false;
+            this.CreatedTimeTextBox.Location = new System.Drawing.Point(231, 410);
+            this.CreatedTimeTextBox.Name = "CreatedTimeTextBox";
+            this.CreatedTimeTextBox.Size = new System.Drawing.Size(256, 25);
+            this.CreatedTimeTextBox.TabIndex = 43;
             // 
             // UserInfoControl
             // 
@@ -319,16 +312,9 @@
             this.Size = new System.Drawing.Size(933, 700);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserInfoButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserIdTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserNameTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.departmentTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CreatedTimeTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SaveButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OldPWTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NewPWTextBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NewPW2TextBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,27 +324,27 @@
         private System.Windows.Forms.Panel panel1;
         private Telerik.WinControls.UI.RadButton ChangeButton;
         private Telerik.WinControls.UI.RadButton UserInfoButton;
-        private Telerik.WinControls.UI.RadTextBox CreatedTimeTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox GenderComboBox;
         private System.Windows.Forms.Label label5;
-        private Telerik.WinControls.UI.RadTextBox departmentTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox ManaRootComboBox;
         private System.Windows.Forms.Label label3;
-        private Telerik.WinControls.UI.RadTextBox UserNameTextBox;
         private System.Windows.Forms.Label label2;
-        private Telerik.WinControls.UI.RadTextBox UserIdTextBox;
         private System.Windows.Forms.Label label1;
-        private Telerik.WinControls.UI.RadTextBox NewPW2TextBox;
         private System.Windows.Forms.Label label9;
-        private Telerik.WinControls.UI.RadTextBox NewPWTextBox;
         private System.Windows.Forms.Label label8;
-        private Telerik.WinControls.UI.RadTextBox OldPWTextBox;
         private System.Windows.Forms.Label label7;
         private Telerik.WinControls.UI.RadButton SaveButton;
         private System.Windows.Forms.Label Warn2label;
         private System.Windows.Forms.Label Warn1label;
         private System.Windows.Forms.Label Warn3label;
+        private System.Windows.Forms.TextBox UserIdTextBox;
+        private System.Windows.Forms.TextBox OldPWTextBox;
+        private System.Windows.Forms.TextBox UserNameTextBox;
+        private System.Windows.Forms.TextBox NewPWTextBox;
+        private System.Windows.Forms.TextBox NewPW2TextBox;
+        private System.Windows.Forms.TextBox departmentTextBox;
+        private System.Windows.Forms.TextBox CreatedTimeTextBox;
     }
 }

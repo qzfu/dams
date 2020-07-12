@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox21 = new System.Windows.Forms.CheckBox();
             this.checkBox20 = new System.Windows.Forms.CheckBox();
@@ -51,11 +52,11 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.relationGridView = new System.Windows.Forms.DataGridView();
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.EquipmentNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaveButtonCol = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.relationGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
@@ -315,6 +316,14 @@
             this.EquipmentNo,
             this.UserName,
             this.SaveButtonCol});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.relationGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.relationGridView.GridColor = System.Drawing.Color.Silver;
             this.relationGridView.Location = new System.Drawing.Point(56, 238);
             this.relationGridView.Name = "relationGridView";
@@ -322,24 +331,6 @@
             this.relationGridView.RowTemplate.Height = 27;
             this.relationGridView.Size = new System.Drawing.Size(595, 232);
             this.relationGridView.TabIndex = 7;
-            // 
-            // radButton1
-            // 
-            this.radButton1.Location = new System.Drawing.Point(169, 530);
-            this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(64, 30);
-            this.radButton1.TabIndex = 5;
-            this.radButton1.Text = "查询";
-            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
-            // 
-            // radButton2
-            // 
-            this.radButton2.Location = new System.Drawing.Point(409, 530);
-            this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(64, 30);
-            this.radButton2.TabIndex = 6;
-            this.radButton2.Text = "保存";
-            this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
             // EquipmentNo
             // 
@@ -361,6 +352,24 @@
             this.SaveButtonCol.Name = "SaveButtonCol";
             this.SaveButtonCol.Text = "保存";
             this.SaveButtonCol.Visible = false;
+            // 
+            // radButton1
+            // 
+            this.radButton1.Location = new System.Drawing.Point(169, 530);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(64, 30);
+            this.radButton1.TabIndex = 5;
+            this.radButton1.Text = "查询";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click);
+            // 
+            // radButton2
+            // 
+            this.radButton2.Location = new System.Drawing.Point(409, 530);
+            this.radButton2.Name = "radButton2";
+            this.radButton2.Size = new System.Drawing.Size(64, 30);
+            this.radButton2.TabIndex = 6;
+            this.radButton2.Text = "保存";
+            this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
             // 
             // LawControl
             // 

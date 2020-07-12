@@ -25,6 +25,22 @@ namespace DAMS.UI.Views.Controls.Setting
         {
             InitializeComponent();
 
+            this.UserIdTextBox.AutoSize = false;
+            this.OldPWTextBox.AutoSize = false;
+            this.UserNameTextBox.AutoSize = false;
+            this.NewPW2TextBox.AutoSize = false;
+            this.NewPWTextBox.AutoSize = false;
+            this.departmentTextBox.AutoSize = false;
+            this.CreatedTimeTextBox.AutoSize = false;
+
+            this.UserIdTextBox.Height = 18;
+            this.OldPWTextBox.Height = 18;
+            this.UserNameTextBox.Height = 18;
+            this.NewPW2TextBox.Height = 18;
+            this.NewPWTextBox.Height = 18;
+            this.departmentTextBox.Height = 18;
+            this.CreatedTimeTextBox.Height = 18;
+
             var id = 0;
             var user = LoginUser.CurrentUser;
             this._roles = userService.GetAllRolese();
