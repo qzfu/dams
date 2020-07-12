@@ -1,0 +1,119 @@
+﻿/* 清除浏览器自带的公用样式 */
+html, body, h1, h2, h3, h4, h5, h6, hr, p, iframe, dl, dt, dd, ul, ol, li, pre, form, button, input, textarea, th, td, fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol, dl {
+    list-style-type: none;
+}
+
+html, body {
+    *position: static;
+}
+
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: 400;
+}
+
+input, button, textarea, select, optgroup, option, i {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+input, button {
+    overflow: visible;
+    vertical-align: middle;
+    outline: none;
+}
+
+.main {
+    width: 1002px;
+    height: 522px;
+    height: auto;
+    margin: 4px;
+}
+
+.pie {
+    width: 247px;
+    height: 122px;
+    padding: 1px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.clear {
+    clear: both;
+}
+
+.pie:nth-child(4n) {
+    border-right: none;
+}
+
+.pie-right {
+    border-right: none;
+}
+
+.pie-last {
+    border-bottom: none;
+}
+
+.par-pie {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 238px;
+    overflow: hidden;
+}
+
+    .icon img {
+        width: 23px;
+        height: 20px;
+        display: block;
+        float: right;
+        margin-right: 15px;
+    }
+
+    .icon i {
+        display: block;
+        height: 20px;
+        line-height: 20px;
+        color: #34374E;
+        font-size: 12px;
+        font-weight: normal;
+        float: left;
+        margin-left: 15px;
+    }
+
+.none {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+.main ul li.par-pie {
+    float: left;
+}
+
+.main ul {
+    overflow: hidden;
+}

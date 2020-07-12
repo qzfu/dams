@@ -1,190 +1,138 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <script type="text/javascript" charset="utf-8" src="js/echarts.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery-1.10.2.min.js"></script>
+    <link href="css/main.css" rel="stylesheet"/>
     <title>采集站信息</title>
 </head>
 <body>
-    <div id="main" style="width: 974px;height:518px; border:0px solid hidden"></div>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
-
-        var placeHolderStyle = {
-            normal: {
-                label: {
-                    show: false
-                },
-                labelLine: {
-                    show: false
-                },
-                color: "rgba(0,0,0,0)",
-                borderWidth: 0
-            },
-            emphasis: {
-                color: "rgba(0,0,0,0)",
-                borderWidth: 0
-            }
-        };
-
-        var defaultStyle = {
-            normal: {
-                formatter: '空闲',
-                position: 'center',
-                show: true,
-                textStyle: {
-                    fontSize: '26',
-                    fontWeight: 'normal',
-                    color: '#34374E'
-                }
-            }
-        };
-        var dataStyle = {
-            normal: {
-                formatter: '{c}%',
-                position: 'center',
-                show: true,
-                textStyle: {
-                    fontSize: '26',
-                    fontWeight: 'normal',
-                    color: '#34374E'
-                }
-            }
-        };
-        var titleArr = [];
-        var seriesArr = [];
-        for (var i = 1; i <= 4; i++) {
-            for (var j = 1; j <= 4; j++) {
-                var title = {
-                    text: '采集站' + i * j,
-                    left: 12.6 + (j - 1) * 25 + '%',
-                    top: 18 + (i - 1) * 25 + '%',
-                    textAlign: 'center',
-                    textStyle: {
-                        fontWeight: 'normal',
-                        fontSize: '14',
-                        color: '#AAAFC8',
-                        textAlign: 'center',
-                    }
-                };
-                titleArr.push(title);
-                //底层环形配置
-                var seriesBtm = {
-                    type: 'pie',
-                    hoverAnimation: false, //鼠标经过的特效
-                    radius: ['20%', '24%'],
-                    center: [13 + (j - 1) * 25 + '%', 14 + (i - 1) * 25 + '%'],
-                    startAngle: 225,
-                    labelLine: {
-                        normal: {
-                            show: false
-                        }
-                    },
-                    label: {
-                        normal: {
-                            position: 'center'
-                        }
-                    },
-                    data: [{
-                        value: 100,
-                        itemStyle: {
-                            normal: {
-                                color: '#E1E8EE'
-                            }
-                        },
-                    }, {
-                        value: 35,
-                        itemStyle: placeHolderStyle,
-                    }]
-                };
-                seriesArr.push(seriesBtm);
-                //上层环形配置
-                var seriesTop = {
-                    type: 'pie',
-                    hoverAnimation: false, //鼠标经过的特效
-                    radius: ['20%', '24%'],
-                    center: [13 + (j - 1) * 25 + '%', 14 + (i - 1) * 25 + '%'],
-                    startAngle: 225,
-                    labelLine: {
-                        normal: {
-                            show: false
-                        }
-                    },
-                    label: {
-                        normal: {
-                            position: 'center'
-                        }
-                    },
-                    data: [{
-                        value: 0,
-                        itemStyle: {
-                            normal: {
-                                color: '#4897f6'
-                            }
-                        },
-                        label: defaultStyle,
-                    }, {
-                        value: 35,
-                        itemStyle: placeHolderStyle,
-                    }],
-                    info: {
-                        index: '',
-                        value: 0,
-                    }
-                }
-                seriesArr.push(seriesTop);
-            }
-        };
-        option = {
-            backgroundColor: '#fff',
-            title: titleArr,
-            series: seriesArr
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-
-        //动态刷新资源采集进度
-        function refreshProgess(deviceInfo, percent) {
-            $.each(option.series, function (i, v) {
-                if (v.info && v.info.index == deviceInfo) {
-                    v.info.value = percent;
-                    v.data[0].value = percent;
-                    v.data[0].label = dataStyle;
-                    v.data[1].value = 35 + (100 - percent);
-                    return false;
-                }
-                else if (v.info && v.info.index == '' && v.info.value==0) {
-                    v.info.index = deviceInfo;
-                    v.info.value = percent;
-                    v.data[0].value = percent;
-                    v.data[0].label = dataStyle;
-                    v.data[1].value = 35 + (100 - percent);
-                    return false;
-                }
-            });
-            myChart.setOption(option);
-        }
-		//移除U盘刷新采集站状态
-        function removeDevice(deviceInfo) {
-            $.each(option.series, function (i, v) {
-                if (v.info && v.info.index == deviceInfo) {
-                    v.info.index = '';
-                    v.info.value = 0;
-                    v.data[0].value = 0;
-                    v.data[0].label = defaultStyle;
-                    v.data[1].value = 35;
-                    return false;
-                }
-            });
-            myChart.setOption(option);
-        }
-    </script>
-
+    <div class="main">
+        <ul>
+            <li class="par-pie" data-info="">
+                <div class="pie" id="pie0"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie" id="pie1"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie" id="pie2"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie pie-right" id="pie3"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+        </ul>
+        <ul>
+            <li class="par-pie" data-info="">
+                <div class="pie" id="pie4"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie" id="pie5"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie" id="pie6"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie pie-right" id="pie7"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+        </ul>
+        <ul>
+            <li class="par-pie" data-info="">
+                <div class="pie" id="pie8"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie" id="pie9"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie" id="pie10"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie pie-right" id="pie11"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+        </ul>
+        <ul>
+            <li class="par-pie" data-info="">
+                <div class="pie pie-last" id="pie12"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie pie-last" id="pie13"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie pie-last" id="pie14"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+            <li class="par-pie" data-info="">
+                <div class="pie pie-last pie-right" id="pie15"></div>
+                <b class="icon none">
+                    <i>设备编号：<span></span></i>
+                    <img src="image/icon.gif" />
+                </b>
+            </li>
+        </ul>
+    </div>
+    <script src="js/main.js" charset="utf-8" type="text/javascript"></script>
 </body>
 </html>
