@@ -491,7 +491,7 @@ namespace DAMS.Core
                         DateTime.TryParse(date.ItemValue, out startDate);
 
                         TimeSpan sp = DateTime.Today.Subtract(startDate);
-                        if (sp.Days >= 1)
+                        if (sp.Days >= 7)
                         {
                             return false;
                         }
@@ -521,7 +521,7 @@ namespace DAMS.Core
 
                     var span = DateTime.Today.Subtract(startDate);
 
-                    return 1 - span.Days;
+                    return 7 - span.Days;
                 }
                 return 0;
             }
