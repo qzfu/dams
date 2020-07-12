@@ -60,7 +60,7 @@ namespace DAMS.UI.Views.Controls
                 //开启任务异步操作，避免多个采集站统计加载时界面假死
                 Thread ts = new Thread(() =>
                 {
-                    MessageUtil.ShowMessage("正在识别资源，请等待...", EnumData.MessageType.Information, this);
+                    var resourceIndex = 0;
                     var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_LogicalDiskToPartition");
                     foreach (ManagementObject dm in searcher.Get())
                     {
@@ -83,6 +83,11 @@ namespace DAMS.UI.Views.Controls
                                 var deviceRoot = d.RootDirectory;
                                 var checkToken = device.CheckDeviceToken(deviceName, serialNumber);
                                 if (checkToken < 0) continue;
+                                if (resourceIndex==0)
+                                {
+                                    MessageUtil.ShowMessage("资源已就绪，开始采集...", EnumData.MessageType.Information, this);
+                                    resourceIndex++;
+                                }
                                 device.SetProgressDelegate += HandleRefreshProgess;
                                 Action<DirectoryInfo, string> copyAction = device.CopyFilesTo;
                                 copyAction.BeginInvoke(deviceRoot, serialNumber, null, null);
@@ -95,7 +100,7 @@ namespace DAMS.UI.Views.Controls
             }
             catch 
             {
-
+                MessageUtil.ShowMessage("资源识别失败，请重启程序！", EnumData.MessageType.Warning, this);
             }
         }
         private static string parseSerialFromDeviceID(string deviceId)
