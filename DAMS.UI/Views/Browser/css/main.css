@@ -38,15 +38,15 @@ input, button {
 }
 
 .main {
-    width: 1002px;
-    height: 522px;
+    width: 984px;
+    height: 533px;
     height: auto;
     margin: 4px;
 }
 
 .pie {
-    width: 247px;
-    height: 122px;
+    width: 243px;
+    height: 121px;
     padding: 1px;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
