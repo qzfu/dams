@@ -95,7 +95,7 @@ namespace DAMS.Interface
         /// 注册成功保存记录
         /// </summary>
         /// <returns></returns>
-        bool SaveRegister(string code);
+        bool SaveRegister(string code, DateTime date);
 
         /// <summary>
         /// 校验是否登陆成功

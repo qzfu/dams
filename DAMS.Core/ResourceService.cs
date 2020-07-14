@@ -367,7 +367,7 @@ namespace DAMS.Core
         /// 注册成功保存记录
         /// </summary>
         /// <returns></returns>
-        public bool SaveRegister(string code)
+        public bool SaveRegister(string code, DateTime date)
         {
             using (var db = new EFDbContext())
             {
@@ -375,24 +375,24 @@ namespace DAMS.Core
                 var data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Register);
                 if (data == null)
                 {
-                    var registerCode = MD5Helper.GenerateMD5(RegistrationHelper.getRNum());
+                    var registerCode = MD5Helper.GenerateMD5(code);
                     db.Catagorys.Add(new Catagorys
                     {
                         Type = (int)EnumData.CatagoryType.Register,
                         ItemText = registerCode,
                         ItemValue = code,
                         Remark = "",
-                        CreatedTime = DateTime.Now
+                        CreatedTime = date
                     });
                 }
                 else
                 {
-                    //data.ItemText = "1";
+                    data.ItemText = MD5Helper.GenerateMD5(code);
                     data.ItemValue = code;
+                    data.CreatedTime = date;
                 }
                 try
                 {
-
                     return db.SaveChanges() > 0;
                 }
                 catch (DbEntityValidationException ex)
@@ -430,7 +430,7 @@ namespace DAMS.Core
                 }
                 else
                 {
-                    if (MD5Helper.GenerateMD5(data.ItemValue) != data.ItemText)
+                    if (MD5Helper.GenerateMD5(data.ItemValue) != data.ItemText || RegistrationHelper.getRNumWithDate(data.CreatedTime) != data.ItemValue)
                     {
                         return false;
                     }
