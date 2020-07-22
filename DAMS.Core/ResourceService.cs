@@ -218,14 +218,23 @@ namespace DAMS.Core
         {
             using (var db = new EFDbContext())
             {
-                db.Catagorys.Add(new Catagorys
+                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Size);
+                if (data == null)
                 {
-                    Type = (int)EnumData.CatagoryType.Size,
-                    ItemText = itemText,
-                    ItemValue = itemValue,
-                    Remark = "系统分辨率",
-                    CreatedTime = DateTime.Now
-                });
+                    db.Catagorys.Add(new Catagorys
+                    {
+                        Type = (int) EnumData.CatagoryType.Size,
+                        ItemText = itemText,
+                        ItemValue = itemValue,
+                        Remark = "系统分辨率",
+                        CreatedTime = DateTime.Now
+                    });
+                }
+                else
+                {
+                    data.ItemText = itemText;
+                    data.ItemValue = itemValue;
+                }
                 return db.SaveChanges() > 0;
             }
         }
@@ -249,14 +258,23 @@ namespace DAMS.Core
         {
             using (var db = new EFDbContext())
             {
-                db.Catagorys.Add(new Catagorys
+                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int) EnumData.CatagoryType.IndexCount);
+                if (data == null)
                 {
-                    Type = (int)EnumData.CatagoryType.IndexCount,
-                    ItemText = itemText,
-                    ItemValue = itemValue,
-                    Remark = "加载U盘个数",
-                    CreatedTime = DateTime.Now
-                });
+                    db.Catagorys.Add(new Catagorys
+                    {
+                        Type = (int) EnumData.CatagoryType.IndexCount,
+                        ItemText = itemText,
+                        ItemValue = itemValue,
+                        Remark = "加载U盘个数",
+                        CreatedTime = DateTime.Now
+                    });
+                }
+                else
+                {
+                    data.ItemText = itemText;
+                    data.ItemValue = itemValue;
+                }
                 return db.SaveChanges() > 0;
             }
         }
@@ -287,6 +305,175 @@ namespace DAMS.Core
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// 保存第一次登陆时间，和注册状态
+        /// </summary>
+        public void SetStartDate()
+        {
+            using (var db = new EFDbContext())
+            {
+                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.StartEnd);
+                if (data == null)
+                {
+                    db.Catagorys.Add(new Catagorys
+                    {
+                        Type = (int)EnumData.CatagoryType.StartEnd,
+                        ItemText = DateTime.Now.ToString("yyyy-MM-dd"),
+                        ItemValue = DateTime.Now.ToString("yyyy-MM-dd"),
+                        Remark = "",
+                        CreatedTime = DateTime.Now
+                    });
+                    db.SaveChanges();
+                }
+
+                data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Register);
+                if (data == null)
+                {
+                    db.Catagorys.Add(new Catagorys
+                    {
+                        Type = (int)EnumData.CatagoryType.Register,
+                        ItemText = "0",
+                        ItemValue = "0",
+                        Remark = "",
+                        CreatedTime = DateTime.Now
+                    });
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 注册成功保存记录
+        /// </summary>
+        /// <returns></returns>
+        public bool SaveRegister()
+        {
+            using (var db = new EFDbContext())
+            {
+
+                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Register);
+                if (data == null)
+                {
+                    db.Catagorys.Add(new Catagorys
+                    {
+                        Type = (int) EnumData.CatagoryType.Register,
+                        ItemText = "1",
+                        ItemValue = "1",
+                        Remark = "",
+                        CreatedTime = DateTime.Now
+                    });
+                }
+                else
+                {
+                    data.ItemText = "1";
+                    data.ItemValue = "1";
+                }
+
+                return db.SaveChanges() > 0;
+            }
+        }
+
+        /// <summary>
+        /// 校验是否登陆成功
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckRegistered()
+        {
+            using (var db = new EFDbContext())
+            {
+
+                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.Register);
+                if (data == null)
+                {
+                    db.Catagorys.Add(new Catagorys
+                    {
+                        Type = (int)EnumData.CatagoryType.Register,
+                        ItemText = "0",
+                        ItemValue = "0",
+                        Remark = "",
+                        CreatedTime = DateTime.Now
+                    });
+
+                    db.SaveChanges();
+                    return false;
+                }
+                else
+                {
+                    if (data.ItemValue == "0")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// 校验是否当前使用是否有效（未过试用期或注册过）
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckEffective()
+        {
+            using (var db = new EFDbContext())
+            {
+                var data = db.Catagorys.FirstOrDefault(x => x.Type == (int) EnumData.CatagoryType.Register);
+                if (data == null)
+                {
+                    db.Catagorys.Add(new Catagorys
+                    {
+                        Type = (int) EnumData.CatagoryType.Register,
+                        ItemText = "0",
+                        ItemValue = "0",
+                        Remark = "",
+                        CreatedTime = DateTime.Now
+                    });
+                    db.SaveChanges();
+                    return false;
+                }
+                else
+                {
+                    if (data.ItemValue == "1") return true;
+
+                    var date = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.StartEnd);
+
+                    if (date == null)
+                    {
+                        db.Catagorys.Add(new Catagorys
+                        {
+                            Type = (int) EnumData.CatagoryType.StartEnd,
+                            ItemText = DateTime.Now.ToString("yyyy-MM-dd"),
+                            ItemValue = DateTime.Now.ToString("yyyy-MM-dd"),
+                            Remark = "",
+                            CreatedTime = DateTime.Now
+                        });
+                        db.SaveChanges();
+                        return false;
+                    }
+                    else
+                    {
+                        var startDate = DateTime.Now.AddMonths(-1);
+                        DateTime.TryParse(date.ItemValue, out startDate);
+
+                        TimeSpan sp = DateTime.Today.Subtract(startDate);
+                        if (sp.Days > 7)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+
+
+                }
             }
         }
     }

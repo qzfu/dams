@@ -87,5 +87,28 @@ namespace DAMS.Interface
         /// <param name="con"></param>
         /// <returns></returns>
         bool TestMySqlConnect(string con);
+
+        /// <summary>
+        /// 保存第一次登陆时间，和注册状态
+        /// </summary>
+        void SetStartDate();
+
+        /// <summary>
+        /// 注册成功保存记录
+        /// </summary>
+        /// <returns></returns>
+        bool SaveRegister();
+
+        /// <summary>
+        /// 校验是否登陆成功
+        /// </summary>
+        /// <returns></returns>
+        bool CheckRegistered();
+
+        /// <summary>
+        /// 校验是否当前使用是否有效（未过试用期或注册过）
+        /// </summary>
+        /// <returns></returns>
+        bool CheckEffective();
     }
 }

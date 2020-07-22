@@ -44,7 +44,11 @@ namespace DAMS.Common
             [Description("项目尺寸")]
             Size = 1,
             [Description("加载优盘个数")]
-            IndexCount = 2
+            IndexCount = 2,
+            [Description("项目第一次启动时间")]
+            StartEnd = 3,
+            [Description("是否注册过")]
+            Register = 4,
         }
     }
 }

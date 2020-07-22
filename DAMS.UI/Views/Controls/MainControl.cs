@@ -42,6 +42,9 @@ namespace DAMS.UI.Views.Controls
             this.initChartBrowser();
             this.chartBrowser.Navigate(dirRoot + @"\Views\Browser\main.html");
 
+            //若过了试用期并且未注册，则不进行U盘监听
+            if (!deviceService.CheckEffective()) return;
+
             deviceNotifier = DeviceNotifier.OpenDeviceNotifier();
             deviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
         }

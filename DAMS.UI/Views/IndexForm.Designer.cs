@@ -34,6 +34,7 @@
             this.btmDock = new Telerik.WinControls.UI.Docking.RadDock();
             this.documentContainer1 = new Telerik.WinControls.UI.Docking.DocumentContainer();
             this.titPanel = new System.Windows.Forms.Panel();
+            this.RegisterButton = new Telerik.WinControls.UI.RadButton();
             this.homeBtn = new System.Windows.Forms.Button();
             this.loginOutBtn = new System.Windows.Forms.Button();
             this.labTime = new System.Windows.Forms.Label();
@@ -42,11 +43,13 @@
             this.btnSystem = new System.Windows.Forms.Button();
             this.btnResource = new System.Windows.Forms.Button();
             this.titLab = new System.Windows.Forms.Label();
+            this.warnlabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btmDock)).BeginInit();
             this.btmDock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentContainer1)).BeginInit();
             this.titPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RegisterButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +98,8 @@
             // titPanel
             // 
             this.titPanel.BackgroundImage = global::DAMS.UI.Properties.Resources.tit_bg2;
+            this.titPanel.Controls.Add(this.warnlabel);
+            this.titPanel.Controls.Add(this.RegisterButton);
             this.titPanel.Controls.Add(this.homeBtn);
             this.titPanel.Controls.Add(this.loginOutBtn);
             this.titPanel.Controls.Add(this.labTime);
@@ -108,6 +113,18 @@
             this.titPanel.Name = "titPanel";
             this.titPanel.Size = new System.Drawing.Size(996, 83);
             this.titPanel.TabIndex = 2;
+            // 
+            // RegisterButton
+            // 
+            this.RegisterButton.BackColor = System.Drawing.Color.Transparent;
+            this.RegisterButton.BackgroundImage = global::DAMS.UI.Properties.Resources.main_btn;
+            this.RegisterButton.ForeColor = System.Drawing.Color.White;
+            this.RegisterButton.Location = new System.Drawing.Point(411, 6);
+            this.RegisterButton.Name = "RegisterButton";
+            this.RegisterButton.Size = new System.Drawing.Size(63, 23);
+            this.RegisterButton.TabIndex = 12;
+            this.RegisterButton.Text = "注册";
+            this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
             // homeBtn
             // 
@@ -242,10 +259,23 @@
             this.titLab.Location = new System.Drawing.Point(93, 24);
             this.titLab.Margin = new System.Windows.Forms.Padding(0);
             this.titLab.Name = "titLab";
-            this.titLab.Size = new System.Drawing.Size(302, 31);
+            this.titLab.Size = new System.Drawing.Size(315, 33);
             this.titLab.TabIndex = 1;
             this.titLab.Text = "天马智能数据采集管理系统";
             this.titLab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // warnlabel
+            // 
+            this.warnlabel.AutoSize = true;
+            this.warnlabel.BackColor = System.Drawing.Color.Transparent;
+            this.warnlabel.Font = new System.Drawing.Font("微软雅黑", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.warnlabel.ForeColor = System.Drawing.Color.Red;
+            this.warnlabel.Location = new System.Drawing.Point(500, 6);
+            this.warnlabel.Name = "warnlabel";
+            this.warnlabel.Size = new System.Drawing.Size(170, 19);
+            this.warnlabel.TabIndex = 13;
+            this.warnlabel.Text = "*试用期已过，请先注册！";
+            this.warnlabel.Visible = false;
             // 
             // IndexForm
             // 
@@ -276,6 +306,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.documentContainer1)).EndInit();
             this.titPanel.ResumeLayout(false);
             this.titPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RegisterButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -296,6 +327,8 @@
         private Telerik.WinControls.UI.RadPanel mPanel;
         private System.Windows.Forms.Button loginOutBtn;
         private System.Windows.Forms.Button homeBtn;
+        private Telerik.WinControls.UI.RadButton RegisterButton;
+        private System.Windows.Forms.Label warnlabel;
 
     }
 }

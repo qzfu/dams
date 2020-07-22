@@ -47,6 +47,19 @@ namespace DAMS.UI.Views
                 var sizes = data.ItemValue.Split(',').Select(x=> Convert.ToInt32(x)).ToList();
                 this.ClientSize = new System.Drawing.Size(sizes[0], sizes[1]);
             }
+
+            //第一次使用时保存记录
+            setService.SetStartDate();
+            //验证是否注册过
+            if (setService.CheckRegistered())
+            {
+                this.RegisterButton.Visible = false;
+            }
+            //验证是否过了试用期
+            if (!setService.CheckEffective())
+            {
+                this.warnlabel.Visible = true;
+            }
         }
 
         private void systemTimer_Tick(object sender, EventArgs e)
@@ -61,6 +74,8 @@ namespace DAMS.UI.Views
 
         private void homeBtn_Click(object sender, EventArgs e)
         {
+            if (!setService.CheckEffective()) return;
+
             this.mPanel.Controls.Clear();
             MainControl mainControl = new MainControl();
             mainControl.Dock = DockStyle.Fill;
@@ -68,6 +83,8 @@ namespace DAMS.UI.Views
         }
         private void btnResource_Click(object sender, EventArgs e)
         {
+            if (!setService.CheckEffective()) return;
+
             this.mPanel.Controls.Clear();
             ResourceControl resControl = new ResourceControl();
             resControl.Dock = DockStyle.Fill;
@@ -76,6 +93,8 @@ namespace DAMS.UI.Views
 
         private void btnSystem_Click(object sender, EventArgs e)
         {
+            if (!setService.CheckEffective()) return;
+
             this.mPanel.Controls.Clear();
             SettingControl settings = new SettingControl();
             settings.Dock = DockStyle.Fill;
@@ -89,6 +108,23 @@ namespace DAMS.UI.Views
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
                 this.Show();
+            }
+        }
+
+        private void RegisterButton_Click(object sender, EventArgs e)
+        {
+            RegisterForm registerForm = new RegisterForm();
+            if (registerForm.ShowDialog() == DialogResult.OK)
+            {
+                this.RegisterButton.Visible = false;
+                this.warnlabel.Visible = false;
+
+                //注册成功后
+                //重新渲染画布，启动U盘监听机制
+                this.mPanel.Controls.Clear();
+                MainControl mainControl = new MainControl();
+                mainControl.Dock = DockStyle.Fill;
+                this.mPanel.Controls.Add(mainControl);
             }
         }
 
