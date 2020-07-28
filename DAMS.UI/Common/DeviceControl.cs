@@ -282,6 +282,10 @@ namespace DAMS.UI.Common
                     toFile.Flush();
                     currentProgress += (double)fromFile.Length / 1024d / 1024d;
                 }
+                fromFile.Close();
+                toFile.Close();
+                Action<string> deleteAction = DeleteResourceFileAction;
+                deleteAction.BeginInvoke(fromPath, null, null);
             }
             catch
             {
@@ -314,5 +318,16 @@ namespace DAMS.UI.Common
             SetProgressDelegate(deviceInfo, percent);
         }
 
+        /// <summary>
+        /// 删除U盘源文件
+        /// </summary>
+        /// <param name="filePath"></param>
+        public void DeleteResourceFileAction(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
     }
 }
