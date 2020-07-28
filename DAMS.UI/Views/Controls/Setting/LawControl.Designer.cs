@@ -52,11 +52,11 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.relationGridView = new System.Windows.Forms.DataGridView();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.EquipmentNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaveButtonCol = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.relationGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
@@ -310,7 +310,6 @@
             this.relationGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.relationGridView.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.relationGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.relationGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.relationGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.relationGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.EquipmentNo,
@@ -329,29 +328,9 @@
             this.relationGridView.Name = "relationGridView";
             this.relationGridView.RowHeadersVisible = false;
             this.relationGridView.RowTemplate.Height = 27;
+            this.relationGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.relationGridView.Size = new System.Drawing.Size(595, 232);
             this.relationGridView.TabIndex = 7;
-            // 
-            // EquipmentNo
-            // 
-            this.EquipmentNo.DataPropertyName = "EquipmentNo";
-            this.EquipmentNo.HeaderText = "设备编号";
-            this.EquipmentNo.Name = "EquipmentNo";
-            this.EquipmentNo.ReadOnly = true;
-            // 
-            // UserName
-            // 
-            this.UserName.DataPropertyName = "Name";
-            this.UserName.HeaderText = "人员编号";
-            this.UserName.Name = "UserName";
-            // 
-            // SaveButtonCol
-            // 
-            this.SaveButtonCol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveButtonCol.HeaderText = "操作";
-            this.SaveButtonCol.Name = "SaveButtonCol";
-            this.SaveButtonCol.Text = "保存";
-            this.SaveButtonCol.Visible = false;
             // 
             // radButton1
             // 
@@ -370,6 +349,26 @@
             this.radButton2.TabIndex = 6;
             this.radButton2.Text = "保存";
             this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
+            // 
+            // EquipmentNo
+            // 
+            this.EquipmentNo.DataPropertyName = "EquipmentNo";
+            this.EquipmentNo.HeaderText = "设备编号";
+            this.EquipmentNo.Name = "EquipmentNo";
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "Name";
+            this.UserName.HeaderText = "人员编号";
+            this.UserName.Name = "UserName";
+            // 
+            // SaveButtonCol
+            // 
+            this.SaveButtonCol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButtonCol.HeaderText = "操作";
+            this.SaveButtonCol.Name = "SaveButtonCol";
+            this.SaveButtonCol.Text = "保存";
+            this.SaveButtonCol.Visible = false;
             // 
             // LawControl
             // 

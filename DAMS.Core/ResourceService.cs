@@ -468,7 +468,7 @@ namespace DAMS.Core
                 }
                 else
                 {
-                    if (MD5Helper.GenerateMD5(data.ItemValue) == data.ItemText && RegistrationHelper.getRNum() == data.ItemValue) return true;
+                    if (MD5Helper.GenerateMD5(data.ItemValue) == data.ItemText && RegistrationHelper.getRNumWithDate(data.CreatedTime) == data.ItemValue) return true;
 
                     var date = db.Catagorys.FirstOrDefault(x => x.Type == (int)EnumData.CatagoryType.StartEnd);
 
